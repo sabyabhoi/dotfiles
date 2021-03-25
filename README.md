@@ -1,7 +1,6 @@
 # dotfiles
 
-![Screenshot of Rice]
-(https://i.redd.it/fltjwyb2y5p61.png)
+![Screenshot of Rice](https://i.redd.it/fltjwyb2y5p61.png)
 
 I apologize for the mess; I'm still cleaning it up!
 
