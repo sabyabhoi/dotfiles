@@ -1,28 +1,31 @@
 set nocompatible
 filetype off
 
-call plug#begin('$VIM/plugged')
+call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'alvan/vim-closetag'
 Plug 'jiangmiao/auto-pairs'
-Plug 'preservim/nerdtree'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 
-Plug 'preservim/nerdtree'
+Plug 'rust-lang/rust.vim'
 Plug 'vim-latex/vim-latex'
 Plug 'lervag/vimtex'
 
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'itchyny/lightline.vim'
 Plug 'gruvbox-community/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 filetype plugin indent on
@@ -49,9 +52,11 @@ set smartindent
 set autoindent
 set cindent
 
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+" Add --hidden flag to the command given below to search the hidden directories as well
+let $FZF_DEFAULT_COMMAND = 'rg --files '
 let $FZF_DEFAULT_OPTS = '--reverse'
-let $BAT_THEME = 'gruvbox'
+" Install bat to change the colorscheme for the preview window
+let $BAT_THEME = 'gruvbox-dark'
 
 nnoremap <C-p> :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
@@ -59,7 +64,7 @@ nnoremap <Leader>h :noh<CR>
 nnoremap <Leader>n :NERDTree<CR>
 
 let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_CompileRule_pdf = 'pdflatex %'
+let g:Tex_CompileRule_pdf = 'pdflatex -shell-escape %'
 let g:Tex_ViewRule_pdf = 'zathura'
 set conceallevel=1
 let g:tex_conceal='abdmg'
@@ -79,8 +84,18 @@ let g:coc_snippet_next = '<tab>'
 
 let g:python3_host_prog  = '/usr/bin/python'
 
+nnoremap <Leader>g :Git<CR>
+nnoremap <Leader>gc :Git commit<CR>
+
 autocmd FileType markdown nnoremap <Leader>r :w \|!pandoc % -s -V geometry:a4paper -o %:r.pdf<cr><cr>
 autocmd FileType markdown nnoremap <Leader>lv :!zathura %:r.pdf &<cr><cr>
+autocmd FileType python nnoremap <Leader>r :w \| !python3 %<CR>
+autocmd FileType cpp nnoremap <Leader>c :w \| !make FILE=%<CR>
+autocmd FileType cpp set listchars=tab:\|\ 
+autocmd FileType cpp set list
+autocmd FileType c nnoremap <Leader>r :w \| !gcc %<CR>:!./a.out<CR>
+autocmd FileType c nnoremap <Leader>c :w \| !gcc %<CR>
+autocmd BufRead,BufNewFile *.conf setf dosini
 
 autocmd FileType tex call Tex_MakeMap('<leader>ll', ':update!<CR>:call Tex_RunLaTeX()<CR>', 'n', '<buffer>')
 autocmd FileType tex call Tex_MakeMap('<leader>ll', '<ESC>:update!<CR>:call Tex_RunLaTeX()<CR>', 'v', '<buffer>')
@@ -116,4 +131,15 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 let g:notes_directories = ['/home/cognusboi/workspace/Notes']
+
+let g:lightline = {
+			\ 'colorscheme': 'gruvbox',
+			\ 'active': {
+			\   'left': [ [ 'mode', 'paste' ],
+			\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+			\ },
+			\ 'component_function': {
+			\   'gitbranch': 'FugitiveHead'
+			\ },
+			\ }
 
