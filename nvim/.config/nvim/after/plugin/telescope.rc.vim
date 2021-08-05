@@ -1,6 +1,7 @@
 if !exists('g:loaded_telescope') | finish | endif
 
 nnoremap <silent> <C-p> <cmd>Telescope find_files<cr>
+nnoremap <silent> <Leader>lg <cmd>Telescope live_grep<cr>
 nnoremap <silent> <Leader>b <cmd>Telescope buffers<cr>
 
 lua << EOF
