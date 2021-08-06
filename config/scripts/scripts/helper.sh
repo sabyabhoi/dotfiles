@@ -1,6 +1,6 @@
 #!/bin/sh 
 
-steghide extract -sf /home/cognusboi/workspace/scripts/tree.jpg -p naughty -xf /tmp/names -f -q
+steghide extract -sf /home/cognusboi/scripts/tree.jpg -p naughty -xf /tmp/names -f -q
 
 case $1 in
 	-w|--write)
@@ -37,6 +37,6 @@ lines=$(cat /tmp/names | wc -l)
 
 awk -v r=$(($RANDOM % $lines)) 'NR==r' /tmp/names | tr -d '\n' | xclip -selection clipboard
 
-pgrep -x dunst >/dev/null && notify-send "$(xclip -o -selection clipboard) copied to clipboard"
+notify-send "$(xclip -o -selection clipboard) copied to clipboard" -t 2500
 
 rm /tmp/names
