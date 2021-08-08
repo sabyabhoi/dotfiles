@@ -1,4 +1,7 @@
 {
 	"languageserver": {
-	}
+  },
+  "clangd.path": "/home/cognusboi/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd",
+  "Lua.diagnostics.globals": ["awesome", "screen", "root", "client"],
+  "Lua.diagnostics.disable": ["lowercase-global"]
 }

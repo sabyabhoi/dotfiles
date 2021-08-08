@@ -1,10 +1,8 @@
 # dotfiles
 
-## my dotfiles
-
 ### Set them up using `stow`
 
-To set up all dotfiles: 
+To set up all dotfiles, navigate to the `config/` directory and use the following command: 
 ```
 stow -t ~ *
 ```

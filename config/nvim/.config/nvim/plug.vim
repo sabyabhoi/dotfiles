@@ -11,6 +11,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'tikhomirov/vim-glsl'
 Plug 'lervag/vimtex'
 Plug 'honza/vim-snippets'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
