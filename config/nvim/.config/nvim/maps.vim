@@ -8,4 +8,4 @@ nnoremap <Leader>gc :Git commit<CR>
 
 autocmd FileType c nnoremap <Leader>r :w \| !make FILE=% && ./a.out<CR>
 autocmd FileType cpp nnoremap <Leader>r :w \| !make FILE=%<CR>
-nmap <leader>cn <Plug>(coc-rename)
+nmap <leader>p <Plug>(coc-rename)

@@ -13,12 +13,19 @@ TEMPLATE = '''#include <bits/stdc++.h>
 
 #define deb(x) cout << #x << " = " << x << endl
 
+#define REP(i, n) for(int i = 0; i < (n); ++i)
+
+#define ull unsigned long long
+#define MOD 1000000007
+
 using namespace std;
 
-void solve() {
+void solve()
+{
 }
 
-int main() {
+int main()
+{
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 

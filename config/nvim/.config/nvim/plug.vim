@@ -6,6 +6,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'scrooloose/nerdtree' 
+Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'plasticboy/vim-markdown'
 Plug 'tikhomirov/vim-glsl'
@@ -16,9 +17,17 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'itchyny/lightline.vim'
+
+" flutter
+Plug 'natebosch/dartlang-snippets'
+Plug 'dart-lang/dart-vim-plugin'
 
 Plug 'morhetz/gruvbox'
 
-call plug#end()
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons' " lua
+Plug 'ryanoasis/vim-devicons' " vimscript
 
+
+call plug#end()
+let g:lsc_auto_map = v:true
