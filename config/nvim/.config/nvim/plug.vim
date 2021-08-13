@@ -11,6 +11,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'plasticboy/vim-markdown'
 Plug 'tikhomirov/vim-glsl'
 Plug 'lervag/vimtex'
+Plug 'vim-latex/vim-latex'
 Plug 'honza/vim-snippets'
 Plug 'sheerun/vim-polyglot'
 

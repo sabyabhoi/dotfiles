@@ -1,4 +1,6 @@
 #!/bin/sh
 
-import -window root /tmp/screenshot.jpg
-notify-send "Screenshot taken" -t 2500
+IMG=$(i3-input -P "Name: " | tail -n 1 | awk -F " = " '{print $2}')
+
+import -window root /tmp/$IMG.jpg
+notify-send "Screenshot saved to /tmp/$IMG.jpg" -t 2500
