@@ -33,10 +33,7 @@ case $1 in
 		;;
 esac
 
-lines=$(cat /tmp/names | wc -l)
-
-awk -v r=$(($RANDOM % $lines)) 'NR==r' /tmp/names | tr -d '\n' | xclip -selection clipboard
-
+shuf /tmp/names -n 1 | tr -d '\n' | xclip -selection clipboard
 notify-send "$(xclip -o -selection clipboard) copied to clipboard" -t 2500
 
 rm /tmp/names
