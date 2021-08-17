@@ -24,3 +24,4 @@ brightnessctl
 zathura
 zathura-pdf-mupdf
 neovim
+pip
