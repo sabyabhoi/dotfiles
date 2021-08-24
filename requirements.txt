@@ -14,7 +14,7 @@ nvtop
 pulseaudio
 pulseaudio-bluetooth
 pavu-control
-ranger
+nnn
 r
 steghide
 xdg-utils

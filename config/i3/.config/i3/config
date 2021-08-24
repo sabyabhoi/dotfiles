@@ -115,7 +115,8 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-bindsym $mod+x exec betterlockscreen -l
+bindsym $mod+x exec --no-startup-id i3lock -i /home/cognusboi/workspace/userfiles/Media/Pictures/herakles-1920×1080.png
+bindsym $mod+b exec --no-startup-id /home/cognusboi/scripts/browse
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -193,7 +194,7 @@ bindsym $mod+r mode "resize"
 
 bindsym --release XF86MonBrightnessDown exec --no-startup-id "brightnessctl s 10%-"
 bindsym --release XF86MonBrightnessUp exec --no-startup-id "brightnessctl s +10%"
-bindsym --release Print exec --no-startup-id "~/scripts/screenshot.sh"
+bindsym --release Print exec --no-startup-id "~/scripts/screenshot"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh --forest
 #exec --no-startup-id nitrogen --restore

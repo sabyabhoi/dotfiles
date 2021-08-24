@@ -1,0 +1,31 @@
+#!/bin/sh
+
+url=$(echo -e "gh\ndots\nlinkedin\ncms\nsearx\nlib" | rofi -dmenu -p "Select a page")
+echo $url
+
+case $url in
+	gh)
+		surf https://github.com/sabyabhoi &
+		break
+		;;
+	dots)
+		surf https://github.com/sabyabhoi/dotfiles &
+		break
+		;;
+	linkedin)
+		surf https://www.linkedin.com/in/sabyasachi-bhoi-4b593b171 &
+		break
+		;;
+	cms)
+		surf https://cms.bits-hyderabad.ac.in/my/ &
+		break
+		;;
+	searx)
+		surf https://searx.bar/ &
+		break
+		;;
+	lib)
+		surf http://libgen.rs/ &
+		break
+		;;
+esac

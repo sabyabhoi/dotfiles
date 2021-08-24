@@ -10,6 +10,7 @@ esac
 stretch() {
 	while true; do
 		sleep 20m
+		ffplay -nodisp -hide_banner -volume 20 -loglevel quiet -autoexit ~/scripts/sound.oga &
 		notify-send "Stretch for 20 seconds" -t 20000
 	done
 }
