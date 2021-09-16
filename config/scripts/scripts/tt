@@ -1,0 +1,8 @@
+#!/bin/sh
+
+general=~/workspace/userfiles/college/general
+
+imv $general/tt.png &
+
+less $general/classes.org
+

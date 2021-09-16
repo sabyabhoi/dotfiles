@@ -15,6 +15,9 @@ Plug 'vim-latex/vim-latex'
 Plug 'honza/vim-snippets'
 Plug 'sheerun/vim-polyglot'
 
+Plug 'rust-lang/rust.vim'
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -28,7 +31,8 @@ Plug 'morhetz/gruvbox'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'ryanoasis/vim-devicons' " vimscript
-
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 call plug#end()
 let g:lsc_auto_map = v:true

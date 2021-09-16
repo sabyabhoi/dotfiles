@@ -108,12 +108,12 @@ font:
     # Font family
     #
     #   - (macOS) Menlo
-    family: mononoki
+    family: JetBrains Mono
 
       # The `style` can be specified to pick a specific face.
     style: Regular
 
-  size: 10.0
+  size: 9
   # Bold font face
   bold:
     # Font family

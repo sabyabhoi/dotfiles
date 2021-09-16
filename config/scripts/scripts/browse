@@ -1,6 +1,6 @@
 #!/bin/sh
 
-url=$(echo -e "gh\ndots\nlinkedin\ncms\nsearx\nlib" | rofi -dmenu -p "Select a page")
+url=$(echo -e "gh\ndots\nlinkedin\ncms\nduck\nlib" | rofi -dmenu -p "Select a page")
 echo $url
 
 case $url in
@@ -20,8 +20,8 @@ case $url in
 		surf https://cms.bits-hyderabad.ac.in/my/ &
 		break
 		;;
-	searx)
-		surf https://searx.bar/ &
+	duck)
+		surf https://duckduckgo.com/ &
 		break
 		;;
 	lib)

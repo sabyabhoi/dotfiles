@@ -1,6 +1,6 @@
 #!/bin/sh 
 
-steghide extract -sf /home/cognusboi/scripts/tree.jpg -p naughty -xf /tmp/names -f -q
+steghide extract -sf $SCRIPTS/tree.jpg -p naughty -xf /tmp/names -f -q
 
 case $1 in
 	-w|--write)
@@ -10,7 +10,7 @@ case $1 in
 		fi
 		echo "Adding $2 to list of names"
 		echo $2 >> /tmp/names
-		steghide embed -cf /home/cognusboi/workspace/scripts/tree.jpg -p naughty -ef /tmp/names -f -q
+		steghide embed -cf $SCRIPTS/tree.jpg -p naughty -ef /tmp/names -f -q
 		exit
 		;;
 	-a|--all)
@@ -24,7 +24,7 @@ case $1 in
 		fi
 		echo "Deleting $2 from the list"
 		sed -i '/$2/ d' /tmp/names
-		steghide embed -cf /home/cognusboi/workspace/scripts/tree.jpg -p naughty -ef /tmp/names -f -q
+		steghide embed -cf $SCRIPTS/tree.jpg -p naughty -ef /tmp/names -f -q
 		exit
 		;;
 	-h|--help)

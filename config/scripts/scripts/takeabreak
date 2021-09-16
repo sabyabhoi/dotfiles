@@ -2,17 +2,28 @@
 
 case $1 in
 	-s|--stop)
-		killall takeabreak.sh
+		killall takeabreak
 		break
 		;;
 esac
 
 stretch() {
+	COUNT=0
+	DUR=20000
 	while true; do
 		sleep 20m
-		ffplay -nodisp -hide_banner -volume 20 -loglevel quiet -autoexit ~/scripts/sound.oga &
-		notify-send "Stretch for 20 seconds" -t 20000
+		COUNT=$((COUNT+1))
+		ffplay -nodisp -hide_banner -volume 20 -loglevel quiet -autoexit $SCRIPTS/sound.oga &
+		if [[ COUNT -gt 3 ]];then
+			COUNT=0
+			notify-send "Go get some water" -t $DUR
+			sleep 1m
+		else 
+			notify-send "Stretch for 20 seconds" -t $DUR
+		fi
 	done
 }
 
-stretch &
+if [[ $(pgrep -c -x takeabreak) -le 1 ]]; then
+	stretch &
+fi

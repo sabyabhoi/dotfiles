@@ -1,0 +1,20 @@
+#!/bin/sh
+
+for (( round = 1; round <= 3; round++ )); do
+
+	termdown 30m --title "round ${round}"
+	ffplay -nodisp -hide_banner -volume 20 -loglevel quiet -autoexit $SCRIPTS/sound.oga &
+	notify-send "Take a 8 minute break" -t 2500
+	for (( i = 5; i >= 0; i-- )); do
+		printf "Break starting in %d\n" $i
+		sleep 1
+	done
+	if [[ $round -eq 3 ]]; then
+		termdown 25m --title "long break"
+	else
+		termdown 8m --title "break ${round}"
+	fi
+	ffplay -nodisp -hide_banner -volume 20 -loglevel quiet -autoexit $SCRIPTS/sound.oga &
+	notify-send "Alright break over" -t 2500
+
+done

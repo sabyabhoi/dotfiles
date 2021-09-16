@@ -9,15 +9,16 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
+client.focused          #4c7899 #285577 #ffffff #d65d0e  #fe8019
 for_window [class="Android Emulator - Pixel_XL_API_30:5554"] floating enable
 for_window [class="Emulator"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
 gaps inner 10
-gaps outer 0
+gaps outer 5
 gaps top   5
 
 smart_borders on
