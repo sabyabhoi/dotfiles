@@ -33,15 +33,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 export XDG_CONFIG_HOME=/home/cognusboi/.config
-export TERMINAL=kitty
+export TERMINAL=alacritty
 export SCRIPTS=/home/cognusboi/scripts
 
 xset r rate 200 25
 
 ~/.fehbg &
-redshift &
 picom --config=/home/cognusboi/.config/picom/picom.conf -b
 $SCRIPTS/takeabreak &
-#weather -g
-#slstatus &
 exec i3 

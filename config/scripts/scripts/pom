@@ -1,7 +1,10 @@
 #!/bin/sh
 
-for (( round = 1; round <= 3; round++ )); do
+printf "Enter number of rounds: "
+read rounds
+for (( round = 1; round <= rounds; round++ )); do
 
+	sleep 0.5
 	termdown 30m --title "round ${round}"
 	ffplay -nodisp -hide_banner -volume 20 -loglevel quiet -autoexit $SCRIPTS/sound.oga &
 	notify-send "Take a 8 minute break" -t 2500

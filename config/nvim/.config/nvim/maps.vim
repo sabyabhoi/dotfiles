@@ -11,6 +11,7 @@ autocmd FileType cpp nnoremap <Leader>r :w \| !make FILE=%<CR>
 autocmd FileType nroff nnoremap <Leader>r :w \| !groff -ms % -T pdf > %:r.pdf<CR>
 autocmd FileType nroff nnoremap <silent><Leader>lv :!zathura %:r.pdf & disown<CR>
 autocmd FileType dot nnoremap <Leader>r :w \| !dot -Tpng % -o %:r.png<CR>
+autocmd FileType rust nnoremap <silent><Leader>r :RustRun<CR>
 nmap <leader>p <Plug>(coc-rename)
 
 autocmd FileType tex call Tex_MakeMap("<Leader>ll", ":w <CR> <Plug>Tex_Compile", 'n', '<buffer>')
