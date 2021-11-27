@@ -12,7 +12,7 @@
 set $mod Mod4
 
 for_window [class="^.*"] border pixel 1
-client.focused          #4c7899 #285577 #ffffff #d65d0e  #fe8019
+client.focused          #4c7899 #285577 #ffffff #3d3d3d  #3d3d3d
 for_window [class="Android Emulator - Pixel_XL_API_30:5554"] floating enable
 for_window [class="Emulator"] floating enable
 for_window [class="Pavucontrol"] floating enable
@@ -30,7 +30,7 @@ smart_borders no_gaps
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 10
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -54,7 +54,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -195,6 +195,7 @@ bindsym $mod+r mode "resize"
 
 bindsym --release XF86MonBrightnessDown exec --no-startup-id "brightnessctl s 10%-"
 bindsym --release XF86MonBrightnessUp exec --no-startup-id "brightnessctl s +10%"
+bindsym --release XF86Calculator exec --no-startup-id "st R"
 bindsym --release Print exec --no-startup-id "~/scripts/screenshot"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh --forest

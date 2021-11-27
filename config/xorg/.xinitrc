@@ -41,4 +41,5 @@ xset r rate 200 25
 ~/.fehbg &
 picom --config=/home/cognusboi/.config/picom/picom.conf -b
 $SCRIPTS/takeabreak &
+xbindkeys
 exec i3 

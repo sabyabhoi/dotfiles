@@ -8,7 +8,7 @@ nnoremap <Leader>gc :Git commit<CR>
 
 autocmd FileType c nnoremap <Leader>r :w \| !make FILE=% && ./a.out<CR>
 autocmd FileType cpp nnoremap <Leader>r :w \| !make FILE=%<CR>
-autocmd FileType nroff nnoremap <Leader>r :w \| !groff -ms % -T pdf > %:r.pdf<CR>
+autocmd FileType nroff nnoremap <silent><leader>r :w \| !groff_compile % <CR>
 autocmd FileType nroff nnoremap <silent><Leader>lv :!zathura %:r.pdf & disown<CR>
 autocmd FileType dot nnoremap <Leader>r :w \| !dot -Tpng % -o %:r.png<CR>
 autocmd FileType rust nnoremap <silent><Leader>r :RustRun<CR>
@@ -20,3 +20,6 @@ autocmd FileType tex call Tex_MakeMap("<Leader>ll", "<ESC> :w <CR> <Plug>Tex_Com
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+autocmd! BufNewFile,BufRead *.shader set ft=glsl
+autocmd! BufNewFile,BufRead *.ms set ft=nroff
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2

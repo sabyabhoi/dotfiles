@@ -1,7 +1,10 @@
 #!/usr/bin/bash
 
+#(tac ~/.zshenv | sed -ne '/alias college.*/,$ p' | tac)> ~/.zshenv
+
 for FILE in ~/workspace/userfiles/college/*; do 
 	if [[ -d $FILE ]]; then
 		echo alias ${FILE##*/}=$FILE >> ~/.zshenv
 	fi
 done
+

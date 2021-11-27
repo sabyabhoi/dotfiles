@@ -23,6 +23,3 @@ set autoindent
 set timeoutlen=1000 ttimeoutlen=0
 
 set conceallevel=2
-
-autocmd! BufNewFile,BufRead *.shader set ft=glsl
-autocmd! BufNewFile,BufRead *.ms set ft=nroff

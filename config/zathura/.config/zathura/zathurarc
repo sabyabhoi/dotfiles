@@ -1,5 +1,6 @@
 set font "JetbrainsMono regular 15"
 set sandbox none
+set guioptions ""
 
 set notification-error-bg       "#282828" # bg
 set notification-error-fg       "#fb4934" # bright:red
