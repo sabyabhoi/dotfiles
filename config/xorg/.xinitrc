@@ -35,11 +35,15 @@ fi
 export XDG_CONFIG_HOME=/home/cognusboi/.config
 export TERMINAL=alacritty
 export SCRIPTS=/home/cognusboi/scripts
+export SHELL=/bin/fish
+export BROWSER=brave
+export EDITOR=nvim
+export VISUAL=nvim
 
 xset r rate 200 25
 
 ~/.fehbg &
 picom --config=/home/cognusboi/.config/picom/picom.conf -b
 $SCRIPTS/takeabreak &
-xbindkeys
+setxkbmap -option caps:swapescape
 exec i3 

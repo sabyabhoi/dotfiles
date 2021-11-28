@@ -4,7 +4,6 @@ i3-gaps
 git
 i3lock
 firefox
-gotop
 lazygit
 kitty
 nvidia
@@ -13,7 +12,7 @@ nvidia-settings
 nvtop
 pulseaudio
 pulseaudio-bluetooth
-pavu-control
+pavucontrol
 nnn
 r
 steghide
@@ -24,4 +23,4 @@ brightnessctl
 zathura
 zathura-pdf-mupdf
 neovim
-pip
+python-pip
