@@ -19,6 +19,7 @@ return require('packer').startup(function()
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-vsnip'
 	use 'hrsh7th/vim-vsnip'
+	use 'onsails/lspkind-nvim'
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -28,6 +29,14 @@ return require('packer').startup(function()
 	-- Misc
 	use 'preservim/nerdtree'
 	use 'jiangmiao/auto-pairs'
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = {'kyazdani42/nvim-web-devicons', opt = true}
+	}
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
 
 	-- LaTeX
 	use 'lervag/vimtex'

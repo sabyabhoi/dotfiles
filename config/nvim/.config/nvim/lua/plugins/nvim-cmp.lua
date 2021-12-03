@@ -9,13 +9,16 @@ cmp.setup({
 	mapping = {
 		['<C-d>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
---		['<C-n>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
 		['<Tab>'] = cmp.mapping.confirm({ select = true }),
 	},
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
-		{ name = 'vsnip' }
+		{ name = 'path' },
+		{ name = 'vsnip' },
 	}, {
 		{ name = 'buffer' },
-	})
+	}),
+	formatting = {
+		format = require('lspkind').cmp_format({ with_text = true, maxwidth = 50 })
+	}
 })
