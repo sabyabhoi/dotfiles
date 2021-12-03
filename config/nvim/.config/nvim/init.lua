@@ -1,6 +1,7 @@
 require('plugins')
 require('options')
 require('mappings')
+require('plugins/nvim-lspconfig')
 require('plugins/nvim-cmp')
 require('plugins/treesitter')
 require('plugins/lualine')

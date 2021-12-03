@@ -1,7 +1,7 @@
 local options = {
 	clipboard = 'unnamedplus',
 	conceallevel = 0,
-	completeopt = { 'menuone', 'noselect' },
+	completeopt = { 'menu', 'menuone', 'noselect' },
 	backup = false,
 	undofile = false,
 	backup = false,
