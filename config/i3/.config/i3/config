@@ -11,7 +11,7 @@
 
 set $mod Mod4
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 client.focused          #4c7899 #285577 #ffffff #3d3d3d  #3d3d3d
 for_window [class="Android Emulator - Pixel_XL_API_30:5554"] floating enable
 for_window [class="Emulator"] floating enable
@@ -195,7 +195,7 @@ bindsym $mod+r mode "resize"
 
 bindsym --release XF86MonBrightnessDown exec --no-startup-id "brightnessctl s 10%-"
 bindsym --release XF86MonBrightnessUp exec --no-startup-id "brightnessctl s +10%"
-bindsym --release XF86Calculator exec --no-startup-id "st R"
+bindsym --release XF86Calculator exec --no-startup-id "alacritty --command R"
 bindsym --release Print exec --no-startup-id "~/scripts/screenshot"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh --forest

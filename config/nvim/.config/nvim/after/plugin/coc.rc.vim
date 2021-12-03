@@ -32,7 +32,5 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:coc_global_extensions = [
 			\ 'coc-snippets',
 			\ 'coc-eslint',
-			\ 'coc-prettier',
 			\ 'coc-flutter',
-			\ 'coc-json',
 			\]

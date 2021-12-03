@@ -30,7 +30,7 @@ Plug 'preservim/nerdcommenter'
 
 " --- FILE SPECIFIC ---
 Plug 'rust-lang/rust.vim'
-"Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 Plug 'mattn/emmet-vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'chrisbra/csv.vim'

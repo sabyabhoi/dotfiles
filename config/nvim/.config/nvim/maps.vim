@@ -12,6 +12,7 @@ autocmd FileType nroff nnoremap <silent><leader>r :w \| !groff_compile % <CR>
 autocmd FileType nroff nnoremap <silent><Leader>lv :!zathura %:r.pdf & disown<CR>
 autocmd FileType dot nnoremap <Leader>r :w \| !dot -Tpng % -o %:r.png<CR>
 autocmd FileType rust nnoremap <silent><Leader>r :RustRun<CR>
+autocmd FileType lua nnoremap <silent><Leader>r :w \| !lua5.3 %<CR>
 nmap <leader>p <Plug>(coc-rename)
 
 autocmd FileType tex call Tex_MakeMap("<Leader>ll", ":w <CR> <Plug>Tex_Compile", 'n', '<buffer>')
