@@ -5,16 +5,35 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function()
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  use 'preservim/nerdtree'
-  use 'jiangmiao/auto-pairs'
+	-- Packer can manage itself
+	use 'wbthomason/packer.nvim'
 
-  -- LaTeX
-  use 'lervag/vimtex'
-  use 'vim-latex/vim-latex'
+	-- LSP
+	use 'neovim/nvim-lspconfig'
 
-  -- Colorschemes
-  use 'morhetz/gruvbox'
+	-- Completion
+	use 'hrsh7th/nvim-cmp'
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-nvim-lua'
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-vsnip'
+	use 'hrsh7th/vim-vsnip'
+
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate'
+	}
+
+	-- Misc
+	use 'preservim/nerdtree'
+	use 'jiangmiao/auto-pairs'
+
+	-- LaTeX
+	use 'lervag/vimtex'
+	use 'vim-latex/vim-latex'
+
+	-- Colorschemes
+	use 'morhetz/gruvbox'
 end)
 

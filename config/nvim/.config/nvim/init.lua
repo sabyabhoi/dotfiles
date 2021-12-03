@@ -1,4 +1,5 @@
 require('plugins')
 require('options')
 require('mappings')
-
+require('plugins/nvim-cmp')
+require('plugins/treesitter')
