@@ -10,6 +10,7 @@ return require('packer').startup(function()
 
 	-- LSP
 	use 'neovim/nvim-lspconfig'
+	use 'williamboman/nvim-lsp-installer'
 
 	-- Completion
 	use 'hrsh7th/nvim-cmp'
@@ -28,7 +29,13 @@ return require('packer').startup(function()
 	}
 
 	-- Misc
-	use 'preservim/nerdtree'
+	use {
+		'kyazdani42/nvim-tree.lua',
+		requires = {
+			'kyazdani42/nvim-web-devicons', -- optional, for file icon
+		},
+		config = function() require'nvim-tree'.setup {} end
+	}
 	use 'jiangmiao/auto-pairs'
 	use {
 		'nvim-lualine/lualine.nvim',
@@ -36,7 +43,7 @@ return require('packer').startup(function()
 	}
 	use {
 		'nvim-telescope/telescope.nvim',
-		requires = { {'nvim-lua/plenary.nvim'} }
+		requires = {{ 'nvim-lua/plenary.nvim' }}
 	}
 
 	-- LaTeX

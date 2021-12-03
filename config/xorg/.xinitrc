@@ -45,5 +45,6 @@ xset r rate 200 25
 ~/.fehbg &
 picom --config=/home/cognusboi/.config/picom/picom.conf -b
 $SCRIPTS/takeabreak &
+xbindkeys --poll-rc
 setxkbmap -option caps:swapescape
 exec i3 
