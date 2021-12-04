@@ -4,7 +4,6 @@ local options = {
 	completeopt = { 'menu', 'menuone', 'noselect' },
 	backup = false,
 	undofile = false,
-	backup = false,
 	hlsearch = true,
 	ignorecase = false,
 	mouse = 'a',

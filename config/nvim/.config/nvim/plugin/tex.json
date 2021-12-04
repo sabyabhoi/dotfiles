@@ -1,0 +1,17 @@
+{
+  "Base": {
+    "prefix": ["base"],
+    "body": [
+      "\\documentclass[12pt]{article}\n",
+      "\\usepackage{amsmath}",
+      "\\usepackage[margin=1in]{geometry}\n",
+      "\\begin{document}",
+      "\\title{$1}",
+      "\\author{Sabyasachi Bhoi}",
+      "\\maketitle\n",
+      "$2",
+      "\\end{document}"
+    ],
+    "description": "Class definition template."
+  }
+}
