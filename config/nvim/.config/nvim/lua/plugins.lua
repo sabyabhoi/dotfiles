@@ -26,7 +26,8 @@ return require('packer').startup(function()
 
 	}
 	use 'onsails/lspkind-nvim'
-	use "rafamadriz/friendly-snippets"
+	use 'rafamadriz/friendly-snippets'
+	use 'mattn/emmet-vim'
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
