@@ -45,10 +45,10 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/cognusboi/.config/awesome/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -311,7 +311,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+    awful.key({ modkey },            "d",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
@@ -325,33 +325,8 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "d", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
-		  --
-	-- Brightness
-	awful.key({}, "XF86MonBrightnessDown", function()
-	awful.util.spawn("brightnessctl s 10%-") end),
-
-	awful.key({}, "XF86MonBrightnessUp", function()
-	awful.util.spawn("brightnessctl s +10%") end),
-
-	-- Volume
-	awful.key({}, "XF86AudioRaiseVolume",
-		function()
-			awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%")
-		end),
-	awful.key({}, "XF86AudioLowerVolume",
-		function()
-			awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%")
-		end),
-	awful.key({}, "XF86AudioMute",
-		function()
-			awful.util.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")
-		end),
-	awful.key({}, "XF86AudioMicMute",
-		function()
-			awful.util.spawn("pactl set-source-mute @DEFAULT_SOURCE@ toggle")
-		end)
+    awful.key({ modkey }, "p", function() menubar.show() end,
+              {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -587,7 +562,3 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
--- Autostart applictaions
-awful.spawn.with_shell("picom --config=/home/cognusboi/.config/picom/picom.conf")
--- awful.spawn.with_shell("nitrogen --restore")
