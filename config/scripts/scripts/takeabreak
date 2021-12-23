@@ -16,7 +16,7 @@ stretch() {
 		ffplay -nodisp -hide_banner -volume 20 -loglevel quiet -autoexit $SCRIPTS/sound.oga &
 		if [[ COUNT -gt 3 ]];then
 			COUNT=0
-			notify-send "Go get some water" -t $DUR
+			notify-send "bsdk pani peele" -t $DUR
 			sleep 1m
 		else 
 			notify-send "Stretch for 20 seconds" -t $DUR

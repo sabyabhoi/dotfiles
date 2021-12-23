@@ -1,4 +1,4 @@
-source ~/.config/nvim/plug.vim
+source /home/cognusboi/.config/nvim/plug.vim
 
 set nu rnu
 syntax on
@@ -14,7 +14,7 @@ set tabstop=4
 set mouse=a
 set clipboard+=unnamedplus
 
-source ~/.config/nvim/maps.vim
+source /home/cognusboi/.config/nvim/maps.vim
 
 set smartindent
 set cindent

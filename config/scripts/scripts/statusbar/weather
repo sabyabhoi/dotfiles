@@ -1,0 +1,20 @@
+#!/bin/sh
+
+weather_report="${XDG_DATA_HOME:-$HOME/.local/share}/weather_report"
+get_weather() {
+	curl -sf "wttr.in/noida?format=1" > "$weather_report" || exit 1
+}
+
+show_weather() {
+	awk '{print $2}' $weather_report
+}
+
+while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
+	-g|--get)
+	get_weather
+	;;
+	-s|--show)
+	show_weather
+	;;
+esac; shift; done
+if [[ "$1" == '--' ]]; then shift; fi

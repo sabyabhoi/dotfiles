@@ -7,6 +7,7 @@ nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gc :Git commit<CR>
 
 autocmd FileType c nnoremap <Leader>r :w \| !make FILE=% && ./a.out<CR>
+autocmd FileType python nnoremap <Leader>r :w \| !python %<CR>
 autocmd FileType cpp nnoremap <Leader>r :w \| !make FILE=%<CR>
 autocmd FileType nroff nnoremap <silent><leader>r :w \| !groff_compile % <CR>
 autocmd FileType nroff nnoremap <silent><Leader>lv :!zathura %:r.pdf & disown<CR>

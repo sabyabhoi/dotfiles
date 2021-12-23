@@ -161,6 +161,28 @@ local function set_wallpaper(s)
     end
 end
 
+--[[local function set_wallpaper(s)
+	 awful.wallpaper {
+			screen = s,
+			bg     = "#0000ff",
+			widget = {
+				{
+					image  = gears.filesystem.get_random_file_from_dir(
+						"/home/cognusboi/workspace/userfiles/Media/Pictures/wallpapers",
+						{".jpg", ".png"},
+						true
+					),
+					resize = true,
+					widget = wibox.widget.imagebox,
+				},
+				valign = "center",
+				halign = "center",
+				tiled  = false,
+				widget = wibox.container.tile,
+			}
+		}
+end]]
+
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 

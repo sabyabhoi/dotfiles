@@ -1,0 +1,20 @@
+#!/usr/bin/sh
+
+flags=""
+
+if [[ -n $1 ]]; then
+	flags="${flags} -f $1"
+fi
+
+if [[ -n $1 ]]; then
+	flags="${flags} -l $2"
+fi
+
+filename="${4%.*}"
+ext="${4##*.}"
+
+pdfseparate $flags $3 $filename-%d.$ext
+
+pdfunite $(ls $filename-* | tr "\n" " ") $filename-split.$ext
+
+rm -rf $(ls $filename-* | grep -e "[0-9]")
