@@ -1,0 +1,5 @@
+return {
+	tools = {
+		autoSetHints = true
+	}
+}

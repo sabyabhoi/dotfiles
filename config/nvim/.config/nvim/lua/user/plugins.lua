@@ -23,6 +23,7 @@ return packer.startup(function()
 		'neovim/nvim-lspconfig',
 		'williamboman/nvim-lsp-installer',
 	}
+	use 'simrat39/rust-tools.nvim'
 
 	-- Completion
 	use {
