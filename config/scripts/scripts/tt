@@ -1,8 +1,7 @@
 #!/bin/sh
 
-general=~/workspace/userfiles/college/general
+d=~/workspace/userfiles/college/general
 
-imv $general/tt.png &
-
-less $general/classes.md
+imv $d/TT.png &
+less $d/classes.txt
 

@@ -5,6 +5,7 @@ local keymap = vim.api.nvim_set_keymap
 keymap('n', '<Space>', '<NOP>', opts)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.g.BASH_Ctrl_j = 'off'
 
 -- Better window navigation
 keymap('n', '<C-h>', '<C-w>h', opts)
@@ -26,6 +27,8 @@ keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 -- Stay in visual mode after indenting
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
+
+keymap('n', '<Leader>f', '<Cmd>lua vim.lsp.buf.formatting_sync()<CR>', opts)
 
 -- Telescope
 keymap('n', '<C-p>', ':Telescope find_files<CR>', opts)

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+tz=$(timedatectl list-timezones | fzf)
+echo "Time in $tz: "
+TZ=$tz date '+%r'

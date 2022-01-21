@@ -1,3 +1,9 @@
+--local fn = vim.fn
+--local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+--if fn.empty(fn.glob(install_path)) > 0 then
+--  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+--end
+
 vim.cmd [[packadd packer.nvim]]
 
 local status_ok, packer = pcall(require, 'packer')
@@ -13,7 +19,7 @@ packer.init {
 	}
 }
 
-return packer.startup(function()
+return packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'gruvbox-community/gruvbox'
 	use 'folke/tokyonight.nvim'
@@ -23,7 +29,6 @@ return packer.startup(function()
 		'neovim/nvim-lspconfig',
 		'williamboman/nvim-lsp-installer',
 	}
-	use 'simrat39/rust-tools.nvim'
 
 	-- Completion
 	use {
@@ -43,6 +48,12 @@ return packer.startup(function()
 		'onsails/lspkind-nvim',
 	}
 
+	use {
+		'folke/todo-comments.nvim',
+		config = function()
+			require('todo-comments').setup()
+		end
+	}
 	use 'kyazdani42/nvim-web-devicons'
 	use {
 		'nvim-lualine/lualine.nvim',
@@ -51,7 +62,7 @@ return packer.startup(function()
 
 	use {
 		'kyazdani42/nvim-tree.lua',
-		config = function() require'nvim-tree'.setup {} end
+		config = function() require('nvim-tree').setup {} end
 	}
 
 	use {
@@ -63,4 +74,10 @@ return packer.startup(function()
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
+	
+	-- Filetype specific
+	use 'vim-latex/vim-latex'
+	use 'elkowar/yuck.vim'
+	use 'jalvesaq/Nvim-R'
 end)
+

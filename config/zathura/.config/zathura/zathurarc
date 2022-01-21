@@ -2,45 +2,91 @@ set font "JetbrainsMono regular 15"
 set sandbox none
 set guioptions ""
 
-set notification-error-bg       "#282828" # bg
-set notification-error-fg       "#fb4934" # bright:red
-set notification-warning-bg     "#282828" # bg
-set notification-warning-fg     "#fabd2f" # bright:yellow
-set notification-bg             "#282828" # bg
-set notification-fg             "#b8bb26" # bright:green
+# Gruvbox theme
+#set notification-error-bg       "#282828" # bg
+#set notification-error-fg       "#fb4934" # bright:red
+#set notification-warning-bg     "#282828" # bg
+#set notification-warning-fg     "#fabd2f" # bright:yellow
+#set notification-bg             "#282828" # bg
+#set notification-fg             "#b8bb26" # bright:green
+#
+#set completion-bg               "#504945" # bg2
+#set completion-fg               "#ebdbb2" # fg
+#set completion-group-bg         "#3c3836" # bg1
+#set completion-group-fg         "#928374" # gray
+#set completion-highlight-bg     "#83a598" # bright:blue
+#set completion-highlight-fg     "#504945" # bg2
+#
+## Define the color in index mode
+#set index-bg                    "#504945" # bg2
+#set index-fg                    "#ebdbb2" # fg
+#set index-active-bg             "#83a598" # bright:blue
+#set index-active-fg             "#504945" # bg2
+#
+#set inputbar-bg                 "#282828" # bg
+#set inputbar-fg                 "#ebdbb2" # fg
+#
+#set statusbar-bg                "#504945" # bg2
+#set statusbar-fg                "#ebdbb2" # fg
+#
+#set highlight-color             "#fabd2f" # bright:yellow
+#set highlight-active-color      "#fe8019" # bright:orange
+#
+#set default-bg                  "#282828" # bg
+#set default-fg                  "#ebdbb2" # fg
+#set render-loading              true
+#set render-loading-bg           "#282828" # bg
+#set render-loading-fg           "#ebdbb2" # fg
+#
+## Recolor book content's color
+#set recolor-lightcolor          "#282828" # bg
+#set recolor-darkcolor           "#ebdbb2" # fg
+#set recolor                     "true"
+## set recolor-keephue             true      # keep original color
 
-set completion-bg               "#504945" # bg2
-set completion-fg               "#ebdbb2" # fg
-set completion-group-bg         "#3c3836" # bg1
-set completion-group-fg         "#928374" # gray
-set completion-highlight-bg     "#83a598" # bright:blue
-set completion-highlight-fg     "#504945" # bg2
+# nord theme
+set recolor true
 
-# Define the color in index mode
-set index-bg                    "#504945" # bg2
-set index-fg                    "#ebdbb2" # fg
-set index-active-bg             "#83a598" # bright:blue
-set index-active-fg             "#504945" # bg2
+# Lighthaus Colors:
 
-set inputbar-bg                 "#282828" # bg
-set inputbar-fg                 "#ebdbb2" # fg
+set notification-error-bg       "#FC2929" 
+set notification-error-fg       "#18191E" 
+set notification-warning-bg     "#E25600" 
+set notification-warning-fg     "#18191E" 
+set notification-bg             "#D68EB2" 
+set notification-fg             "#18191E" 
 
-set statusbar-bg                "#504945" # bg2
-set statusbar-fg                "#ebdbb2" # fg
+set completion-bg               "#18191E" 
+set completion-fg               "#44B273" 
+set completion-group-bg         "#18191E" 
+set completion-group-fg         "#ED722E" 
+set completion-highlight-bg     "#FFFF00" 
+set completion-highlight-fg     "#21252D" 
 
-set highlight-color             "#fabd2f" # bright:yellow
-set highlight-active-color      "#fe8019" # bright:orange
+set index-bg                    "#18191E" 
+set index-fg                    "#44B273" 
+set index-active-bg             "#21252D" 
+set index-active-fg             "#FFFF00" 
 
-set default-bg                  "#282828" # bg
-set default-fg                  "#ebdbb2" # fg
+set inputbar-bg                 "#21252D" 
+set inputbar-fg                 "#FFFADE" 
+set statusbar-bg                "#21252D" 
+set statusbar-fg                "#D68EB2" 
+
+set highlight-color             "#D68EB2" 
+set highlight-active-color      "#ff79c6" 
+
+set default-bg                  "#18191E" 
+set default-fg                  "#FFEE79" 
+
 set render-loading              true
-set render-loading-bg           "#282828" # bg
-set render-loading-fg           "#ebdbb2" # fg
+set render-loading-fg           "#FFEE79" 
+set render-loading-bg           "#18191E" 
 
-# Recolor book content's color
-set recolor-lightcolor          "#282828" # bg
-set recolor-darkcolor           "#ebdbb2" # fg
-set recolor                     "true"
-# set recolor-keephue             true      # keep original color
+# Recolor mode settings
+
+set recolor-lightcolor          "#21252D" 
+set recolor-darkcolor           "#FFFADE" 
 
 set selection-clipboard clipboard
+
