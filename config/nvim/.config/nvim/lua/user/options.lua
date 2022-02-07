@@ -5,7 +5,8 @@ local options = {
 	backup = false,
 	undofile = false,
 	hlsearch = true,
-	ignorecase = false,
+	ignorecase = true,
+	smartcase = true,
 	mouse = 'a',
 	shiftwidth = 2,
 	tabstop = 2,
@@ -17,7 +18,6 @@ local options = {
 	background = 'dark',
 	cindent = true,
 	smartindent = true,
-	smartcase = true,
 	autoindent = true,
 }
 
@@ -26,3 +26,4 @@ for k, v in pairs(options) do
 end
 
 vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[autocmd BufNewFile,BufRead *.tex :set filetype=tex]]

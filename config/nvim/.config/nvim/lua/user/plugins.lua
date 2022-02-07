@@ -21,13 +21,18 @@ packer.init {
 
 return packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
-	use 'gruvbox-community/gruvbox'
-	use 'folke/tokyonight.nvim'
+
+	-- Colorschemes
+	use {
+	'gruvbox-community/gruvbox',
+	'folke/tokyonight.nvim',
+	}
 
 	-- LSP
 	use {
 		'neovim/nvim-lspconfig',
 		'williamboman/nvim-lsp-installer',
+		'jose-elias-alvarez/null-ls.nvim',
 	}
 
 	-- Completion
@@ -37,33 +42,47 @@ return packer.startup(function(use)
 		'hrsh7th/cmp-path',
 		'hrsh7th/cmp-cmdline',
 		'hrsh7th/cmp-nvim-lsp',
-		'jiangmiao/auto-pairs',
+		'windwp/nvim-autopairs'
 	}
 
 	-- Snippets
 	use {
 		'saadparwaiz1/cmp_luasnip',
 		'L3MON4D3/LuaSnip',
-		'rafamadriz/friendly-snippets',
+		'honza/vim-snippets',
 		'onsails/lspkind-nvim',
 	}
 
+	-- Comment stuff
+	use 'numToStr/Comment.nvim'
 	use {
 		'folke/todo-comments.nvim',
 		config = function()
 			require('todo-comments').setup()
 		end
 	}
+	-- Filetype specific
+	use {
+		'mattn/emmet-vim',
+		'vim-latex/vim-latex',
+		'elkowar/yuck.vim',
+		'jalvesaq/Nvim-R',
+	}
+
 	use 'kyazdani42/nvim-web-devicons'
+	use "lukas-reineke/indent-blankline.nvim"
+
 	use {
 		'nvim-lualine/lualine.nvim',
 		config = function() require('lualine').setup() end
 	}
+	use 'akinsho/bufferline.nvim'
 
 	use {
 		'kyazdani42/nvim-tree.lua',
 		config = function() require('nvim-tree').setup {} end
 	}
+
 
 	use {
 		'nvim-telescope/telescope.nvim',
@@ -74,10 +93,8 @@ return packer.startup(function(use)
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
+	use 'junegunn/goyo.vim'
+  use 'lewis6991/gitsigns.nvim'
 	
-	-- Filetype specific
-	use 'vim-latex/vim-latex'
-	use 'elkowar/yuck.vim'
-	use 'jalvesaq/Nvim-R'
 end)
 

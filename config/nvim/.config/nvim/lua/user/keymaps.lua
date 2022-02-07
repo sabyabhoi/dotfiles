@@ -28,8 +28,14 @@ keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
 
+-- This doesn't do shit
 keymap('n', '<Leader>f', '<Cmd>lua vim.lsp.buf.formatting_sync()<CR>', opts)
 
 -- Telescope
 keymap('n', '<C-p>', ':Telescope find_files<CR>', opts)
 keymap('n', '<Leader>b', ':Telescope buffers<CR>', opts)
+keymap('n', '<Leader>lg', ':Telescope live_grep<CR>', opts)
+
+-- Bufferline
+keymap('n', 'H', ':BufferLineCyclePrev<CR>', opts)
+keymap('n', 'L', ':BufferLineCycleNext<CR>', opts)

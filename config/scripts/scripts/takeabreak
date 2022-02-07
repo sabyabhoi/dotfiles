@@ -19,7 +19,7 @@ stretch() {
 			notify-send "bsdk pani peele" -t $DUR
 			sleep 1m
 		else 
-			notify-send "Stretch for 20 seconds" -t $DUR
+			notify-send "Pause karke stretch kar bsdk" -t $DUR
 		fi
 	done
 }

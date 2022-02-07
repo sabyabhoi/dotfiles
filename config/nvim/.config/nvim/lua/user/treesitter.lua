@@ -7,6 +7,9 @@ require('nvim-treesitter.configs').setup {
 		enable = false,
 		disable = {},
 	},
+	autopairs = {
+		enable = true
+	},
 	ensure_installed = {
 		'lua',
 		'vim',
