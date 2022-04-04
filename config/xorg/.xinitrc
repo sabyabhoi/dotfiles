@@ -39,7 +39,11 @@ export SHELL=/bin/fish
 export BROWSER=firefox
 export EDITOR=nvim
 export VISUAL=nvim
+export GOPATH=$HOME/go
+export _JAVA_AWT_WM_NONREPARENTING=1
 
+export DENO_INSTALL="/home/cognusboi/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 xset r rate 200 25
 
 ~/.fehbg &
@@ -50,6 +54,10 @@ setxkbmap -option caps:swapescape
 
 # i3 stuff
 #exec i3 
+
+# bspwm stuff
+#exec bspwm
+#sxhkd
 
 # dwm stuff
 $SCRIPTS/statusbar/bar.sh &

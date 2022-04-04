@@ -1,6 +1,7 @@
 #!/bin/bash
 
 dark=#292e42
+red=#f7768e
 orange=#ff9e64
 yellow=#e0af68
 cyan=#7dcfff
@@ -51,14 +52,14 @@ brightness() {
 wlan() {
 	case "$(cat /sys/class/net/wlp3s0/operstate 2>/dev/null)" in
 	up) printf "^c$blue^直" ;;
-	down) printf "^c$blue^睊" ;;
+	down) printf "^c$red^睊" ;;
 	esac
 }
 
 lan() {
 	case "$(cat /sys/class/net/enp2s0/operstate 2>/dev/null)" in
 	up) printf "^c$blue^ " ;;
-	down) printf "^c$blue^ " ;;
+	down) printf "^c$red^ " ;;
 	esac
 }
 

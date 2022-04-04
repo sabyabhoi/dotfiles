@@ -39,3 +39,6 @@ keymap('n', '<Leader>lg', ':Telescope live_grep<CR>', opts)
 -- Bufferline
 keymap('n', 'H', ':BufferLineCyclePrev<CR>', opts)
 keymap('n', 'L', ':BufferLineCycleNext<CR>', opts)
+
+-- Plenary
+vim.cmd [[nmap <leader>t <Plug>PlenaryTestFile]]

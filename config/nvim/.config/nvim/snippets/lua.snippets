@@ -1,0 +1,5 @@
+snippet safecall "description"
+	local $1_status_ok, $2 = pcall(require, '$2')
+	if not $1_status_ok then
+		return
+	end

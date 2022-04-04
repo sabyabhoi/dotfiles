@@ -26,6 +26,11 @@ return packer.startup(function(use)
 	use {
 	'gruvbox-community/gruvbox',
 	'folke/tokyonight.nvim',
+	'nanotech/jellybeans.vim'
+	}
+	use{
+		'catppuccin/nvim',
+		as = 'catppuccin'
 	}
 
 	-- LSP
@@ -70,7 +75,7 @@ return packer.startup(function(use)
 	}
 
 	use 'kyazdani42/nvim-web-devicons'
-	use "lukas-reineke/indent-blankline.nvim"
+	use 'lukas-reineke/indent-blankline.nvim'
 
 	use {
 		'nvim-lualine/lualine.nvim',
@@ -80,10 +85,10 @@ return packer.startup(function(use)
 
 	use {
 		'kyazdani42/nvim-tree.lua',
-		config = function() require('nvim-tree').setup {} end
+		config = function() require('nvim-tree').setup() end
 	}
 
-
+	use {"akinsho/toggleterm.nvim"}
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = {{ 'nvim-lua/plenary.nvim' }}
@@ -95,6 +100,8 @@ return packer.startup(function(use)
 	}
 	use 'junegunn/goyo.vim'
   use 'lewis6991/gitsigns.nvim'
-	
+
+	-- custom plugins
+	use '/home/cognusboi/workspace/userfiles/programming/Lua/stackmap.nvim'
 end)
 

@@ -8,12 +8,18 @@ if not snip_status_ok then
 	return
 end
 
+luasnip.config.set_config {
+	history = false,
+	updateevents = "TextChanged,TextChangedI",
+	enable_autosnippets = true
+}
+
 require('luasnip.loaders.from_snipmate').lazy_load()
 
-local check_backspace = function()
-	local col = vim.fn.col '.' - 1
-	return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s'
-end
+-- local check_backspace = function()
+-- 	local col = vim.fn.col '.' - 1
+-- 	return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s'
+-- end
 
 cmp.setup {
 	snippet = {
@@ -23,24 +29,29 @@ cmp.setup {
 	},
 	mapping = {
 		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-		['<CR>'] = cmp.mapping.confirm { select = true },
-		['<Tab>'] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expandable() then
+		['<Tab>'] = cmp.mapping.confirm { select = true },
+		-- ['<Tab>'] = cmp.mapping(function(fallback)
+		-- 	if cmp.visible() then
+		-- 		cmp.select_next_item()
+		-- 	elseif check_backspace() then
+		-- 		fallback()
+		-- 	else
+		-- 		fallback()
+		-- 	end
+		-- end, { 'i', 's' }),
+		['<C-k>'] = cmp.mapping(function(fallback)
+			if luasnip.expandable() then
 				luasnip.expand()
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
-			elseif check_backspace() then
-				fallback()
 			else
 				fallback()
 			end
 		end, { 'i', 's' })
 	},
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
 		{ name = 'buffer' },
+		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
 		{ name = 'path' },
 	}),

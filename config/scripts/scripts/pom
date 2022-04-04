@@ -1,23 +1,38 @@
 #!/bin/sh
 
-printf "Enter number of rounds: "
-read rounds
-for (( round = 1; round <= rounds; round++ )); do
-
-	sleep 0.5
-	termdown 30m --title "round ${round}"
+ping_sound() {
 	ffplay -nodisp -hide_banner -volume 20 -loglevel quiet -autoexit $SCRIPTS/sound.oga &
-	notify-send "Take a 8 minute break" -t 2500
+}
+
+round() {
+	sleep 0.5
+	termdown $1 --title "round $2"
+}
+
+recess() {
+	round=$1
+	if [[ $((round % 3)) -eq 0 ]]; then
+		notify-send "Take an 25 minute break" -t 2500
+	else	
+		notify-send "Take an 8 minute break" -t 2500
+	fi
+	ping_sound
 	for (( i = 5; i >= 0; i-- )); do
 		printf "Break starting in %d\n" $i
 		sleep 1
 	done
-	if [[ $round -eq 3 ]]; then
-		termdown 25m --title "long break"
-	else
-		termdown 8m --title "break ${round}"
-	fi
-	ffplay -nodisp -hide_banner -volume 20 -loglevel quiet -autoexit $SCRIPTS/sound.oga &
+	termdown 8m --title "break $round"
 	notify-send "Alright break over" -t 2500
+	ping_sound
+}
+
+printf "Enter number of rounds: "
+read rounds
+for (( round = 1; round <= rounds; round++ )); do
+
+	round 25m $round
+	recess $round
 
 done
+
+

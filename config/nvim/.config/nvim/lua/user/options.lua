@@ -25,5 +25,10 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme catppuccin]]
 vim.cmd [[autocmd BufNewFile,BufRead *.tex :set filetype=tex]]
+
+P = function (v)
+	print(vim.inspect(v))
+	return v
+end
