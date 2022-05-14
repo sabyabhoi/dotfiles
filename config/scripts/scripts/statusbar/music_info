@@ -1,0 +1,85 @@
+#!/bin/sh
+
+STATUS="$(mpc status)"
+COVER="/tmp/.music_cover.png"
+MUSIC_DIR="$HOME/Music"
+
+## Get status
+get_status() {
+	if [[ $STATUS == *"[playing]"* ]]; then
+		echo ""
+	else
+		echo "奈"
+	fi
+}
+
+## Get song
+get_song() {
+	song=`mpc -f %title% current`
+	if [[ -z "$song" ]]; then
+		echo "Offline"
+	else
+		echo "$song"
+	fi	
+}
+
+## Get artist
+get_artist() {
+	artist=`mpc -f %artist% current`
+	if [[ -z "$artist" ]]; then
+		echo ""
+	else
+		echo "$artist"
+	fi	
+}
+
+## Get time
+get_time() {
+	time=`mpc status | grep "%)" | awk '{print $4}' | tr -d '(%)'`
+	if [[ -z "$time" ]]; then
+		echo "0"
+	else
+		echo "$time"
+	fi	
+}
+
+get_cover() {
+	ffmpeg -i "${MUSIC_DIR}/$(mpc current -f %file%)" "${COVER}" -y &> /dev/null
+	STATUS=$?
+
+	# Check if the file has a embbeded album art
+	if [ "$STATUS" -eq 0 ];then
+		echo "$COVER"
+	else
+		echo "images/music.png"
+	fi
+}
+
+case $1 in
+	--song )
+		get_song
+		;;
+	--status )
+		get_status
+		;;
+	--artist )
+		get_artist
+		;;
+	--time )
+		get_time
+		;;
+	--cover )
+		get_cover
+		;;
+	--toggle )
+		mpc -q toggle
+		;;
+	--next )
+		mpc -q next
+		get_cover
+		;;
+	--prev )
+		mpc -q prev
+		get_cover
+		;;
+esac; 

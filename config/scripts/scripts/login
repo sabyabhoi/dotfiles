@@ -1,0 +1,5 @@
+#!/bin/sh
+
+payload="mode=191&username=f20202147&password=dontstopmenow&a=$(date +%s)&producttype=2"
+
+curl -d $payload http://172.16.0.30:8090/login.xml

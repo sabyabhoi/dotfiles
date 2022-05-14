@@ -30,15 +30,13 @@ cmp.setup {
 	mapping = {
 		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
 		['<Tab>'] = cmp.mapping.confirm { select = true },
-		-- ['<Tab>'] = cmp.mapping(function(fallback)
-		-- 	if cmp.visible() then
-		-- 		cmp.select_next_item()
-		-- 	elseif check_backspace() then
-		-- 		fallback()
-		-- 	else
-		-- 		fallback()
-		-- 	end
-		-- end, { 'i', 's' }),
+		['<C-n>'] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			else 
+				fallback()
+			end
+		end, {'i', 's'}),
 		['<C-k>'] = cmp.mapping(function(fallback)
 			if luasnip.expandable() then
 				luasnip.expand()
