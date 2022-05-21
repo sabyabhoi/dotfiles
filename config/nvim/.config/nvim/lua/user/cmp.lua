@@ -33,7 +33,14 @@ cmp.setup {
 		['<C-n>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			else 
+			else
+				fallback()
+			end
+		end, {'i', 's'}),
+		['<C-p>'] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			else
 				fallback()
 			end
 		end, {'i', 's'}),
