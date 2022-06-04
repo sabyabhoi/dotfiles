@@ -5,8 +5,8 @@ end
 
 gitsigns.setup {
 	on_attach = function(bufnr)
-		local keymap = vim.api.nvim_set_keymap
-		opts = { noremap = true, silent = true }
+		local keymap = vim.keymap.set
+		local opts = { noremap = true, silent = true }
 
 		keymap('n', '<leader>gp', '<Cmd>Gitsigns preview_hunk<CR>', opts)
 		keymap('v', '<leader>gp', ':Cmd>Gitsigns preview_hunk<CR>', opts)

@@ -2,22 +2,24 @@
 import argparse
 import os
 
-MAKEFILE = '''CC=g++
+MAKEFILE = '''\
+CC=g++
 CFLAGS= -std=c++17 -O2 -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-sign-conversion
 
 main:
 \t$(CC) $(CFLAGS) $(FILE)
 '''
 
-TEMPLATE = '''#include <bits/stdc++.h>
+TEMPLATE = '''\
+#include <bits/stdc++.h>
 
 #define deb(x) cout << #x << " = " << x << endl
 
 #define ull unsigned long long
-#define uint unsigned int
+#define ll long long
 #define MOD 1000000007
 
-#define REP(i, n) for(uint i = 0; i < (n); ++i)
+#define REP(i, n) for(int i = 0; i < (n); ++i)
 
 using namespace std;
 

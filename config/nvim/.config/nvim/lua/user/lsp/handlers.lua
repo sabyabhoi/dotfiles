@@ -40,15 +40,15 @@ M.setup = function()
 end
 
 local function lsp_keymaps(bufnr)
-	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gl', '<Cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', opts)
+	local opts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition , opts)
+	vim.keymap.set('n', '<Leader>rn',  vim.lsp.buf.rename , opts)
+	vim.keymap.set('n', 'K',  vim.lsp.buf.hover , opts)
+	vim.keymap.set('n', 'gi',  vim.lsp.buf.implementation , opts)
+	vim.keymap.set('n', '<C-k>',  vim.lsp.buf.signature_help , opts)
+	vim.keymap.set('n', '<Leader>ga',  vim.lsp.buf.code_action , opts)
+	vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float({ border = "rounded" }) end, opts)
 
 	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end

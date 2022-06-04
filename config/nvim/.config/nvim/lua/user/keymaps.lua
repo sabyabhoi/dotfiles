@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 keymap('n', '<Space>', '<NOP>', opts)
 vim.g.mapleader = ' '
@@ -28,8 +28,7 @@ keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
 
--- This doesn't do shit
-keymap('n', '<Leader>f', '<Cmd>lua vim.lsp.buf.formatting_sync()<CR>', opts)
+keymap('n', '<Leader>f', vim.lsp.buf.formatting_sync, opts)
 
 -- Telescope
 keymap('n', '<C-p>', ':Telescope find_files<CR>', opts)
