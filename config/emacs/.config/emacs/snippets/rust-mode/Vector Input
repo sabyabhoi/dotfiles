@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:Vector Input 
+# key:vi
+# --
+let $1: Vec<$2> = (0..$3).map(|_| scan.token::<$2>()).collect();$4

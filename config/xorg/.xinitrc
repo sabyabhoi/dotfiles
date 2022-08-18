@@ -42,6 +42,18 @@ export VISUAL=nvim
 export GOPATH=$HOME/go
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# Android stuff
+export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
+export PATH=$JAVA_HOME/bin:$PATH 
+
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/tools/bin:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH# Android emulator PATH
+export PATH=$ANDROID_HOME/emulator:$PATH# Android SDK ROOT PATH
+export ANDROID_SDK_ROOT=/opt/android-sdk
+export PATH=$ANDROID_SDK_ROOT:$PATH
+
 export DENO_INSTALL="/home/cognusboi/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 xset r rate 200 25
@@ -51,6 +63,7 @@ picom --config=/home/cognusboi/.config/picom/picom.conf -b
 $SCRIPTS/takeabreak &
 xbindkeys --poll-rc
 setxkbmap -option caps:swapescape
+emacs --daemon &
 
 # i3 stuff
 #exec i3 
@@ -62,3 +75,6 @@ setxkbmap -option caps:swapescape
 # dwm stuff
 $SCRIPTS/statusbar/bar.sh &
 exec dwm
+
+# Xomand stuff
+#exec xmonad

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:writeline
+# key:wo,
+# --
+writeln!(out, "{$2}", $1).ok();$3

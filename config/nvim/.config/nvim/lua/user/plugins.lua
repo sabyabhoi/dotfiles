@@ -72,6 +72,13 @@ return packer.startup(function(use)
 		"vim-latex/vim-latex",
 		"elkowar/yuck.vim",
 		"jalvesaq/Nvim-R",
+		"Olical/conjure",
+	})
+
+	-- Lisp
+	use({
+		"eraserhd/parinfer-rust",
+		run = "cargo build --release",
 	})
 
 	-- Debugging
@@ -97,7 +104,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use( "akinsho/toggleterm.nvim" )
+	use("akinsho/toggleterm.nvim")
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
@@ -110,7 +117,6 @@ return packer.startup(function(use)
 	use("junegunn/goyo.vim")
 	use("lewis6991/gitsigns.nvim")
 
-	use("p00f/cphelper.nvim")
 	-- custom plugins
-	use("/home/cognusboi/workspace/userfiles/programming/Lua/stackmap.nvim")
+	use("/home/cognusboi/workspace/userfiles/programming/Lua/cc-helper.nvim")
 end)

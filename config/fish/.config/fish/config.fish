@@ -7,12 +7,12 @@ set fish_greeting
 fish_vi_key_bindings
 
 # NNN 
-alias l='nnn -de'
-export NNN_PLUG='p:preview-tui;f:finder'
+alias l='n -de'
+export NNN_PLUG='p:preview-tabbed;f:finder'
 export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_TMPFILE="/tmp/nnn.tmp"
 
 # Aliases
-
 set userfiles /home/cognusboi/workspace/userfiles
 
 alias r=ranger
@@ -21,7 +21,7 @@ alias hx=helix
 alias lg=lazygit
 alias vms='cd $userfiles/VMs/'
 alias dots='cd $userfiles/dotfiles/'
-alias docs='cd $userfiles/Media/Docs/'
+alias docs='cd $userfiles/Media/Documents'
 alias orgs='cd $userfiles/orgfiles/'
 alias pro='cd $userfiles/programming/'
 alias misc='cd $userfiles/misc/'
@@ -31,13 +31,16 @@ alias say='pyfiglet -f roman $1'
 # College
 set college $userfiles/college
 alias col='cd $college/'
-alias ir='cd $college/IR'
-alias mcom='cd $college/MCOM'
-alias pom='cd $college/POM'
-alias behav='cd $college/behav'
 alias general='cd $college/general'
-alias macro='cd $college/macro'
-alias micro='cd $college/micro'
-alias econ='cd $college/econometrics'
-alias egd='cd $college/EGD'
 
+function vterm_printf;
+    if begin; [  -n "$TMUX" ]  ; and  string match -q -r "screen|tmux" "$TERM"; end 
+        # tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$argv"
+    else if string match -q -- "screen*" "$TERM"
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$argv"
+    else
+        printf "\e]%s\e\\" "$argv"
+    end
+end

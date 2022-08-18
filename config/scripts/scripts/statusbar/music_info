@@ -7,9 +7,9 @@ MUSIC_DIR="$HOME/Music"
 ## Get status
 get_status() {
 	if [[ $STATUS == *"[playing]"* ]]; then
-		echo ""
+		echo -n ""
 	else
-		echo "奈"
+		echo -n "奈"
 	fi
 }
 
@@ -17,9 +17,9 @@ get_status() {
 get_song() {
 	song=`mpc -f %title% current`
 	if [[ -z "$song" ]]; then
-		echo "Offline"
+		echo -n "Offline"
 	else
-		echo "$song"
+		echo -n "$song"
 	fi	
 }
 
@@ -27,9 +27,9 @@ get_song() {
 get_artist() {
 	artist=`mpc -f %artist% current`
 	if [[ -z "$artist" ]]; then
-		echo ""
+		echo -n ""
 	else
-		echo "$artist"
+		echo -n "$artist"
 	fi	
 }
 
@@ -37,9 +37,9 @@ get_artist() {
 get_time() {
 	time=`mpc status | grep "%)" | awk '{print $4}' | tr -d '(%)'`
 	if [[ -z "$time" ]]; then
-		echo "0"
+		echo -n "0"
 	else
-		echo "$time"
+		echo -n "$time"
 	fi	
 }
 
@@ -49,9 +49,9 @@ get_cover() {
 
 	# Check if the file has a embbeded album art
 	if [ "$STATUS" -eq 0 ];then
-		echo "$COVER"
+		echo -n "$COVER"
 	else
-		echo "images/music.png"
+		echo -n "images/music.png"
 	fi
 }
 
@@ -81,5 +81,12 @@ case $1 in
 	--prev )
 		mpc -q prev
 		get_cover
+		;;
+	--all )
+		get_status 
+		get_artist
+		echo -n " - "
+		get_song
+		echo ""
 		;;
 esac; 
