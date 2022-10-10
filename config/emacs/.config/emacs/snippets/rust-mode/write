@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: write
+# key: wr
+# --
+write!(out, "$1").ok();

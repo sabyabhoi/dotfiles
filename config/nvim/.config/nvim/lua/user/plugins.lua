@@ -75,12 +75,6 @@ return packer.startup(function(use)
 		"Olical/conjure",
 	})
 
-	-- Lisp
-	use({
-		"eraserhd/parinfer-rust",
-		run = "cargo build --release",
-	})
-
 	-- Debugging
 	use({
 		"mfussenegger/nvim-dap",

@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name:A basic latex template 
+# key:base 
+# --
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+%\usepackage{ebgaramond}
+
+\begin{document}
+\title{$1}
+\author{Sabyasachi Bhoi}
+\maketitle
+
+$2
+
+\end{document}

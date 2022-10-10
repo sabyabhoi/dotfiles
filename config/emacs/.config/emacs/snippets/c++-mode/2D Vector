@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:2D Vector 
+# key:vv
+# --
+vector<vector<$2>> $1($3, vector<$2>($4));

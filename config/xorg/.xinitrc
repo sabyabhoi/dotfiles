@@ -1,5 +1,4 @@
 #!/bin/sh
-
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -23,8 +22,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# start some nice programs
-
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
   [ -x "$f" ] && . "$f"
@@ -33,17 +30,22 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 export XDG_CONFIG_HOME=/home/cognusboi/.config
+export XDG_RUNTIME_DIR=$(mktemp -d)
 export TERMINAL=kitty
 export SCRIPTS=/home/cognusboi/scripts
 export SHELL=/bin/fish
-export BROWSER=firefox
+export BROWSER=brave
 export EDITOR=nvim
 export VISUAL=nvim
-export GOPATH=$HOME/go
-export _JAVA_AWT_WM_NONREPARENTING=1
 
-# Android stuff
-export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH 
+
+export DENO_INSTALL="/home/cognusboi/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+export JAVA_HOME='/usr/lib/jvm/java-18-openjdk'
 export PATH=$JAVA_HOME/bin:$PATH 
 
 export ANDROID_HOME=/opt/android-sdk
@@ -54,27 +56,21 @@ export PATH=$ANDROID_HOME/emulator:$PATH# Android SDK ROOT PATH
 export ANDROID_SDK_ROOT=/opt/android-sdk
 export PATH=$ANDROID_SDK_ROOT:$PATH
 
-export DENO_INSTALL="/home/cognusboi/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-xset r rate 200 25
+export PATH=/home/cognusboi/workspace/instdir/nnn:$PATH
 
-~/.fehbg &
-picom --config=/home/cognusboi/.config/picom/picom.conf -b
-$SCRIPTS/takeabreak &
+picom --config=$XDG_CONFIG_HOME/picom/picom.conf -b
+~/.fehbg
+
+pipewire & 
+pipewire-pulse &
+wireplumber &
+
 xbindkeys --poll-rc
 setxkbmap -option caps:swapescape
-emacs --daemon &
+xset r rate 200 25
 
-# i3 stuff
-#exec i3 
+$SCRIPTS/takeabreak.sh &
 
-# bspwm stuff
-#exec bspwm
-#sxhkd
+$XDG_CONFIG_HOME/polybar/launch.sh --forest
 
-# dwm stuff
-$SCRIPTS/statusbar/bar.sh &
-exec dwm
-
-# Xomand stuff
-#exec xmonad
+exec i3

@@ -1,5 +1,21 @@
 #!/bin/bash
 
-tz=$(timedatectl list-timezones | fzf)
-echo "Time in $tz: "
-TZ=$tz date '+%r'
+COLOR="#7289da"
+
+colored_text() {
+	gum style --bold --foreground $COLOR $1
+}
+
+select_timezone() {
+	timedatectl list-timezones | gum filter
+}
+
+tz=$(select_timezone)
+time=$(TZ=$tz date '+%r')
+
+gum style \
+	--border normal \
+	--margin "1" \
+	--padding "1" \
+	--border-foreground $COLOR \
+	"Time in $(colored_text $tz): $time"
