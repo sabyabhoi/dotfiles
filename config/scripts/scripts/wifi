@@ -1,10 +1,17 @@
 #!/bin/sh
 
-nmcli device wifi list
-echo "Enter WIFI name: "
-read NAME
+gum style \
+	--border normal \
+	--margin "1" \
+	--padding "1" \
+	"Wi-Fi Selection tool"
 
-echo "Enter password for $NAME: "
-read -s PASS
+echo "Please select a network:"
+wifi=$(nmcli --fields SSID --terse --color no device wifi list | gum choose)
 
-nmcli device wifi connect $NAME password $PASS
+password=$(gum input --password --placeholder="Wifi password")
+if [[ -z "$password" ]]; then
+	nmcli device wifi connect $wifi
+else	
+	nmcli device wifi connect $wifi password $password
+fi

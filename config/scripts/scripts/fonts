@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+fc-list | awk -F":" '{print $2}' | sort | uniq | awk '{$1=$1};1' | gum filter | tr --delete "\n" | xclip -selection clipboard
+
+gum style \
+	--border normal \
+	--margin "1" \
+	--padding "1" \
+	"$(xclip -o -sel clipboard) copied to clipboard"
