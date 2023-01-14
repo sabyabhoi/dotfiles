@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       a268f678-0426-46ed-8963-33bd2910ebc3
+:END:
+#+title: Find an element of two sorted arrays
+#+filetags: :CS:
+
+Given two sorted arrays =a[m]= and =b[n]= and an element =k=. The task is to find the element that would be at the k^th position of the final sorted array.

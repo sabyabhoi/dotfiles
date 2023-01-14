@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+/home/cognusboi/workspace/userfiles/dotfiles/config/emacs/.config/emacs/var/lsp-java/workspace/.metadata/.plugins/org.eclipse.jdt.core
+3842426239.index
+3771764148.index
+1865797976.index
+3893379105.index
+1924484980.index

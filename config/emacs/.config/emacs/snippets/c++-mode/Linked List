@@ -1,0 +1,40 @@
+# -*- mode: snippet -*-
+# name:Linked List 
+# key:ll 
+# --
+struct Node {
+  int data;
+  Node *next;
+
+  Node() : data(0), next(nullptr) {}
+  Node(int val) : data(val), next(nullptr) {}
+
+  void print() {
+    Node *itr = this;
+    while (itr != nullptr) {
+      cout << itr->data << ' ';
+      itr = itr->next;
+    }
+    cout << '\n';
+  }
+};
+
+void delete_list(Node *head) {
+  Node *curr = head, *nxt;
+  while (curr != nullptr) {
+    nxt = curr->next;
+    delete curr;
+    curr = nxt;
+  }
+}
+
+Node *from_vec(const vector<int> &v) {
+  if(v.empty()) return nullptr;
+  Node *head = new Node(v[0]);
+  Node *tmp = head;
+  for (size_t i = 1; i < v.size(); ++i) {
+    tmp->next = new Node(v[i]);
+    tmp = tmp->next;
+  }
+  return head;
+}

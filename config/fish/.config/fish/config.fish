@@ -29,14 +29,14 @@ set college $userfiles/college
 alias col='cd $college/'
 alias general='cd $college/general'
 
-alias logic='cd $college/Logic'
-alias dd='cd $college/DD'
-alias disco='cd $college/Disco'
-alias oops='cd $college/OOPS'
+alias logic='cd $college/3-1/Logic'
+alias dd='cd $college/3-1/DD'
+alias disco='cd $college/3-1/Disco'
+alias oops='cd $college/3-1/OOPS'
 
-alias mbfm='cd $college/MBFM'
-alias ied='cd $college/IED'
-alias ie='cd $college/IE'
+alias mbfm='cd $college/3-1/MBFM'
+alias ied='cd $college/3-1/IED'
+alias ie='cd $college/3-1/IE'
 
 function vterm_printf;
     if begin; [  -n "$TMUX" ]  ; and  string match -q -r "screen|tmux" "$TERM"; end 
@@ -49,3 +49,5 @@ function vterm_printf;
         printf "\e]%s\e\\" "$argv"
     end
 end
+
+starship init fish | source

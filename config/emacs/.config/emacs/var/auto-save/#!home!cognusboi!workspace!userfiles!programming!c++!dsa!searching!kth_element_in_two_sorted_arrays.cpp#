@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+#define deb(x) cout << #x << " = " << x << endl
+
+#define MOD 1000000007
+
+#define REP(i, n) for(int i = 0; i < (n); ++i)
+#define FOR(i, s, n) for(int i = (s); i < (n); ++i)
+
+using namespace std;
+
+typedef long long ll;
+typedef unsigned long long ull;
+typedef vector<int> vi;
+typedef vector<vector<int>> vvi;
+typedef vector<string> vs;
+typedef vector<vector<string>> vvs;
+
+template<typename T>
+void print_vec(const vector<T>& v) {
+  for(const T& i : v) cout << i << ' ';
+  cout << '\n';
+}
+
+
+
+void solve() {
+  int m, n, k; cin >> m >> n >> k;
+  vi a(m); REP(i, m) cin >> a[i];
+  vi b(n); REP(i, n) cin >> b[i];
+}
+
+int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+  int t;
+  cin >> t;
+  while (t--)
+    solve();
+  return 0;
+}

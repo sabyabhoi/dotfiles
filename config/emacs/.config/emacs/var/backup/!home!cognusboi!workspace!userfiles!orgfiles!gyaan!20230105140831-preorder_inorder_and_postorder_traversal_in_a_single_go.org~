@@ -1,0 +1,57 @@
+:PROPERTIES:
+:ID:       519ae68b-fa22-4cad-bda5-b81c5d78c17d
+:END:
+#+title: Preorder, Inorder and Postorder traversal in a single go
+#+filetags: :CS:
+
+Write a program to print Preorder, Inorder, and Postorder traversal of the tree in a single traversal.
+
+* Solution
+1. Maintain a stack of the current node as well as a count value.
+2. Iterate through the elements of the stack (while the stack isn't empty).
+3. If the count value is 1, then increment count, push the node value onto the preorder vector, and go left.
+4. If the count value is 2, then increment count, push the node value onto the inorder vector, and go right.
+5. If the count value is 3, then just push the value onto the postorder vector.
+6. Pop the top most element
+* Code
+#+begin_src c++
+  void traverse(Node* root) {
+    stack<pair<Node*, int>> st;
+    st.push({root, 1});
+
+    vi pre, post, in;
+
+    while(!st.empty()) {
+      auto t = st.top();
+      st.pop();
+
+      switch (t.second) {
+      case 1:
+        pre.push_back(t.first->data);
+        t.second++;
+        st.push(t);
+        if(t.first->left)
+          st.push({t.first->left, 1});
+        break;
+      case 2:
+        in.push_back(t.first->data);
+        t.second++;
+        st.push(t);
+        if(t.first->right)
+          st.push({t.first->right, 1});
+        break;
+      case 3:
+        post.push_back(t.first->data);
+        break;
+      default:
+        break;
+      }
+    }
+    cout << "inorder: ";
+    print_vec(in);
+    cout << "preorder: ";
+    print_vec(pre);
+    cout << "postorder: ";
+    print_vec(post);
+  }
+#+end_src

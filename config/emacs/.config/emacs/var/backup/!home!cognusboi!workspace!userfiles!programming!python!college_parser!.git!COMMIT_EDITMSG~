@@ -1,0 +1,27 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#	new file:   .gitignore
+#	new file:   etc/jupyter/nbconfig/notebook.d/jupyterlab-plotly.json
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/package.json
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/static/133.ef80d2c67625fb6b7809.js
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/static/423.ceb659cfaa00d1ce35cf.js
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/static/478.b84116fd218fb8df43ad.js
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/static/478.b84116fd218fb8df43ad.js.LICENSE.txt
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/static/486.c0a76c73b64be10e5b0a.js
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/static/486.c0a76c73b64be10e5b0a.js.LICENSE.txt
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/static/657.be7027e4d720dd844a49.js
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/static/879.bf4a58998a2611896aae.js
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/static/remoteEntry.8391480ec10f46a915ee.js
+#	new file:   share/jupyter/labextensions/jupyterlab-plotly/static/style.js
+#	new file:   share/jupyter/nbextensions/jupyterlab-plotly/extension.js
+#	new file:   share/jupyter/nbextensions/jupyterlab-plotly/index.js
+#	new file:   share/jupyter/nbextensions/jupyterlab-plotly/index.js.LICENSE.txt
+#	new file:   src/main.py
+#

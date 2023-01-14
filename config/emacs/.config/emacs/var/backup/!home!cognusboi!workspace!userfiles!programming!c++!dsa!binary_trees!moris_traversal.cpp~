@@ -1,0 +1,130 @@
+#include <bits/stdc++.h>
+
+#define deb(x) cout << #x << " = " << x << endl
+
+#define MOD 1000000007
+
+#define REP(i, n) for(int i = 0; i < (n); ++i)
+#define FOR(i, s, n) for(int i = (s); i < (n); ++i)
+
+using namespace std;
+
+typedef long long ll;
+typedef unsigned long long ull;
+typedef vector<int> vi;
+typedef vector<vector<int>> vvi;
+typedef vector<string> vs;
+typedef vector<vector<string>> vvs;
+
+template<typename T>
+void print_vec(const vector<T>& v) {
+  for(const T& i : v) cout << i << ' ';
+  cout << '\n';
+}
+
+struct Node {
+ int data;
+  struct Node *left;
+  struct Node *right;
+  
+  Node (int x) : data(x), left(nullptr), right(nullptr) {}
+  Node (int x, Node *l, Node *r) : data(x), left(l), right(r) {}
+};
+
+int height(Node *root) {
+  if(root == nullptr) return 0;
+  return max(height(root->left), height(root->right)) + 1;
+}
+
+void printBFS(Node *root) {
+  if(root == nullptr) return;
+  queue<Node*> q;
+  q.push(root);
+
+  while(!q.empty()) {
+    Node *curr = q.front();
+    cout << curr->data << ' ';
+    if(curr->left != nullptr) q.push(curr->left);
+    if(curr->right != nullptr) q.push(curr->right);
+    q.pop();
+  }
+  cout << endl;
+}
+
+void deleteTree(Node* head) {
+  if(head == nullptr) return;
+
+  deleteTree(head->left);
+  deleteTree(head->right);
+  delete head;
+}
+
+void morris_inorder(Node* root) {
+  Node* curr = root;
+
+  while(curr) {
+	if(curr->left == nullptr) {
+	  cout << curr->data << ' ';
+	  curr = curr->right;
+	} else {
+	  Node* itr = curr->left;
+	  while(itr->right && itr->right != curr) {
+		itr = itr->right;
+	  }
+	  if(itr->right == nullptr) {
+		itr->right = curr;
+		curr = curr->left;
+	  } else {
+		itr->right = nullptr;
+		cout << curr->data << ' ';
+		curr = curr->right;
+	  }
+	}
+  }
+  cout << '\n';
+}
+
+void morris_preorder(Node* root) {
+  while(root) {
+	if(root->left == nullptr) {
+	  cout << root->data << ' ';
+	  root = root->right;
+	} else {
+	  Node* itr = root->left;
+	  while(itr->right && itr->right != root) {
+		itr = itr->right;
+	  }
+	  if(itr->right == nullptr) {
+		itr->right = root;
+		cout << root->data << ' ';
+		root = root->left;
+	  }
+	  else {
+		itr->right = nullptr;
+		root = root->right;
+	  }
+	}
+  }
+  cout << '\n';
+}
+
+void solve() {
+  Node* tree = new Node(1);
+  tree->left = new Node(2);
+  tree->right = new Node(3);
+  tree->left->left = new Node(4);
+  tree->left->right = new Node(5);
+  tree->left->right->right = new Node(6);
+
+  morris_preorder(tree);
+
+  deleteTree(tree);
+}
+
+int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+  solve();
+  return 0;
+}

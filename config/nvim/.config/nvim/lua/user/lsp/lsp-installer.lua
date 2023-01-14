@@ -14,6 +14,14 @@ lsp_installer.on_server_ready(function(server)
 		capabilities = require('user.lsp.handlers').capabilities
 	}
 
+	if server.name == 'astro' then
+		opts.init_options = {
+			configuration = {},
+			typescript = {
+				serverPath = ""
+			}
+}
+	end
 	--[[ if server.name == 'clangd' then
 		local clangd_opts = require('user.lsp.settings.clangd')
 		opts = vim.tbl_deep_extend('force', clangd_opts, opts)

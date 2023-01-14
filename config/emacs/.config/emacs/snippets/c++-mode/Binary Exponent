@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name:Binary Exponent 
+# key:binexp
+# --
+template <typename B, typename P>
+B binexp(B x, P n) {
+  if (n == 0) return 1;
+  B a = 1, b = n > 0 ? x : 1 / x;
+  n = abs(n);
+  while (n > 1) {
+	if(n % 2 == 0) b *= b;
+	else {
+	  a *= b;
+	  b *= b;
+	}
+	n /= 2;
+  }
+  return a * b;
+}

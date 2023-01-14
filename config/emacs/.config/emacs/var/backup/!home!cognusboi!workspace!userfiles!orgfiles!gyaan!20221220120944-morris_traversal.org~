@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       f22bac8b-166d-4ea9-9df2-e19ffab6781b
+:END:
+#+title: Morris Traversal
+#+filetags: :CS:
+
+This is an algorithm used for traversing a [[id:a5f37e57-e61c-4a10-93cd-f3c87b44b064][binary tree]] in almost linear time and constant space.
+

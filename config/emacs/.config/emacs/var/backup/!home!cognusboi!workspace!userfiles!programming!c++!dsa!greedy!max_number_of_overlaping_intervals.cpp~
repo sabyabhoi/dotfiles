@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+
+#define deb(x) cout << #x << " = " << x << endl
+
+#define MOD 1000000007
+
+#define REP(i, n) for(int i = 0; i < (n); ++i)
+#define FOR(i, s, n) for(int i = (s); i < (n); ++i)
+
+using namespace std;
+
+typedef long long ll;
+typedef unsigned long long ull;
+typedef vector<int> vi;
+typedef vector<vector<int>> vvi;
+typedef vector<string> vs;
+typedef vector<vector<string>> vvs;
+
+template<typename T>
+void print_vec(const vector<T>& v) {
+  for(const T& i : v) cout << i << ' ';
+  cout << '\n';
+}
+
+bool sortFunc(const vi& a, const vi& b) {
+  return a[1] <= b[1];
+}
+
+void solve() {
+  int n; cin >> n;
+  vector<vector<int>> a(n, vector<int>(2));
+  
+  int b[1261] = {0};
+  REP(i, n) {
+	int start, end; cin >> start >> end;
+	b[start]++;
+	b[end+1]--;
+  }
+  int platforms[1261] = {0};
+  platforms[0] = b[0];
+  int ans = 0;
+  FOR(i, 1, 1261) {
+	platforms[i] = b[i] + platforms[i - 1];
+	ans = max(ans, platforms[i]);
+  }
+  cout << ans << '\n';
+}
+
+int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+  solve();
+  return 0;
+}

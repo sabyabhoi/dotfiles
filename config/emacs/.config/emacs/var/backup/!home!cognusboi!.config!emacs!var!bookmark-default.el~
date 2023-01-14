@@ -1,0 +1,10 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored"
+ (filename . "~/workspace/userfiles/orgfiles/gyaan/20230105193236-construct_a_binary_tree_from_level_order_sequence.org")
+ (front-context-string . "\n\n#+begin_src c+")
+ (rear-context-string . "-order sequence\n")
+ (position . 127))
+)

@@ -17,6 +17,9 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef vector<int> vi;
+typedef vector<vector<int>> vvi;
+typedef vector<string> vs;
+typedef vector<vector<string>> vvs;
 
 template<typename T>
 void print_vec(const vector<T>& v) {

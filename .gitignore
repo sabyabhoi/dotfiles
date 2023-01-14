@@ -1,0 +1,3 @@
+config/emacs/.config/emacs/elpa/
+config/emacs/.config/emacs/var/
+config/emacs/.config/emacs/**.elc

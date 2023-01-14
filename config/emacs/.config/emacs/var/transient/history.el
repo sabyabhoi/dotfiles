@@ -1,0 +1,23 @@
+((magit-am
+  ("--3way"))
+ (magit-branch nil)
+ (magit-commit nil)
+ (magit-fetch nil)
+ (magit-log
+  ("-n256" "--graph" "--decorate")
+  (("--" "include/parse_tree.hpp"))
+  ("--simplify-by-decoration"
+   ("--" "./")
+   "--graph" "--color")
+  (("--" "src/main.cpp"))
+  (("--" "CMakeLists.txt"))
+  (("--" "./")
+   "--graph" "--color")
+  (("--" "src/final.cpp")
+   "--graph" "--color")
+  (("--" "src/final.cpp"))
+  ("-n256" "--graph" "--color" "--decorate"))
+ (magit-merge nil)
+ (magit-pull nil)
+ (magit-push nil)
+ (magit-reset nil))

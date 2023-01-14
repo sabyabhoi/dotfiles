@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       abd1112e-3161-4cd7-b3b6-a093b879fc1a
+:END:
+#+title: Construct a binary tree from level-order sequence
+
+
+#+begin_src c++
+  Node *construct(const vi& a) {
+    if(a.empty()) return nullptr;
+    Node* root = new Node(a[0]);
+
+    queue<Node*> q;
+    q.push(root);
+
+    int count = 0;
+    for(int i = 1; i < (int) a.size(); ++i) {
+    s:
+      Node *curr = q.front();
+      switch (count) {
+      case 0:
+        count = 1;
+        if (a[i] != -1) {
+          Node *tmp = new Node(a[i]);
+          curr->left = tmp;
+          q.push(tmp);
+        }
+        break;
+      case 1:
+        count = 2;
+        if (a[i] != -1) {
+          Node *tmp = new Node(a[i]);
+          curr->right = tmp;
+          q.push(tmp);
+        }
+        break;
+      case 2:
+        q.pop();
+        count = 0;
+        goto s;
+        break;
+      default:
+        break;
+      }
+    }
+    return root;
+  }
+#+end_src

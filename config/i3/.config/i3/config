@@ -11,7 +11,7 @@
 
 set $mod Mod4
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 client.focused          #4c7899 #285577 #ffffff #3d3d3d  #3d3d3d
 for_window [class="Android Emulator - Pixel_XL_API_30:5554"] floating enable
 for_window [class="Godot_Engine"] floating enable
@@ -204,3 +204,4 @@ bindsym --release Ctrl+space exec --no-startup-id "dunstctl close"
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh --forest
 #exec --no-startup-id nitrogen --restore
 #exec --no-startup-id picom --config=/home/cognusboi/.config/picom/picom.conf 
+exec_always --no-startup-id ~/workspace/instdir/xborder/xborders --border-width 1 --border-red 86 --border-green 95 --border-blue 137

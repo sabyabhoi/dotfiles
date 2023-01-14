@@ -1,0 +1,79 @@
+# -*- mode: snippet -*-
+# name:Binary Tree Structure 
+# key:bt 
+# --
+struct Node {
+  $1 data;
+  struct Node *left;
+  struct Node *right;
+  
+  Node ($1 x) : data(x), left(nullptr), right(nullptr) {}
+  Node ($1 x, Node *l, Node *r) : data(x), left(l), right(r) {}
+};
+
+int height(Node *root) {
+  if(root == nullptr) return 0;
+  return max(height(root->left), height(root->right)) + 1;
+}
+
+void printBFS(Node *root) {
+  if(root == nullptr) return;
+  queue<Node*> q;
+  q.push(root);
+
+  while(!q.empty()) {
+    Node *curr = q.front();
+    cout << curr->data << ' ';
+    if(curr->left != nullptr) q.push(curr->left);
+    if(curr->right != nullptr) q.push(curr->right);
+    q.pop();
+  }
+  cout << endl;
+}
+
+void deleteTree(Node* head) {
+  if(head == nullptr) return;
+
+  deleteTree(head->left);
+  deleteTree(head->right);
+  delete head;
+}
+
+Node *construct(const vi& a) {
+  if(a.empty()) return nullptr;
+  Node* root = new Node(a[0]);
+
+  queue<Node*> q;
+  q.push(root);
+
+  int count = 0;
+  for(int i = 1; i < (int) a.size(); ++i) {
+  s:
+	Node *curr = q.front();
+	switch (count) {
+    case 0:
+      count = 1;
+      if (a[i] != -1) {
+        Node *tmp = new Node(a[i]);
+        curr->left = tmp;
+        q.push(tmp);
+      }
+      break;
+    case 1:
+      count = 2;
+      if (a[i] != -1) {
+        Node *tmp = new Node(a[i]);
+        curr->right = tmp;
+        q.push(tmp);
+      }
+      break;
+    case 2:
+      q.pop();
+      count = 0;
+      goto s;
+    default:
+      break;
+    }
+  }
+  return root;
+}

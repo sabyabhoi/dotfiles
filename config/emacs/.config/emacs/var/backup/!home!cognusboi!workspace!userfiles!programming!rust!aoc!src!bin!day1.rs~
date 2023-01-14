@@ -1,0 +1,22 @@
+use std::{io::{BufReader, BufRead}, fs::File};
+
+use anyhow::Result;
+
+fn main() -> Result<()> {
+    let reader = BufReader::new(File::open("res/input.txt")?);
+    let mut s = 0;
+    let mut ans = 0;
+
+    reader.lines().for_each(|res| {
+        let line = res.unwrap();
+        if line.is_empty() {
+            ans = ans.max(s);
+            s = 0;
+        } else {
+            s += line.parse::<u32>().unwrap();
+        }
+    });
+
+    println!("{}", ans);
+	Ok(())
+}

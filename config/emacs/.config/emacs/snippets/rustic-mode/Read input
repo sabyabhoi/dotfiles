@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:Read input 
+# key:rin
+# --
+scan.token::<${1:usize}>()$2
