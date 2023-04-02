@@ -1,0 +1,55 @@
+#!/bin/python3
+
+import pandas as pd
+import argparse
+import os
+import sys
+
+def add_todo(df, v):
+    v[1] = int(v[1])
+    v[2] = int(v[2])
+    if v[1] > 5 or v[1] < 1 or v[2] > 5 or v[2] < 1:
+        print('Importance/Difficulty must be in the range of 1-5.')
+        sys.exit(1)
+    entry = {'Name': [v[0]], 'Importance': [v[1]], 'Difficulty': [v[2]]}
+    df = pd.concat([df, pd.DataFrame(entry)]).drop_duplicates()
+    df['cross_index'] = df.Importance**2 / (1.0 * df.Difficulty)
+    return df.sort_values(by=['cross_index'], ascending=False)[['Name', 'Importance', 'Difficulty']].reset_index(drop=True)
+
+
+def drop_todo(df, ix):
+    try:
+        return df.drop(ix)
+    except KeyError as e:
+        print('Todo with ID {} not found.'.format(ix))
+        sys.exit(1)
+
+def init_arg_parser():
+    parser = argparse.ArgumentParser(
+                        prog = 'todos',
+                        description = 'Manage Todos')
+    parser.add_argument('-a', '--add', nargs=3, metavar=('todo', 'importance', 'difficulty'))
+    parser.add_argument('-d', '--done', type=int)
+    return parser
+    
+if __name__ == '__main__':
+    parser = init_arg_parser()
+    args = parser.parse_args()
+
+    FILE = '/home/cognusboi/scripts/todos.parquet'
+
+    df = None
+    if not os.path.exists(FILE):
+        df = pd.DataFrame()
+    else:
+        df = pd.read_parquet(FILE)
+
+    if not args.add is None:
+        add_todo(df, args.add).to_parquet(FILE)
+    elif not args.done is None:
+        drop_todo(df, args.done).to_parquet(FILE)
+    else:
+        if df.empty:
+            print('No todos')
+        else:
+            print(df)

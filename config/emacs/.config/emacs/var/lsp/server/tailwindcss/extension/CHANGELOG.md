@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.9.7
+
+- Improve completion list performance (#706)
+- Improve support for Tailwind class modifiers (#707)
+- Fix activation on Windows when using `tailwindCSS.experimental.configFile` setting (#708)
+- Don't watch directories above workspace root (#709)
+- Enable IntelliSense in entire workspace when there is exactly one active Tailwind project (#711)
+
+## 0.9.6
+
+- Fix activation on Windows when project path contains brackets (#699)
+
+## 0.9.5
+
+- Fix error when a `files.excludes` pattern contains braces (#696)
+
+## 0.9.4
+
+- Fix document selector when `tailwindCSS.experimental.configFile` is a string (#693)
+- Fix IntelliSense for project paths containing brackets (#694)
+
+## 0.9.3
+
+- Tweak `theme` helper detection (#689)
+- Remove marketplace "preview" tag (5932d20)
+- Add `typescript` to default languages (#690)
+
+## 0.9.2
+
+- Fix `@layer` syntax highlighting (#637)
+- Improve extraction for variable colors (#638)
+- Improve `experimental.configFile` in multi-root workspaces (#640)
+- Add documentation for `@config` completion (ea5aff5)
+- Boot language servers for nested workspace folders (#642)
+- Remove `typescript` from default languages (#645)
+- Fix duplicate color decorators (#652)
+- Improve theme helper detection (#655)
+- Add class modifier completions (#686)
+- Bump bundled version of `tailwindcss` to `3.2.4` (f07eedd)
+
 ## 0.9.1
 
 - Fix variant completions when using a `DEFAULT` value with `matchVariant` (#635)

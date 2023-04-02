@@ -14,6 +14,7 @@ export NNN_TMPFILE="/tmp/nnn.tmp"
 set userfiles /home/cognusboi/workspace/userfiles
 
 alias r=ranger
+alias R='radian'
 alias vim=nvim
 alias hx=helix
 alias lg=lazygit
@@ -29,14 +30,16 @@ set college $userfiles/college
 alias col='cd $college/'
 alias general='cd $college/general'
 
-alias logic='cd $college/3-1/Logic'
-alias dd='cd $college/3-1/DD'
-alias disco='cd $college/3-1/Disco'
-alias oops='cd $college/3-1/OOPS'
+alias dbms='cd $college/3-2/DBMS'
+alias dsa='cd $college/3-2/DSA'
+alias mpi='cd $college/3-2/MPI'
+alias fm='cd $college/3-2/FM'
+alias ae='cd $college/3-2/Applied_Econometrics'
+alias pftp='cd $college/3-2/PFTP'
+alias eapp='cd $college/3-2/EAPP'
 
-alias mbfm='cd $college/3-1/MBFM'
-alias ied='cd $college/3-1/IED'
-alias ie='cd $college/3-1/IE'
+alias m720='mpv --ytdl-format="best[height<=720]"'
+alias m1080='mpv --ytdl-format="best[height<=1080]"'
 
 function vterm_printf;
     if begin; [  -n "$TMUX" ]  ; and  string match -q -r "screen|tmux" "$TERM"; end 
@@ -50,4 +53,3 @@ function vterm_printf;
     end
 end
 
-starship init fish | source

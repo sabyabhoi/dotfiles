@@ -2,9 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "~/workspace/userfiles/orgfiles/gyaan/20230110211328-using_a_32_bit_integer_to_store_characters.org")
- (front-context-string . "#+filetags: :CS:")
- (rear-context-string . "tore characters\n")
- (position . 120))
+(("org-capture-last-stored-marker"
+ (filename . "~/workspace/userfiles/college/3-2/classes.org")
+ (front-context-string . "** TODO DBMS Bac")
+ (rear-context-string . "D functionality\n")
+ (position . 4639))
+("org-refile-last-stored"
+ (filename . "~/workspace/userfiles/college/3-2/classes.org")
+ (front-context-string . "** TODO DBMS Bac")
+ (rear-context-string . "D functionality\n")
+ (position . 4639))
+("org-capture-last-stored"
+ (filename . "~/workspace/userfiles/college/3-2/classes.org")
+ (front-context-string . "* TODO DBMS Back")
+ (rear-context-string . "d 08:00-09:00> \n")
+ (position . 5002))
 )

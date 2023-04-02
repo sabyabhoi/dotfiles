@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name:Tiny Model 
+# key:tiny 
+# --
+.MODEL TINY
+.DATA
+	$1
+.CODE
+.STARTUP
+	$2
+.EXIT
+END

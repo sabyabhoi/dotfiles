@@ -2,10 +2,9 @@
   "name": "vscode-tailwindcss",
   "displayName": "Tailwind CSS IntelliSense",
   "description": "Intelligent Tailwind CSS tooling for VS Code",
-  "preview": true,
   "author": "Brad Cornes <hello@bradley.dev>",
   "license": "MIT",
-  "version": "0.9.1",
+  "version": "0.9.7",
   "homepage": "https://github.com/tailwindlabs/tailwindcss-intellisense",
   "bugs": {
     "url": "https://github.com/tailwindlabs/tailwindcss-intellisense/issues",
@@ -25,7 +24,7 @@
     "vscode"
   ],
   "engines": {
-    "vscode": "^1.65.0"
+    "vscode": "^1.67.0"
   },
   "categories": [
     "Linters",
@@ -322,11 +321,14 @@
     "check": "tsc --noEmit"
   },
   "devDependencies": {
+    "@types/braces": "3.0.1",
     "@types/vscode": "1.65.0",
+    "braces": "3.0.2",
     "color-name": "1.1.4",
     "concurrently": "7.0.0",
+    "minimatch": "5.1.4",
     "rimraf": "3.0.2",
-    "vsce": "1.87.0",
+    "vsce": "2.15.0",
     "vscode-languageclient": "8.0.2"
   }
 }

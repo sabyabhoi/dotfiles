@@ -2,9 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "~/workspace/userfiles/orgfiles/gyaan/20230105193236-construct_a_binary_tree_from_level_order_sequence.org")
- (front-context-string . "\n\n#+begin_src c+")
- (rear-context-string . "-order sequence\n")
- (position . 127))
+(("org-capture-last-stored-marker"
+ (filename . "~/workspace/userfiles/college/3-2/classes.org")
+ (front-context-string . "** TODO EAPP Pre")
+ (rear-context-string . "023-04-20 Thu> \n")
+ (position . 1220))
+("org-refile-last-stored"
+ (filename . "~/workspace/userfiles/college/3-2/classes.org")
+ (front-context-string . "** TODO EAPP Pre")
+ (rear-context-string . "023-04-20 Thu> \n")
+ (position . 1220))
+("org-capture-last-stored"
+ (filename . "~/workspace/userfiles/college/3-2/classes.org")
+ (front-context-string . "* TODO EAPP Pres")
+ (rear-context-string . "d 08:00-09:00> \n")
+ (position . 4794))
 )

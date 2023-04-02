@@ -124,8 +124,8 @@ layouts = [
     #    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     #    layout.Max(),
     # Try more layouts by unleashing below layouts.
-    layout.Bsp(margin=8, border_focus="#414868", border_normal="#24283b"),
-    layout.Stack(num_stacks=1, border_focus="#414868"),
+    layout.Bsp(margin_on_single=15, margin=12, border_focus="#414868", border_normal="#24283b"),
+    layout.Stack(margin=15, num_stacks=1, border_focus="#414868"),
     # layout.Matrix(),
     # layout.MonadTall(),
     # layout.MonadWide(),
@@ -133,8 +133,8 @@ layouts = [
     # layout.Tile(),
     # layout.TreeTab(),
     #layout.VerticalTile(),
-    # layout.Zoomy(),
-]
+    layout.Zoomy(),
+  ]
 
 widget_defaults = dict(
     font="DejaVu Sans Mono",
@@ -152,7 +152,8 @@ screens = [
                     background=colors[-1],
                     highlight_method='block',
                     this_current_screen_border=colors[2],
-                    rounded=False
+                    rounded=False,
+                    disable_drag=True
                 ),
                 widget.Prompt(foreground=colors[8], background=colors[-1]),
                 widget.WindowName(background=colors[-1]),
@@ -164,7 +165,8 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                          widget.Net(background=colors[-1]),
+                  widget.Net(background=colors[-1]),
+                widget.Mpd2(background=colors[-1]),
                 get_symbol("left_arrow", colors[13], colors[-1]),
                 get_symbol("battery", colors[-1], colors[13], 18),
                 widget.Battery(
@@ -190,7 +192,7 @@ screens = [
             30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-                  ),
+                    ),
     ),
 ]
 

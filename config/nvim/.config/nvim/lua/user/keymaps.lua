@@ -28,7 +28,7 @@ keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
 
-keymap('n', '<Leader>f', vim.lsp.buf.formatting_sync, opts)
+keymap('n', '<Leader>f', vim.lsp.buf.format, opts)
 
 -- Telescope
 keymap('n', '<C-p>', ':Telescope find_files<CR>', opts)

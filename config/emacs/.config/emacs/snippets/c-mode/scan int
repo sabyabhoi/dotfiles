@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:scan int 
+# key:si 
+# --
+scanf("%d", &$1);

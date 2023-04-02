@@ -1,0 +1,50 @@
+# -*- mode: snippet -*-
+# name: Deque
+# key:deque 
+# --
+
+struct Node {
+  int val;
+  struct Node *next, *prev;
+} typedef Node;
+
+struct Deque {
+  Node *head, *top;
+} typedef Deque;
+
+void push(Deque* d, int val) {
+  if(d->head == NULL) {
+	d->head = (Node*) malloc(sizeof(Node));
+	d->top = d->head;
+	d->top->val = val;
+  } else {
+	d->top->next = (Node*) malloc(sizeof(Node));
+	d->top->next->prev = d->top;
+	d->top = d->top->next;
+	d->top->val = val;
+  }
+}
+
+void pop(Deque* d) {
+  if(d->head == NULL) return;
+  if(d->head == d->top) {
+	free(d->head);
+	d->head = NULL;
+	d->top = NULL;
+	return;
+  }
+  Node* prev = d->top->prev;
+  free(d->top);
+  d->top = prev;
+  if(prev)
+	prev->next = NULL;
+}
+
+void print_deque(Deque* d) {
+  if(d->head == NULL) return;
+  while(d->head != NULL) {
+	printf("%d ", d->head->val);
+	d->head = d->head->next;
+  }
+  printf("\n");
+}

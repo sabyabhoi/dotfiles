@@ -22,26 +22,27 @@ void print_vec(const vector<T>& v) {
   cout << '\n';
 }
 
-bool possible(const vs& board, int row, int col, int n) {
+bool possible(const vs& board, int row, int col) {
+  for(int c = 0; c <= col; ++c)
+	if(board[row][c] == 'Q') return false;
+
   for(int r = row, c = col; r >= 0 && c >= 0; --r, --c)
 	if(board[r][c] == 'Q') return false;
 
-  for(int r = row, c = col; r < n && c >= 0; ++r, --c)
+  for(int r = row, c = col; r < (int)board.size() && c >= 0; ++r, --c)
 	if(board[r][c] == 'Q') return false;
-
-  for(int c = col; c >= 0; --c)
-	if(board[row][c] == 'Q') return false;
 
   return true;
 }
 
 void helper(vs& board, int col, int n, vvs& ans) {
-  if (col >= n) {
-    ans.push_back(board);
-    return;
+  if(col >= n) {
+	ans.push_back(board);
+	return;
   }
+
   for(int r = 0; r < n; ++r) {
-	if(!possible(board, r, col, n)) continue;
+	if(!possible(board, r, col)) continue;
 	board[r][col] = 'Q';
 	helper(board, col + 1, n, ans);
 	board[r][col] = '.';
@@ -54,11 +55,12 @@ void solve() {
   REP(i, n) {
 	REP(j, n) board[i].push_back('.');
   }
-
   vvs ans;
+
   helper(board, 0, n, ans);
-  for(vs v : ans) {
-	print_vec(v);
+  for(vs vecs : ans) {
+	for(string s : vecs) cout << s << '\n';
+	cout << '\n';
   }
 }
 

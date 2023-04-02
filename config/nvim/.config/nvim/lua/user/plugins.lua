@@ -109,7 +109,12 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 	use("junegunn/goyo.vim")
-	use("lewis6991/gitsigns.nvim")
+
+	-- Git
+	use({
+		"lewis6991/gitsigns.nvim",
+		"tpope/vim-fugitive"
+	})
 
 	-- custom plugins
 	use("/home/cognusboi/workspace/userfiles/programming/Lua/cc-helper.nvim")
