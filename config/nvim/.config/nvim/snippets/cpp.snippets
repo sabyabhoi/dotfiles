@@ -23,18 +23,11 @@ snippet cc "Competitive Coding Template"
     cout << '\n';
   }
   
-  void solve() {
-		$1
-  }
-  
   int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
   
-    int t;
-    cin >> t;
-    while (t--)
-      solve();
+		$1
     return 0;
   }
 
@@ -114,3 +107,72 @@ snippet bt "Binary Tree"
     }
     return root;
   }
+
+snippet trie "Trie Data Structure"
+	struct Trie {
+		Trie *children[26];
+		bool end;
+
+		Trie() {
+			REP(i, 26) children[i] = nullptr;
+			end = false;
+		}
+
+		void insert(const string &s) {
+			Trie *itr = this;
+			for (char c : s) {
+				int i = c - 'a';
+				if (itr->children[i] == nullptr)
+					itr->children[i] = new Trie();
+				itr = itr->children[i];
+			}
+			itr->end = true;
+		}
+
+		bool search(const string &s) {
+			Trie *itr = this;
+			for (char c : s) {
+				int i = c - 'a';
+				if (itr->children[i] == nullptr)
+					return false;
+				itr = itr->children[i];
+			}
+			return true;
+		}
+		bool empty() {
+			REP(i, 26) {
+				if (this->children[i] != nullptr)
+					return false;
+			}
+			return true;
+		}
+	};
+	Trie *delete_key(Trie *t, int i, const string &s) {
+		if (t == nullptr)
+			return nullptr;
+
+		if (i == s.length()) {
+			t->end = false;
+			if (t->empty()) {
+				delete t;
+				t = nullptr;
+			}
+			return t;
+		}
+
+		int ix = s[i] - 'a';
+		t->children[ix] = delete_key(t->children[ix], i + 1, s);
+		if (t->empty() && !t->end) {
+			delete t;
+			t = nullptr;
+		}
+		return t;
+	}
+
+	void delete_trie(Trie *t) {
+		if (t == nullptr)
+			return;
+
+		REP(i, 26) { delete_trie(t->children[i]); }
+		delete t;
+	}

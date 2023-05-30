@@ -111,10 +111,10 @@ symbols = {
     'power_off': '\uF011'
 }
 
-def get_symbol(symbol, fg, bg, ft=25):
+def get_symbol(symbol, fg, bg, ft=25, padding=0):
     return widget.TextBox(
         text=symbols[symbol],
-        padding=0,
+        padding=padding,
         fontsize=ft,
         foreground=fg,
         background=bg
@@ -133,7 +133,7 @@ layouts = [
     # layout.Tile(),
     # layout.TreeTab(),
     #layout.VerticalTile(),
-    layout.Zoomy(),
+    layout.Zoomy(margin=8),
   ]
 
 widget_defaults = dict(

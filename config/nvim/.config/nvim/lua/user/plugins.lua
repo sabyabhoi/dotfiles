@@ -78,6 +78,7 @@ return packer.startup(function(use)
 	-- Debugging
 	use({
 		"mfussenegger/nvim-dap",
+		"rcarriga/nvim-dap-ui"
 	})
 
 	use("kyazdani42/nvim-web-devicons")

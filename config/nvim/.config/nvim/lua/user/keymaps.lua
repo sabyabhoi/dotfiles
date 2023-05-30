@@ -32,7 +32,7 @@ keymap('n', '<Leader>f', vim.lsp.buf.format, opts)
 
 -- Telescope
 keymap('n', '<C-p>', ':Telescope find_files<CR>', opts)
-keymap('n', '<Leader>b', ':Telescope buffers<CR>', opts)
+-- keymap('n', '<Leader>b', ':Telescope buffers<CR>', opts)
 keymap('n', '<Leader>lg', ':Telescope live_grep<CR>', opts)
 
 -- Bufferline
@@ -41,3 +41,12 @@ keymap('n', 'L', ':BufferLineCycleNext<CR>', opts)
 
 -- Plenary
 vim.cmd [[nmap <leader>t <Plug>PlenaryTestFile]]
+
+-- Debugging
+keymap('n', '<F5>', function() require'dap'.continue() end)
+keymap('n', '<F1>', function() require'dap'.step_over() end)
+keymap('n', '<F2>', function() require'dap'.step_into() end)
+keymap('n', '<F3>', function() require'dap'.step_out() end)
+keymap('n', '<Leader>b', function() require'dap'.toggle_breakpoint() end)
+keymap('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+keymap('n', '<Leader>bc', function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)

@@ -38,7 +38,8 @@ alias ae='cd $college/3-2/Applied_Econometrics'
 alias pftp='cd $college/3-2/PFTP'
 alias eapp='cd $college/3-2/EAPP'
 
-alias m720='mpv --ytdl-format="best[height<=720]"'
+alias m480='mpv --ytdl-format="best[height<=480]"'
+#alias m720='mpv --ytdl-format="best[height<=720]"'
 alias m1080='mpv --ytdl-format="best[height<=1080]"'
 
 function vterm_printf;
