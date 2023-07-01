@@ -13,8 +13,8 @@
  (rear-context-string . "D functionality\n")
  (position . 4639))
 ("org-capture-last-stored"
- (filename . "~/workspace/userfiles/college/3-2/classes.org")
- (front-context-string . "* TODO DBMS Back")
- (rear-context-string . "d 08:00-09:00> \n")
- (position . 5002))
+ (filename . "~/workspace/userfiles/orgfiles/gyaan/20230629155258-resume_building.org")
+ (front-context-string . "\n- On avg. recru")
+ (rear-context-string . "Resume Building\n")
+ (position . 148))
 )

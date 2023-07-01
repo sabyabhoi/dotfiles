@@ -3,6 +3,9 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+import qtile_extras
+from qtile_extras.widget.decorations import PowerLineDecoration
+
 mod = "mod4"
 terminal = guess_terminal()
 
@@ -45,16 +48,18 @@ keys = [
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "shift"], "e", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod, "shift"], "l", lazy.spawn("betterlockscreen -l"), desc="Lock System"),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "e", lazy.spawn("emacsclient -c")),
     Key(["control"], "space", lazy.spawn("dunstctl close")),
-    Key([mod], "d", lazy.spawn("rofi -font \"Iosevka 14\" -show run")),
+    Key([mod], "d", lazy.spawn("/home/cognusboi/.config/rofi/launchers/type-2/launcher.sh")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%")),
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
     Key([], "XF86AudioMicMute", lazy.spawn("pactl set-source-mute @DEFAULT_SOURCE@ toggle")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 10%-")),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +10%")),
+    Key([], "XF86Calculator", lazy.spawn("speedcrunch")),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -83,48 +88,157 @@ for i in groups:
         ]
     )
 
-colors = [
-    "#2E3440",
-    "#3B4252",
-    "#434C5E",
-    "#4C566A",
-    "#D8DEE9",
-    "#E5E9F0",
-    "#ECEFF4",
-    "#8FBCBB",
-    "#88C0D0",
-    "#81A1C1",
-    "#5E81AC",
-    "#BF616A",
-    "#D08770",
-    "#EBCB8B",
-    "#A3BE8C",
-    "#B48EAD",
-    "#242933"
-]
+catppuccin_latte = {
+    'Rosewater':'#dc8a78',
+    'Flamingo':'#dd7878',
+    'Pink':'#ea76cb',
+    'Mauve':'#8839ef',
+    'Red':'#d20f39',
+    'Maroon':'#e64553',
+    'Peach':'#fe640b',
+    'Yellow':'#df8e1d',
+    'Green':'#40a02b',
+    'Teal':'#179299',
+    'Sky':'#04a5e5',
+    'Sapphire':'#209fb5',
+    'Blue':'#1e66f5',
+    'Lavender':'#7287fd',
+    'Text':'#4c4f69',
+    'Subtext1':'#5c5f77',
+    'Subtext0':'#6c6f85',
+    'Overlay2':'#7c7f93',
+    'Overlay1':'#8c8fa1',
+    'Overlay0':'#9ca0b0',
+    'Surface2':'#acb0be',
+    'Surface1':'#bcc0cc',
+    'Surface0':'#ccd0da',
+    'Base':'#eff1f5',
+    'Mantle':'#e6e9ef',
+    'Crust':'#dce0e8',
+}
+
+catppuccin_macchiato = { # Macchiato
+    'Rosewater':'#f4dbd6',
+    'Flamingo':'#f0c6c6',
+    'Pink':'#f5bde6',
+    'Mauve':'#c6a0f6',
+    'Red':'#ed8796',
+    'Maroon':'#ee99a0',
+    'Peach':'#f5a97f',
+    'Yellow':'#eed49f',
+    'Green':'#a6da95',
+    'Teal':'#8bd5ca',
+    'Sky':'#91d7e3',
+    'Sapphire':'#7dc4e4',
+    'Blue':'#8aadf4',
+    'Lavender':'#b7bdf8',
+    'Text':'#cad3f5',
+    'Subtext1':'#b8c0e0',
+    'Subtext0':'#a5adcb',
+    'Overlay2':'#939ab7',
+    'Overlay1':'#8087a2',
+    'Overlay0':'#6e738d',
+    'Surface2':'#5b6078',
+    'Surface1':'#494d64',
+    'Surface0':'#363a4f',
+    'Base':'#24273a',
+    'Mantle':'#1e2030',
+    'Crust':'#181926',
+}
+
+nord = {
+    'gray': ["#2E3440",
+             "#3B4252",
+             "#434C5E",
+             "#4C566A"],
+    'white': ["#D8DEE9",
+              "#E5E9F0",
+              "#ECEFF4"],
+    'green-blue':"#8FBCBB",
+    'sky-blue':"#88C0D0",
+    'purple-blue':"#81A1C1",
+    'blue':"#5E81AC",
+    'red':"#BF616A",
+    'orange':"#D08770",
+    'yellow':"#EBCB8B",
+    'green':"#A3BE8C",
+    'purple':"#B48EAD",
+    'black': "#242933"
+}
 
 symbols = {
-    'left_arrow': '\uE0B2',
-    'right_arrow': '\uE0B0',
-    'volume': '\uFA7D',
-    'battery': '\uF240',
-    'power_off': '\uF011'
+    'volume': ' 󰕾 ',
+    'battery': '  ',
+	'power_off': ' ',
+	'calendar': ' '
 }
 
 def get_symbol(symbol, fg, bg, ft=25, padding=0):
     return widget.TextBox(
-        text=symbols[symbol],
-        padding=padding,
-        fontsize=ft,
-        foreground=fg,
-        background=bg
+	text=symbols[symbol],
+	padding=padding,
+	font="feather",
+	fontsize=ft,
+	foreground=fg,
+	background=bg
     )
+
+arrow_powerlineRight = {
+    "decorations": [
+        PowerLineDecoration(
+            path="arrow_right",
+            size=11,
+        )
+    ]
+}
+arrow_powerlineLeft = {
+    "decorations": [
+        PowerLineDecoration(
+            path="arrow_left",
+            size=11,
+        )
+    ]
+}
+rounded_powerlineRight = {
+    "decorations": [
+        PowerLineDecoration(
+            path="rounded_right",
+            size=11,
+        )
+    ]
+}
+rounded_powerlineLeft = {
+    "decorations": [
+        PowerLineDecoration(
+            path="rouded_left",
+            size=11,
+        )
+    ]
+}
+slash_powerlineRight = {
+    "decorations": [
+        PowerLineDecoration(
+            path="forward_slash",
+            size=11,
+        )
+    ]
+}
+slash_powerlineLeft = {
+    "decorations": [
+        PowerLineDecoration(
+            path="back_slash",
+            size=11,
+        )
+    ]
+}
 
 layouts = [
     #    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     #    layout.Max(),
     # Try more layouts by unleashing below layouts.
-    layout.Bsp(margin_on_single=15, margin=12, border_focus="#414868", border_normal="#24283b"),
+	layout.Bsp(margin_on_single=15, margin=12,
+			   border_focus=catppuccin_macchiato['Surface1'],
+			   border_normal=catppuccin_macchiato['Surface0']),
     layout.Stack(margin=15, num_stacks=1, border_focus="#414868"),
     # layout.Matrix(),
     # layout.MonadTall(),
@@ -134,11 +248,11 @@ layouts = [
     # layout.TreeTab(),
     #layout.VerticalTile(),
     layout.Zoomy(margin=8),
-  ]
+]
 
 widget_defaults = dict(
-    font="DejaVu Sans Mono",
-    fontsize=14,
+    font="JetBrainsMono Nerd Font",
+    fontsize=15,
     padding=8,
 )
 extension_defaults = widget_defaults.copy()
@@ -147,52 +261,84 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(foreground=colors[4], background=colors[-1]),
+                widget.CurrentLayout(
+                    foreground=catppuccin_macchiato['Text'],
+                    background=catppuccin_macchiato['Base']
+                ),
                 widget.GroupBox(
-                    background=colors[-1],
+		    background=catppuccin_latte['Blue'],
+		    active=catppuccin_latte['Base'],
+		    inactive=catppuccin_latte['Sky'],
                     highlight_method='block',
-                    this_current_screen_border=colors[2],
+                    this_current_screen_border='#073592',
                     rounded=False,
                     disable_drag=True
                 ),
-                widget.Prompt(foreground=colors[8], background=colors[-1]),
-                widget.WindowName(background=colors[-1]),
-                widget.Chord(
-                    chords_colors={
-                        "launch": (colors[8],colors[8]),
-                    },
-                    name_transform=lambda name: name.upper(),
+                qtile_extras.widget.Spacer(
+                    length=1,
+                    background=catppuccin_latte['Blue'],
+                    **rounded_powerlineRight
                 ),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                  widget.Net(background=colors[-1]),
-                widget.Mpd2(background=colors[-1]),
-                get_symbol("left_arrow", colors[13], colors[-1]),
-                get_symbol("battery", colors[-1], colors[13], 18),
+                widget.WindowTabs(background=catppuccin_macchiato['Base']),
+                qtile_extras.widget.Spacer(
+                    length=1,
+                    background=catppuccin_macchiato['Base'],
+                    **rounded_powerlineRight
+                ),
+                widget.Mpd2(
+                    background=catppuccin_latte['Red'],
+                    foreground=catppuccin_latte['Crust'],
+                    status_format="{play_status} {artist}/{title}"
+                ),
+                qtile_extras.widget.Spacer(
+                    length=1,
+                    background=catppuccin_latte['Red'],
+                    **slash_powerlineRight
+                ),
+                get_symbol("battery", catppuccin_macchiato['Text'], catppuccin_macchiato['Base'], ft=18),
                 widget.Battery(
-                    background=colors[13], foreground=colors[-1],
+                    background=catppuccin_macchiato['Base'],
+                    foreground=catppuccin_macchiato['Text'],
                     format='{percent:2.0%}'
                 ),
-                get_symbol("left_arrow", colors[12], colors[13]),
-                get_symbol("volume", colors[-1], colors[12]),
-                widget.PulseVolume(background=colors[12], foreground=colors[-1]),
-                get_symbol("left_arrow", colors[8], colors[12]),
-                widget.Clock(format="%d/%m/%y %I:%M %p", background=colors[8], foreground=colors[-1]),
-                get_symbol("left_arrow", colors[15], colors[8]),
+                qtile_extras.widget.Spacer(
+                    length=1,
+                    background=catppuccin_macchiato['Base'],
+                    **slash_powerlineRight
+                ),
+                get_symbol("volume", catppuccin_latte['Base'], catppuccin_latte['Mauve'], ft=20),
+                widget.PulseVolume(
+                    background=catppuccin_latte['Mauve'],
+                    foreground=catppuccin_latte['Base']
+                ),
+                qtile_extras.widget.Spacer(
+                    length=1,
+                    background=catppuccin_latte['Mauve'],
+                    **slash_powerlineRight
+                ),
+                get_symbol("calendar", catppuccin_macchiato['Sky'], catppuccin_macchiato['Base'], ft=16),
+                widget.Clock(
+                    format="%d/%m/%y %I:%M %p",
+                    background=catppuccin_macchiato['Base'],
+                    foreground=catppuccin_macchiato['Sky']
+                ),
+                qtile_extras.widget.Spacer(
+                    length=1,
+                    background=catppuccin_macchiato['Base'],
+                    **slash_powerlineRight
+                ),
                 widget.TextBox(
                     fontsize=18,
                     text=symbols['power_off'],
-                    background=colors[15],
-                    foreground=colors[-1],
-                    mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn('sh /home/cognusboi/scripts/statusbar/goodbye.sh')
+                    background=catppuccin_latte['Red'],
+                    foreground=catppuccin_latte['Base'],
+					mouse_callbacks={
+						"Button1": lambda: qtile.cmd_spawn('/home/cognusboi/.config/rofi/powermenu/type-2/powermenu.sh')
                     }
                 ),
             ],
             30,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-                    ),
+        ),
     ),
 ]
 

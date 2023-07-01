@@ -1,9 +1,3 @@
---local fn = vim.fn
---local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
---if fn.empty(fn.glob(install_path)) > 0 then
---  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
---end
-
 vim.cmd([[packadd packer.nvim]])
 
 local status_ok, packer = pcall(require, "packer")
@@ -27,6 +21,7 @@ return packer.startup(function(use)
 		"gruvbox-community/gruvbox",
 		"folke/tokyonight.nvim",
 		"nanotech/jellybeans.vim",
+		"rebelot/kanagawa.nvim"
 	})
 	use({
 		"catppuccin/nvim",
@@ -73,12 +68,14 @@ return packer.startup(function(use)
 		"elkowar/yuck.vim",
 		"jalvesaq/Nvim-R",
 		"Olical/conjure",
+		"Fymyte/rasi.vim"
 	})
 
 	-- Debugging
 	use({
 		"mfussenegger/nvim-dap",
-		"rcarriga/nvim-dap-ui"
+		"rcarriga/nvim-dap-ui",
+		"mfussenegger/nvim-dap-python"
 	})
 
 	use("kyazdani42/nvim-web-devicons")

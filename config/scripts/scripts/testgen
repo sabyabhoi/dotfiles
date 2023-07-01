@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+import random
+
+print('Enter a number:', end=' ')
+n = int(input())
+
+print('Enter starting range:', end=' ')
+left = int(input())
+
+print('Enter ending range:', end=' ')
+right = int(input())
+
+for i in random.sample(range(left, right), n):
+    print(i, end=' ')
+print()

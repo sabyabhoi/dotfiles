@@ -48,6 +48,8 @@ dap.configurations.cpp = {
   },
 }
 
+require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+
 local dapui = require("dapui")
 dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()

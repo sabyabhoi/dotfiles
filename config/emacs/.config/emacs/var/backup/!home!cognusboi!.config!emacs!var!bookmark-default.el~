@@ -4,17 +4,17 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored-marker"
  (filename . "~/workspace/userfiles/college/3-2/classes.org")
- (front-context-string . "** TODO EAPP Pre")
- (rear-context-string . "023-04-20 Thu> \n")
- (position . 1220))
+ (front-context-string . "** TODO DBMS Bac")
+ (rear-context-string . "D functionality\n")
+ (position . 4639))
 ("org-refile-last-stored"
  (filename . "~/workspace/userfiles/college/3-2/classes.org")
- (front-context-string . "** TODO EAPP Pre")
- (rear-context-string . "023-04-20 Thu> \n")
- (position . 1220))
+ (front-context-string . "** TODO DBMS Bac")
+ (rear-context-string . "D functionality\n")
+ (position . 4639))
 ("org-capture-last-stored"
- (filename . "~/workspace/userfiles/college/3-2/classes.org")
- (front-context-string . "* TODO EAPP Pres")
- (rear-context-string . "d 08:00-09:00> \n")
- (position . 4794))
+ (filename . "~/workspace/userfiles/orgfiles/gyaan/20230628130817-unique_bsts.org")
+ (front-context-string . "#+filetags: :CS:")
+ (rear-context-string . "le: Unique BSTs\n")
+ (position . 89))
 )

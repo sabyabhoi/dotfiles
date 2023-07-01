@@ -20,7 +20,7 @@
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 (setq font-name "JetBrainsMono Nerd Font"
-      font-height 168)
+      font-height 170)
 (defun cb/set-font-faces ()
   (dolist (face '(default fixed-pitch))
     (set-face-attribute `,face nil :font font-name :height font-height :weight 'normal))
@@ -250,6 +250,9 @@
   ("k" text-scale-decrease "out")
   ("f" nil "finished" :exit t))
 
+(use-package nordic-night-theme
+  :ensure t)
+
 (use-package doom-modeline
   :ensure t
   :custom
@@ -263,7 +266,7 @@
 (use-package doom-themes
   :ensure t
   :init
-  (load-theme 'doom-material t))
+  (load-theme 'doom-tomorrow-night t))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -532,7 +535,8 @@
   (visual-line-mode 1) ;; word wrap turned on
   (setq org-fontify-done-headline t
         org-html-validation-link nil
-		org-indent-mode t
+        org-indent-mode t
+        org-startup-indented t
         evil-auto-indent t
         org-pretty-entities t
         org-startup-with-inline-images t
@@ -547,6 +551,8 @@
 
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 
+(add-hook 'org-mode-hook 'org-indent-mode)
+
 (use-package org
   :hook (org-mode . cb/org-mode-setup)
   :bind (("C-x e" . org-edit-src-code)
@@ -555,7 +561,9 @@
   (org-agenda-span 10)
   (org-deadline-warning-days 7)
   (org-directory "~/workspace/userfiles/orgfiles/guides")
-  (org-agenda-files '("inbox.org" "repeaters.org" "/home/cognusboi/workspace/userfiles/college/3-2/academics.org"))
+  (org-agenda-files '("inbox.org"
+					  "repeaters.org"
+					  "/home/cognusboi/workspace/userfiles/college/3-2/academics.org"))
   (org-agenda-start-with-log-mode t)
   (org-use-speed-commands t)
   (org-tags-column 5)
@@ -601,17 +609,6 @@
  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
  '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
 
-(with-eval-after-load 'org
-  (require 'org-tempo)
-  (dolist (expand '(("el" . "src emacs-lisp")
-                    ("pro" . "src python :session :results output")
-                    ("rro" . "src R :session :results output")
-                    ("rrv" . "src R :session")
-                    ("prv" . "src python :session ")))
-    (add-to-list 'org-structure-template-alist expand)))
-
-(setq org-hidden-keywords '(title subtitle author date email))
-
 (defun cb/org-mode-visual-fill ()
   (setq visual-fill-column-width 110
         visual-fill-column-center-text t)
@@ -624,6 +621,17 @@
   :hook (org-mode . org-bullets-mode)
   :custom (org-bullets-bullet-list '("◉" "○" "◉" "○"))
   )
+
+(setq org-hidden-keywords '(title subtitle author date email))
+
+(with-eval-after-load 'org
+  (require 'org-tempo)
+  (dolist (expand '(("el" . "src emacs-lisp")
+                    ("pro" . "src python :session :results output")
+                    ("rro" . "src R :session :results output")
+                    ("rrv" . "src R :session")
+                    ("prv" . "src python :session ")))
+    (add-to-list 'org-structure-template-alist expand)))
 
 (with-eval-after-load 'org
   ;; (setq py-default-interpreter "/usr/bin/python3")
@@ -647,6 +655,13 @@
       (org-babel-tangle))))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'cb/org-babel-tangle-config)))
+
+(use-package org-ref
+  :defer 0
+  :config
+  (setq bibtex-completion-bibliography '("~/workspace/userfiles/college/uni.bib"))
+  (setq org-latex-pdf-process (list "latexmk -pdflatex=xelatex -shell-escape -f -pdf %f"))
+  )
 
 (use-package org-roam
   :ensure t
@@ -682,15 +697,28 @@
 		  ("ta" "Academics" entry
 		   (file "~/workspace/userfiles/college/3-2/academics.org")
 		   "* TODO %^{Enter Todo}\n %^{Choose|SCHEDULED|DEADLINE}: %^t \n %?")
+		  ("b" "Book Entry" entry
+		   (file "~/workspace/userfiles/orgfiles/journal/reading_list.org")
+		   "* %^{Enter Name of the Book}
+:PROPERTIES:
+:AUTHOR: %^{Enter Name of the Author}
+:RATING: %^{Choose|TBD|OKAY|NICE|GOAT}
+:COMPLETED:  %?
+:END:
+"
+		   )
 		  ))
   )
 
-(use-package org-ref
-  :defer 0
-  :config
-  (setq bibtex-completion-bibliography '("~/workspace/userfiles/college/uni.bib"))
-  (setq org-latex-pdf-process (list "latexmk -pdflatex=xelatex -shell-escape -f -pdf %f"))
-  )
+(use-package org-journal
+  :ensure t
+  :custom
+  (org-journal-dir "~/workspace/userfiles/orgfiles/journal/")
+  (org-journal-date-prefix "#+TITLE: ")
+  (org-journal-date-format "%a, %Y-%m-%d")
+  (org-journal-file-format "%Y-%m-%d.org")
+  (org-journal-time-prefix "*")
+  (org-journal-time-format " "))
 
 (use-package ox-reveal
   :custom
