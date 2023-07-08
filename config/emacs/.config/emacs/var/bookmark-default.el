@@ -13,8 +13,8 @@
  (rear-context-string . "D functionality\n")
  (position . 4639))
 ("org-capture-last-stored"
- (filename . "~/workspace/userfiles/orgfiles/gyaan/20230629155258-resume_building.org")
- (front-context-string . "\n- On avg. recru")
- (rear-context-string . "Resume Building\n")
- (position . 148))
+ (filename . "~/workspace/userfiles/orgfiles/gyaan/20230707192839-startup.org")
+ (front-context-string . "#+filetags: :CS:")
+ (rear-context-string . "+title: Startup\n")
+ (position . 85))
 )

@@ -13,8 +13,8 @@
  (rear-context-string . "D functionality\n")
  (position . 4639))
 ("org-capture-last-stored"
- (filename . "~/workspace/userfiles/orgfiles/gyaan/20230628130817-unique_bsts.org")
+ (filename . "~/workspace/userfiles/orgfiles/gyaan/20230706193540-artificial_neural_network.org")
  (front-context-string . "#+filetags: :CS:")
- (rear-context-string . "le: Unique BSTs\n")
- (position . 89))
+ (rear-context-string . " Neural Network\n")
+ (position . 103))
 )

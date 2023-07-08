@@ -1,0 +1,549 @@
+# Import
+snippet ir import React
+	import React from 'react';
+
+snippet irc import React and Component
+	import React, { Component } from 'react';
+
+snippet irh import React hooks
+	import { use$1 } from 'react';
+
+snippet ird import ReactDOM
+	import ReactDOM from 'react-dom';
+
+snippet irp import PropTypes
+	import PropTypes from 'prop-types';
+
+# Lifecycle Methods
+snippet cdm componentDidMount
+	componentDidMount() {
+		${1}
+	};
+
+snippet cdup componentDidUpdate
+	componentDidUpdate(prevProps, prevState) {
+		${1}
+	};
+
+snippet cwm componentWillMount
+	componentWillMount() {
+		${1}
+	};
+
+snippet cwr componentWillReceiveProps
+	componentWillReceiveProps(nextProps) {
+		${1}
+	};
+
+snippet cwun componentWillUnmount
+	componentWillUnmount() {
+		${1}
+	};
+
+snippet cwu componentWillUpdate
+	componentWillUpdate(nextProps, nextState) {
+		${1}
+	};
+
+snippet scu shouldComponentUpdate
+	shouldComponentUpdate(nextProps, nextState) {
+		${1}
+	}
+
+# Props
+snippet spt static propTypes
+	static propTypes = {
+		${1}: PropTypes.${2}
+	};
+
+snippet pt propTypes
+	${1}.propTypes = {
+		${2}: PropTypes.${2}
+	};
+
+snippet sdp static defaultProps
+	static defaultProps = {
+		${1}: ${2}	
+	};
+
+snippet dp defaultProps
+	${1}.defaultProps = {
+		${2}: ${3}
+	};
+
+snippet pp props
+	props.${1};
+
+snippet tp this props
+	this.props.${1};
+
+# State
+snippet st
+	state = {
+		${1}: ${2},
+	};
+
+snippet sst
+	this.setState({
+		${1}: ${2}
+	});
+
+snippet tst 
+	this.state.${1};
+
+# Component
+snippet raf
+	const ${1:ComponentName} = (${2:props}) => {
+		${3:state}
+
+		return (
+			<>
+				${4}
+			</>
+		);
+	};
+
+snippet rcla
+	class ${1:ClassName} extends Component {
+		render() {
+			return (
+				<>
+					${2}
+				</>
+			);
+		}
+	}
+
+snippet ercla
+	export default class ${1:ClassName} extends Component {
+		render() {
+			return (
+				<>
+					${2}
+				</>
+			);
+		};
+	};
+
+snippet ctor
+	constructor() {
+		super();
+
+		${1:state}
+	}
+
+snippet ren
+	render() {
+		return (
+			<>
+				${2}
+			</>
+		);
+	}
+
+snippet fup
+	forceUpdate(${1:callback});
+
+# Hooks
+snippet uses useState
+	const [${1:state}, set${2}] = useState<${4:type}>(${3:initialState});
+
+snippet usee useEffect
+	useEffect(() => {
+		${1}
+	});
+
+snippet userd useReducer
+	const [${1:state}, ${2:dispatch}] = useReducer(${3:reducer});
+
+snippet userf useRef
+	const ${1:refContainer} = useRef(${2:initialValue});
+
+snippet usect useContext
+	const ${1:value} = useContext(${2:MyContext});
+
+snippet usecb useCallback
+	const ${1:memoizedCallback} = useCallback(
+	() => {
+		${2}(${3})
+	},
+	[$3]
+	);
+
+snippet usem useMemo
+	const ${1:memoizedCallback} = useMemo(() => ${2}(${3}), [$3]);
+
+snippet usei useImperativeHandle
+	useImperativeHandle(${1:ref}, ${2:createHandle});
+
+snippet used useDebugValue
+	useDebugValue(${1:value});
+
+# ReactDOM methods
+snippet rdr ReactDOM.render
+	ReactDOM.render(${1}, ${2});
+
+snippet rdh ReactDOM.hydrate
+	ReactDOM.hydrate(${1:element}, ${2:container}[, ${3:callback}]);
+
+snippet rdcp ReactDOM.createPortal
+	ReactDOM.createPortal(${1:child}, ${2:container});
+# Functions
+# prototype
+snippet proto
+	${1:class_name}.prototype.${2:method_name} = function(${3}) {
+		${0:${VISUAL}}
+	};
+# Function
+snippet fun "function"
+	function ${1:function_name}(${2}) {
+		${0:${VISUAL}}
+	}
+# Asynchronous Function
+snippet asf "async function"
+	async function ${1:function_name}(${2}) {
+		${0:${VISUAL}}
+	}
+# Anonymous Function
+snippet anf "" w
+	function(${1}) {
+		${0:${VISUAL}}
+	}
+# Anonymous Function assigned to variable
+snippet vaf
+	var ${1:function_name} = function(${2}) {
+		${0:${VISUAL}}
+	};
+# Function assigned to variable
+snippet vf
+	var ${1:function_name} = function $1(${2}) {
+		${0:${VISUAL}}
+	};
+# Immediate function
+snippet (f
+	(function(${1}) {
+		${0:${VISUAL}}
+	}(${2}));
+# Minify safe iife
+snippet ;fe
+	;(function(${1}) {
+		${0:${VISUAL}}
+	}(${2}))
+# self-defining function
+snippet sdf
+	var ${1:function_name} = function (${2:argument}) {
+		${3}
+
+		$1 = function ($2) {
+			${0:${VISUAL}}
+		};
+	};
+# Flow control
+# if
+snippet if "if (condition) { ... }"
+	if (${1:true}) {
+		${0:${VISUAL}}
+	}
+# if ... else
+snippet ife "if (condition) { ... } else { ... }"
+	if (${1:true}) {
+		${0:${VISUAL}}
+	} else {
+		${2}
+	}
+# tertiary conditional
+snippet ter
+	${1:/* condition */} ? ${2:/* if true */} : ${0:/* if false */}
+# switch
+snippet switch
+	switch (${1:expression}) {
+		case '${3:case}':
+			${4}
+			break;
+		${0}
+		default:
+			${2}
+	}
+snippet case "case 'xyz': ... break"
+	case '${1:case}':
+		${0:${VISUAL}}
+		break;
+snippet try "try { ... } catch(e) { ... }"
+	try {
+		${0:${VISUAL}}
+	} catch (${1:e}) {
+		${2:/* handle error */}
+	}
+snippet tryf "try { ... } catch(e) { ... } finally { ... }"
+	try {
+		${0:${VISUAL}}
+	} catch (${1:e}) {
+		${2:/* handle error */}
+	} finally {
+		${3:/* be executed regardless of the try / catch result*/}
+	}
+# throw Error
+snippet terr
+	throw new Error('${1:error message}')
+# return
+snippet ret
+	return ${0:result};
+snippet for "for (...) {...}"
+	for (let ${1:i} = 0, ${2:len} = ${3:Things.length}; $1 < $2; $1++) {
+		${0:${VISUAL}}
+	}
+snippet forr "reversed for (...) {...}"
+	for (let ${2:i} = ${1:Things.length} - 1; $2 >= 0; $2--) {
+		${0:${VISUAL}}
+	}
+snippet wh "(condition) { ... }"
+	while (${1:/* condition */}) {
+		${0:${VISUAL}}
+	}
+snippet do "do { ... } while (condition)"
+	do {
+		${0:${VISUAL}}
+	} while (${1:/* condition */});
+# For in loop
+snippet fori
+	for (let ${1:prop} in ${2:object}) {
+		${0:$2[$1]}
+	}
+# Objects
+# Object Method
+snippet :f
+	${1:method_name}: function (${2:attribute}) {
+		${0:${VISUAL}}
+	},
+# hasOwnProperty
+snippet has
+	hasOwnProperty(${0})
+# singleton
+snippet sing
+	function ${1:Singleton} (${2:argument}) {
+		// the cached instance
+		var instance;
+
+		// rewrite the constructor
+		$1 = function $1($2) {
+			return instance;
+		};
+
+		// carry over the prototype properties
+		$1.prototype = this;
+
+		// the instance
+		instance = new $1();
+
+		// reset the constructor pointer
+		instance.constructor = $1;
+
+		${0}
+
+		return instance;
+	}
+# Crockford's object function
+snippet obj
+	function object(o) {
+		function F() {}
+		F.prototype = o;
+		return new F();
+	}
+# Define multiple properties
+snippet props
+	var ${1:my_object} = Object.defineProperties(
+		${2:new Object()},
+		{
+			${3:property} : {
+				get : function $1_$3_getter() {
+					// getter code
+				},
+				set : function $1_$3_setter(value) {
+					// setter code
+				},
+				value        : ${4:value},
+				writeable    : ${5:boolean},
+				enumerable   : ${6:boolean},
+				configurable : ${0:boolean}
+			}
+		}
+	);
+# Define single property
+snippet prop
+	Object.defineProperty(
+		${1:object},
+		'${2:property}',
+		{
+			get : function $1_$2_getter() {
+				// getter code
+			},
+			set : function $1_$2_setter(value) {
+				// setter code
+			},
+			value        : ${3:value},
+			writeable    : ${4:boolean},
+			enumerable   : ${5:boolean},
+			configurable : ${0:boolean}
+		}
+	);
+# Documentation
+# docstring
+snippet /**
+	/**
+	 * ${0:description}
+	 *
+	 */
+snippet @par
+	@param {${1:type}} ${2:name} ${0:description}
+snippet @ret
+	@return {${1:type}} ${0:description}
+# JSON.parse
+snippet jsonp
+	JSON.parse(${0:jstr});
+# JSON.stringify
+snippet jsons
+	JSON.stringify(${0:object});
+# DOM selectors
+# Get elements
+snippet get
+	getElementsBy${1:TagName}('${0}')
+# Get element
+snippet gett
+	getElementBy${1:Id}('${0}')
+# Elements by class
+snippet by.
+	${1:document}.getElementsByClassName('${0:class}')
+# Element by ID
+snippet by#
+	${1:document}.getElementById('${0:element ID}')
+# Query selector
+snippet qs
+	${1:document}.querySelector('${0:CSS selector}')
+# Query selector all
+snippet qsa
+	${1:document}.querySelectorAll('${0:CSS selector}')
+# Debugging
+snippet de
+	debugger;
+snippet cl "console.log"
+	console.log(${0});
+snippet cd "console.debug"
+	console.debug(${0});
+snippet ce "console.error"
+	console.error(${0});
+snippet cw "console.warn"
+	console.warn(${0});
+snippet ci "console.info"
+	console.info(${0});
+snippet ct "console.trace"
+	console.trace(${0:label});
+snippet ctime "console.time ... console.timeEnd"
+	console.time("${1:label}");
+	${0:${VISUAL}}
+	console.timeEnd("$1");
+snippet ctimestamp "console.timeStamp"
+	console.timeStamp("${1:label}");
+snippet ca "console.assert"
+	console.assert(${1:expression}, ${0:obj});
+snippet cclear "console.clear"
+	console.clear();
+snippet cdir "console.dir"
+	console.dir(${0:obj});
+snippet cdirx "console.dirxml"
+	console.dirxml(${1:object});
+snippet cgroup "console.group"
+	console.group("${1:label}");
+	${0:${VISUAL}}
+	console.groupEnd();
+snippet cgroupc "console.groupCollapsed"
+	console.groupCollapsed("${1:label}");
+	${0:${VISUAL}}
+	console.groupEnd();
+snippet cprof "console.profile"
+	console.profile("${1:label}");
+	${0:${VISUAL}}
+	console.profileEnd();
+snippet ctable "console.table"
+	console.table(${1:"${2:value}"});
+snippet clstr "console.log stringified"
+	console.log(JSON.stringify(${0}, null, 2));
+# Misc
+snippet us
+	'use strict';
+# setTimeout function
+snippet timeout
+	setTimeout(function () {${0}}${2}, ${1:10});
+snippet const
+	const ${1} = ${0};
+snippet constn
+	const ${1} = new ${0};
+snippet let
+	let ${1} = ${0};
+snippet im "import xyz from 'xyz'"
+	import ${1} from '${2:$1}';
+snippet imas "import * as xyz from 'xyz'"
+	import * as ${1} from '${2:$1}';
+snippet imm "import { member } from 'xyz'"
+	import { ${1} } from '${2}';
+snippet cla
+	class ${1} {
+		${0:${VISUAL}}
+	}
+snippet clax
+	class ${1} extends ${2} {
+		${0:${VISUAL}}
+	}
+snippet clac
+	class ${1} {
+		constructor(${2}) {
+			${0:${VISUAL}}
+		}
+	}
+snippet foro "for (const prop of object}) { ... }"
+	for (const ${1:prop} of ${2:object}) {
+		${0:$1}
+	}
+snippet forl "for (let prop of object}) { ... }"
+	for (let ${1:prop} of ${2:object}) {
+		${0:$1}
+	}
+snippet fun*
+	function* ${1:function_name}(${2}) {
+		${0:${VISUAL}}
+	}
+snippet c=>
+	const ${1:function_name} = (${2}) => {
+		${0:${VISUAL}}
+	}
+snippet ca=>
+	const ${1:function_name} = async (${2}) => {
+		${0:${VISUAL}}
+	}
+snippet caf
+	const ${1:function_name} = (${2}) => {
+		${0:${VISUAL}}
+	}
+snippet casf
+	const ${1:function_name} = async (${2}) => {
+		${0:${VISUAL}}
+	}
+snippet =>
+	(${1}) => {
+		${0:${VISUAL}}
+	}
+snippet af "() =>"
+	(${1}) => ${0:${VISUAL}}
+snippet afb "() => {}"
+	(${1}) => {
+		${0:${VISUAL}}
+	}
+snippet sym
+	const ${1} = Symbol('${0}');
+snippet ed
+	export default ${0}
+snippet ${
+	\${${1}}${0}
+snippet as "async"
+	async ${0}
+snippet aw "await"
+	await ${0:${VISUAL}}
