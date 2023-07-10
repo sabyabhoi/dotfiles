@@ -13,8 +13,8 @@
  (rear-context-string . "D functionality\n")
  (position . 4639))
 ("org-capture-last-stored"
- (filename . "~/workspace/userfiles/orgfiles/gyaan/20230707192839-startup.org")
+ (filename . "~/workspace/userfiles/orgfiles/gyaan/20230708161241-nix_package_manager.org")
  (front-context-string . "#+filetags: :CS:")
- (rear-context-string . "+title: Startup\n")
- (position . 85))
+ (rear-context-string . "Package Manager\n")
+ (position . 97))
 )

@@ -13,8 +13,8 @@
  (rear-context-string . "D functionality\n")
  (position . 4639))
 ("org-capture-last-stored"
- (filename . "~/workspace/userfiles/orgfiles/gyaan/20230706193540-artificial_neural_network.org")
+ (filename . "~/workspace/userfiles/orgfiles/gyaan/20230707192839-startup.org")
  (front-context-string . "#+filetags: :CS:")
- (rear-context-string . " Neural Network\n")
- (position . 103))
+ (rear-context-string . "+title: Startup\n")
+ (position . 85))
 )
