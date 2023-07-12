@@ -15,12 +15,14 @@ pulseaudio-bluetooth
 pavucontrol
 nnn
 r
-steghide
 xdg-utils
 xorg
 deepin-screenshot
 brightnessctl
 zathura
 zathura-pdf-mupdf
+vim
 neovim
 python-pip
+dunst
+tealdeer
