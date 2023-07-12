@@ -1,7 +1,0 @@
-:PROPERTIES:
-:ID:       db3c6eee-d1d0-4846-ab62-20ef8a1b2192
-:END:
-#+title: Prim's Algorithm
-#+filetags: :CS:
-
-It is an algorithm used to find the [[id:11bbbc86-d34c-4800-8e1e-422c902fa992][Minimum weight spanning tree]] in a graph.

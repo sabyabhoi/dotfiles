@@ -1,1 +1,0 @@
-#s(hash-table size 65 test equal rehash-size 1.5 rehash-threshold 0.8125 data ("/home/cognusboi/workspace/userfiles/programming/c++/dsa/searching/aggressive_cows.cpp" ((:point 933)) "/home/cognusboi/workspace/userfiles/programming/c++/dsa/binary_trees/top_view.cpp" ((:point 298)) "/home/cognusboi/workspace/userfiles/programming/c++/dsa/recursion/n_queens.cpp" ((:point 994))))

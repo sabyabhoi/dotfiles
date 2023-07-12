@@ -758,3 +758,27 @@
     (kbd "h") 'dired-up-directory
     (kbd "l") 'dired-find-file)
 ;;  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(vterm eterm-256color ox-reveal org-journal org-roam-ui org-roam org-ref org-bullets visual-fill-column cdlatex auctex svelte-mode web-mode prettier-js ess python-mode java-snippets lsp-java haskell-mode zig-mode lua-mode go-mode rustic nasm-mode dap-mode emmet-mode yasnippet lsp-ui lsp-treemacs lsp-mode rainbow-delimiters doom-themes all-the-icons doom-modeline nordic-night-theme hydra general helpful company-box company which-key dashboard consult marginalia orderless vertico magit rg projectile evil-collection evil posframe openwith no-littering use-package))
+ '(warning-suppress-types '((org-roam))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-block ((t (:inherit fixed-pitch))))
+ '(org-code ((t (:inherit (shadow fixed-pitch)))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+ '(org-link ((t (:foreground "royal blue" :underline t))))
+ '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-property-value ((t (:inherit fixed-pitch))) t)
+ '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+ '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+ '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))

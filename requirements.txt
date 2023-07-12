@@ -1,4 +1,5 @@
 base-devel
+setxkbmap -option caps:swapescape
 stow
 git
 i3lock
@@ -10,8 +11,8 @@ nvidia-utils
 nvidia-settings
 nvtop
 pipewire
+pipewire-pulse
 wireplumber
-pulseaudio-bluetooth
 pavucontrol
 nnn
 r
@@ -33,3 +34,8 @@ keepassxc
 fish
 gum
 xclip
+cronie
+mpv
+libreoffice
+lxappearance
+discord

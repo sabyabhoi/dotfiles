@@ -1,1 +1,1 @@
-("~/workspace/orgfiles/")
+("~/workspace/orgfiles/" "~/workspace/dotfiles/")

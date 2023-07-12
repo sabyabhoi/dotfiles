@@ -1,9 +1,0 @@
-:PROPERTIES:
-:ID:       c495cc8f-a91f-426e-b5fa-0237f21253fa
-:END:
-#+title: Spanning Trees
-#+filetags: :CONCEPT:CS:
-
-A spanning tree is a tree formed using a graph =G = (V, E)= such that it has =V= vertices and =V - 1= edges.
-
-*Note*: All trees with =V= vertices have =V - 1= edges.

@@ -18,7 +18,7 @@ require('mason-nvim-dap').setup {
   },
 }
 
-require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+--require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 
 vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
 vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
@@ -61,7 +61,7 @@ dap.listeners.before.event_exited['dapui_config'] = dapui.close
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
-  command = '/home/cognusboi/workspace/instdir/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+  command = '/home/cognusboi/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
 }
 
 dap.configurations.cpp = {

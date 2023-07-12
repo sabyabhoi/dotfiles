@@ -1,8 +1,0 @@
-:PROPERTIES:
-:ID:       2cd3467d-e897-4a9f-992f-08aed6428a9d
-:END:
-#+title: Kruskal's Algorithm
-#+filetags: :CS:
-
-It is a [[id:f5b392bd-7d43-481d-8873-1a7e25b5596d][greedy algorithm]] used to find the [[id:11bbbc86-d34c-4800-8e1e-422c902fa992][Minimum weight spanning tree]] in a graph.
-

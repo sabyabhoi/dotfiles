@@ -71,4 +71,6 @@ xset r rate 200 25
 
 $SCRIPTS/takeabreak.sh &
 
+emacs --daemon
+
 exec qtile start
