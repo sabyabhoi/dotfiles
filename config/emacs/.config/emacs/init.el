@@ -57,6 +57,8 @@
                   (display-line-numbers-mode 0) (setq global-hl-line-mode nil)
                   )))
 
+(setq workdir "/home/cognusboi/workspace/")
+
 (require 'package)
 
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -102,6 +104,9 @@
 			   '(file))))
   )
 
+(use-package posframe
+  :ensure t)
+
 (use-package evil
   :config (evil-mode 1)
   :init
@@ -124,8 +129,8 @@
   ("C-c p" . projectile-command-map)
   :init
   (use-package rg)
-  (when (file-directory-p "~/workspace/userfiles/programming")
-    (setq projectile-project-search-path '("~/workspace/userfiles/programming")))
+  (when (file-directory-p "~/workspace/programming")
+    (setq projectile-project-search-path '("~/workspace/programming")))
   (setq projectile-switch-project-action #'projectile-dired))
 
 (use-package magit
@@ -228,14 +233,15 @@
   (cb/leader-key-def
     "b" '(consult-buffer :which-key "Find File")
     "." '(find-file :which-key "Find File")
-    "og" '(lambda () (interactive) (dired "~/workspace/userfiles/orgfiles/guides/"))
+    "og" '(lambda () (interactive) (dired (concat workdir  "orgfiles/guides/")))
     "oa" '(org-agenda :which-key "Org Agenda")
+    "oj" '(lambda () (interactive) (dired (concat workdir  "orgfiles/journal/")))
     "oc" '(org-capture :which-key "Org Capture Prompt")
     "mds" '(org-schedule :which-key "Agenda Schedule")
     "mdd" '(org-deadline :which-key "Agenda Deadline")
     "oe" '(lambda () (interactive) (find-file
-                                    (expand-file-name "~/workspace/userfiles/orgfiles/guides/Emacs_config.org")))
-    "c" '(lambda () (interactive) (dired "~/workspace/userfiles/college/3-2/"))
+                                    (expand-file-name (concat workdir  "orgfiles/guides/Emacs_config.org"))))
+    "c" '(lambda () (interactive) (dired (concat workdir "college/3-2/")))
     "rn" 'lsp-rename
 	"h" 'hydra-text-scale/body
 	)
@@ -326,8 +332,6 @@
 ;;    (kbd "<f9>") 'gud-break
 ;;    (kbd "S-<f9>") 'gud-remove
 ;;    (kbd "<f5>") 'gud-next)
-
-(load-file "~/workspace/userfiles/programming/Lisp/cc-mode/main.el")
 
 (use-package nasm-mode
   :ensure t
@@ -560,10 +564,10 @@
   :custom
   (org-agenda-span 10)
   (org-deadline-warning-days 7)
-  (org-directory "~/workspace/userfiles/orgfiles/guides")
+  (org-directory (concat workdir "orgfiles/guides"))
   (org-agenda-files '("inbox.org"
-					  "repeaters.org"
-					  "/home/cognusboi/workspace/userfiles/college/3-2/academics.org"))
+                      "repeaters.org"
+                      ("~/workspace/college/3-2/academics.org")))
   (org-agenda-start-with-log-mode t)
   (org-use-speed-commands t)
   (org-tags-column 5)
@@ -591,7 +595,7 @@
                   (org-level-7 . 1.0)
                   (org-level-8 . 1.0)))
     (set-face-attribute (car face) nil
-                        :font "FiraCode Nerd Font Mono"
+                        :font "JetBrainsMono Nerd Font"
                         :weight 'bold
                         :height (cdr face))))
 
@@ -649,8 +653,7 @@
 
 (defun cb/org-babel-tangle-config()
   (when (string-equal (buffer-file-name)
-                      (expand-file-name
-                       "~/workspace/userfiles/orgfiles/guides/Emacs_config.org"))
+                      (expand-file-name (concat workdir "orgfiles/guides/Emacs_config.org")))
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
 
@@ -659,14 +662,14 @@
 (use-package org-ref
   :defer 0
   :config
-  (setq bibtex-completion-bibliography '("~/workspace/userfiles/college/uni.bib"))
+  (setq bibtex-completion-bibliography '((concat workdir "college/uni.bib")))
   (setq org-latex-pdf-process (list "latexmk -pdflatex=xelatex -shell-escape -f -pdf %f"))
   )
 
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "~/workspace/userfiles/orgfiles/gyaan")
+  (org-roam-directory (concat workdir  "orgfiles/gyaan"))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert))
@@ -692,13 +695,13 @@
         '(
 		  ("t" "Todo")
 		  ("tg" "General" entry
-           (file "~/workspace/userfiles/orgfiles/guides/inbox.org")
+           (file "~/workspace/orgfiles/guides/inbox.org")
            "* TODO %^{Enter Todo}\n SCHEDULED: %^t \n %?")
 		  ("ta" "Academics" entry
-		   (file "~/workspace/userfiles/college/3-2/academics.org")
+		   (file "~/workspace/college/3-2/academics.org")
 		   "* TODO %^{Enter Todo}\n %^{Choose|SCHEDULED|DEADLINE}: %^t \n %?")
 		  ("b" "Book Entry" entry
-		   (file "~/workspace/userfiles/orgfiles/journal/reading_list.org")
+		   (file "~/workspace/orgfiles/journal/reading_list.org")
 		   "* %^{Enter Name of the Book}
 :PROPERTIES:
 :AUTHOR: %^{Enter Name of the Author}
@@ -713,7 +716,7 @@
 (use-package org-journal
   :ensure t
   :custom
-  (org-journal-dir "~/workspace/userfiles/orgfiles/journal/")
+  (org-journal-dir (concat workdir "orgfiles/journal/"))
   (org-journal-date-prefix "#+TITLE: ")
   (org-journal-date-format "%a, %Y-%m-%d")
   (org-journal-file-format "%Y-%m-%d.org")
@@ -750,32 +753,6 @@
   :config
   (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
   (setq vterm-max-scrollback 10000))
-
-(use-package ligature
-  :load-path "~/workspace/userfiles/programming/Lisp/ligature.el/"
-  :config
-  ;; Enable the "www" ligature in every possible major mode
-  (ligature-set-ligatures 't '("www"))
-  ;; Enable traditional ligature support in eww-mode, if the
-  ;; `variable-pitch' face supports it
-  (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-  ;; Enable all Cascadia Code ligatures in programming modes
-  (ligature-set-ligatures 't '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-                               ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-                               "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-                               "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-                               "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-                               "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-                               "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-                               "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-                               ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-                               "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-                               "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-                               "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-                               "\\\\" "://"))
-  ;; Enables ligature checks globally in all buffers. You can also do it
-  ;; per mode with `ligature-mode'.
-  (global-ligature-mode t))
 
 (evil-define-key 'normal dired-mode-map
     (kbd "h") 'dired-up-directory

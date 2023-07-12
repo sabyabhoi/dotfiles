@@ -1,6 +1,5 @@
 base-devel
 stow
-i3-gaps
 git
 i3lock
 firefox
@@ -10,13 +9,15 @@ nvidia
 nvidia-utils
 nvidia-settings
 nvtop
-pulseaudio
+pipewire
+wireplumber
 pulseaudio-bluetooth
 pavucontrol
 nnn
 r
 xdg-utils
 xorg
+xorg-xinit
 deepin-screenshot
 brightnessctl
 zathura
@@ -26,3 +27,9 @@ neovim
 python-pip
 dunst
 tealdeer
+qtile
+rofi
+keepassxc
+fish
+gum
+xclip

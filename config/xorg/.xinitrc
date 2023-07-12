@@ -71,6 +71,4 @@ xset r rate 200 25
 
 $SCRIPTS/takeabreak.sh &
 
-$XDG_CONFIG_HOME/polybar/launch.sh --forest
-
-exec i3
+exec qtile start

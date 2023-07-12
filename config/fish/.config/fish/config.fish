@@ -11,7 +11,7 @@ export NNN_PLUG='p:preview-tabbed;f:finder'
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_TMPFILE="/tmp/nnn.tmp"
 
-set userfiles /home/cognusboi/workspace/userfiles
+set userfiles /home/cognusboi/workspace
 
 alias r=ranger
 alias R='radian'

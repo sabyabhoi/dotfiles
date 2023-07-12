@@ -52,7 +52,7 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "e", lazy.spawn("emacsclient -c")),
     Key(["control"], "space", lazy.spawn("dunstctl close")),
-    Key([mod], "d", lazy.spawn("/home/cognusboi/.config/rofi/launchers/type-2/launcher.sh")),
+    Key([mod], "d", lazy.spawn("rofi -show run")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%")),
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
