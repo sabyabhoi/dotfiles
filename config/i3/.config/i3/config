@@ -10,13 +10,13 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 client.focused          #4c7899 #285577 #ffffff #3d3d3d  #3d3d3d
 for_window [class="Android Emulator - Pixel_XL_API_30:5554"] floating enable
 for_window [class="Godot_Engine"] floating enable
 for_window [class="Emulator"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="wihotspot-gui"] floating enable
 
 gaps inner 10
 gaps outer 5
@@ -62,7 +62,7 @@ bindsym $mod+Return exec --no-startup-id kitty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -font "Iosevka 14" -show run
+bindsym $mod+d exec --no-startup-id /home/cognusboi/.config/rofi/launchers/type-2/launcher.sh 
 #bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 #$mod+d
@@ -107,7 +107,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+bindsym $mod+t layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -161,6 +161,10 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# move workspaces between monitors
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+l move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -204,4 +208,15 @@ bindsym --release Ctrl+space exec --no-startup-id "dunstctl close"
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh --forest
 #exec --no-startup-id nitrogen --restore
 #exec --no-startup-id picom --config=/home/cognusboi/.config/picom/picom.conf 
+bar {
+	status_command /usr/bin/bumblebee-status \
+						-m title pulseout indicator battery datetime system \
+						-p pulseout.au tostart=true datetime.format="%A %d/%m/%y %I:%M %p" indicator.include="capslock" \
+						-t iceberg-powerline
+	position top
+	font pango:RobotoMono Nerd Font 12
+}
+
 exec_always --no-startup-id ~/workspace/instdir/xborder/xborders --border-width 1 --border-red 86 --border-green 95 --border-blue 137
+
+exec_always --no-startup-id xrandr --output HDMI-1 --mode "1920x1080" --rate 75

@@ -13,6 +13,7 @@ vim.wo.number = true
 
 vim.o.nu = true
 vim.o.rnu = true
+vim.o.expandtab = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
@@ -49,3 +50,5 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+vim.opt_local.formatoptions:remove({ 'r', 'o' })

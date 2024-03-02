@@ -34,7 +34,7 @@ export XDG_RUNTIME_DIR=$(mktemp -d)
 export TERMINAL=kitty
 export SCRIPTS=/home/cognusboi/scripts
 export SHELL=/bin/fish
-export BROWSER=brave
+export BROWSER=firefox
 export EDITOR=nvim
 export VISUAL=nvim
 
@@ -71,6 +71,7 @@ xset r rate 200 25
 
 $SCRIPTS/takeabreak.sh &
 
-emacs --daemon
+emacs --daemon &
+mpd &
 
 exec qtile start

@@ -1,5 +1,4 @@
 base-devel
-setxkbmap -option caps:swapescape
 stow
 git
 i3lock
@@ -39,3 +38,13 @@ mpv
 libreoffice
 lxappearance
 discord
+imagemagick
+feh
+ttf-jetbrains-mono-nerd
+ttf-roboto-mono-nerd
+emacs
+python-mpd2
+nodejs 
+npm
+arc-gtk-theme
+gucharmap

@@ -19,12 +19,12 @@
   (toggle-read-only))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
-(setq font-name "JetBrainsMono Nerd Font"
-      font-height 170)
+(setq font-name "RobotoMono Nerd Font"
+      font-height 158)
 (defun cb/set-font-faces ()
   (dolist (face '(default fixed-pitch))
     (set-face-attribute `,face nil :font font-name :height font-height :weight 'normal))
-  (set-face-attribute 'variable-pitch nil :font "JetBrainsMono Nerd Font" :height 170 :weight 'light)
+  (set-face-attribute 'variable-pitch nil :font "RobotoMono Nerd Font" :height 158 :weight 'normal)
   ;;    (let ((font-name "Iosevka Nerd Font Mono") (font-height 174))
   ;;      )
   )
@@ -272,7 +272,7 @@
 (use-package doom-themes
   :ensure t
   :init
-  (load-theme 'doom-tomorrow-night t))
+  (load-theme 'doom-one t))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -517,16 +517,14 @@
   :load-path "/home/cognusboi/workspace/instdir/emacs-prisma-mode"
   :hook ((prisma-mode . lsp-deferred)))
 
-(setq LaTeX-math-abbrev-prefix ";")
+(setq LaTeX-math-abbrev-prefix "`")
 (use-package auctex
   :ensure t
   :defer t
   :config
   )
 (use-package cdlatex
-  :ensure t :defer t
-  :bind
-  ((";" . cdlatex-math-symbol)))
+  :ensure t :defer t)
 
 (use-package ess
   :ensure t)
@@ -567,7 +565,8 @@
   (org-directory (concat workdir "orgfiles/guides"))
   (org-agenda-files '("inbox.org"
                       "repeaters.org"
-                      ("~/workspace/college/3-2/academics.org")))
+                      "~/workspace/college/3-2/academics.org"
+                      ))
   (org-agenda-start-with-log-mode t)
   (org-use-speed-commands t)
   (org-tags-column 5)
@@ -697,10 +696,10 @@
 		  ("tg" "General" entry
            (file "~/workspace/orgfiles/guides/inbox.org")
            "* TODO %^{Enter Todo}\n SCHEDULED: %^t \n %?")
-		  ("ta" "Academics" entry
-		   (file "~/workspace/college/3-2/academics.org")
-		   "* TODO %^{Enter Todo}\n %^{Choose|SCHEDULED|DEADLINE}: %^t \n %?")
-		  ("b" "Book Entry" entry
+          ("ta" "Academics" entry
+           (file "~/workspace/college/3-2/academics.org")
+           "* TODO %^{Enter Todo}\n %^{Choose|SCHEDULED|DEADLINE}: %^t \n %?")
+          ("b" "Book Entry" entry
 		   (file "~/workspace/orgfiles/journal/reading_list.org")
 		   "* %^{Enter Name of the Book}
 :PROPERTIES:
@@ -726,7 +725,7 @@
 (use-package ox-reveal
   :custom
   (org-reveal-root "/home/cognusboi/workspace/instdir/reveal.js")
-  (org-reveal-theme "blood")
+  (org-reveal-theme "moon")
   (org-reveal-init-options "transition: \'none\'")
   )
 
@@ -758,27 +757,3 @@
     (kbd "h") 'dired-up-directory
     (kbd "l") 'dired-find-file)
 ;;  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(vterm eterm-256color ox-reveal org-journal org-roam-ui org-roam org-ref org-bullets visual-fill-column cdlatex auctex svelte-mode web-mode prettier-js ess python-mode java-snippets lsp-java haskell-mode zig-mode lua-mode go-mode rustic nasm-mode dap-mode emmet-mode yasnippet lsp-ui lsp-treemacs lsp-mode rainbow-delimiters doom-themes all-the-icons doom-modeline nordic-night-theme hydra general helpful company-box company which-key dashboard consult marginalia orderless vertico magit rg projectile evil-collection evil posframe openwith no-littering use-package))
- '(warning-suppress-types '((org-roam))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-block ((t (:inherit fixed-pitch))))
- '(org-code ((t (:inherit (shadow fixed-pitch)))))
- '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
- '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
- '(org-link ((t (:foreground "royal blue" :underline t))))
- '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- '(org-property-value ((t (:inherit fixed-pitch))) t)
- '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
- '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
- '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))

@@ -17,9 +17,19 @@ keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
 
 keymap('n', '<Leader>f', vim.lsp.buf.format, opts)
+keymap('v', '<Leader>f', vim.lsp.buf.format, opts)
 
 keymap('n', '<Leader>n', ':NvimTreeToggle<CR>', opts)
 keymap('n', '<Leader>o', ':e /home/cognusboi/.config/nvim/<CR>', opts)
 
 keymap('n', 'H', ':BufferLineCyclePrev<CR>', opts)
 keymap('n', 'L', ':BufferLineCycleNext<CR>', opts)
+
+keymap('n','<c-k>', ':wincmd k<CR>', opts)
+keymap('n','<c-j>', ':wincmd j<CR>', opts)
+keymap('n','<c-h>', ':wincmd h<CR>', opts)
+keymap('n','<c-l>', ':wincmd l<CR>', opts)
+
+keymap('n', '<Leader>gr', ':Gitsigns reset_hunk<CR>', opts)
+keymap('n', '<Leader>cr', ':CompetiTest run<CR>', opts)
+keymap('n', '<Leader>ce', ':CompetiTest edit_testcase<CR>', opts)
