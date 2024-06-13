@@ -10,7 +10,7 @@ null_ls.setup {
   sources = {
     formatting.prettier.with { extra_args = {'--single-quote','--jsx-single-quote'} },
     formatting.stylua,
-    formatting.yapf,
+    formatting.ruff,
     diagnostics.ruff,
   },
 }

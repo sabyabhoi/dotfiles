@@ -1,3 +1,0 @@
-#!/usr/bin/sh
-
-shuf -n 1 ~/workspace/userfiles/Media/Docs/wordlist

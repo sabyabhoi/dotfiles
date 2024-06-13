@@ -9,6 +9,7 @@ snippet cc "Competitive Coding Template"
   #define FOR(i, s, n) for(int i = (s); i < (n); ++i)
   #define int long long int
   #define sz(a) (int)a.size()
+  #define all(a) a.begin(), a.end()
   
   using namespace std;
   using namespace __gnu_pbds;
@@ -25,6 +26,7 @@ snippet cc "Competitive Coding Template"
   typedef vector<vector<string>> vvs;
   typedef tree<pair<int, int>, null_type, less<pair<int, int>>, rb_tree_tag, tree_order_statistics_node_update > pbds; // find_by_order, order_of_key
   const ll MOD = 1e9 + 7;
+  const ll INF = LONG_LONG_MAX;
 
   ll mod_add(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a + b) % m) + m) % m;}
   ll mod_mul(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a * b) % m) + m) % m;}
@@ -64,6 +66,153 @@ snippet cc "Competitive Coding Template"
   	while(t--) solve();
     return 0;
   }
+
+snippet trie "Trie"
+  struct Node {
+    int endingHere, endingBelow;
+    vi children;
+  
+    Node() {
+      endingHere = 0;
+      endingBelow = 0;
+      children = vi(26, -1);
+    }
+  };
+  
+  struct Trie {
+    int root;
+    vector<Node> nodes;
+  
+    Trie() {
+      root = 0;
+      nodes.emplace_back();
+    }
+  
+    void insert(const string &s) {
+      int curr = root;
+  
+      for (char c : s) {
+        int i = c - 'a';
+        if (nodes[curr].children[i] == -1) {
+          nodes[curr].children[i] = sz(nodes);
+          nodes.emplace_back();
+        }
+        nodes[curr].endingBelow++;
+  
+        curr = nodes[curr].children[i];
+      }
+      nodes[curr].endingHere++;
+    }
+  
+    int search(const string &s, bool prefix = false) {
+      int curr = root;
+      for (char c : s) {
+        int i = c - 'a';
+        if (nodes[curr].children[i] == -1)
+          return 0;
+  
+        curr = nodes[curr].children[i];
+      }
+      return (prefix * nodes[curr].endingBelow) + nodes[curr].endingHere;
+    }
+  };
+
+snippet hashing "Hashing structure"
+  struct Hashing {
+    string s;
+    ll p = 30;
+    ll m = 1e9 + 7;
+    int n;
+    vector<ll> prefixHash;
+    vector<ll> powersOfP;
+    vector<ll> inversePowersOfP;
+    Hashing(string queryString) {
+      s = queryString;
+      n = s.size();
+      prefixHash.resize(n);
+      powersOfP.resize(n);
+      inversePowersOfP.resize(n);
+      calculatePowersAndInversePowersOfP();
+      calculatePrefixHashes();
+    }
+    void calculatePowersAndInversePowersOfP() { // O(n)
+      ll currentPower = 1;
+      for (int i = 0; i < n; i++) {
+        powersOfP[i] = currentPower;
+        currentPower = (currentPower * p) % m;
+      }
+      inversePowersOfP[n - 1] = mod_inv(powersOfP[n - 1], m);
+      for (int i = n - 2; i >= 0; i--) {
+        inversePowersOfP[i] = (inversePowersOfP[i + 1] * p) % m;
+      }
+    }
+    void calculatePrefixHashes() {
+      ll hashSoFar = 0;
+      for (int i = 0; i < n; i++) {
+        hashSoFar = (hashSoFar + (s[i] - 'a' + 1) * powersOfP[i]) % m;
+        prefixHash[i] = hashSoFar;
+      }
+    }
+  
+    ll substringHash(int l, int r) { // O(1)
+      ll val1 = prefixHash[r];
+      ll val2 = l > 0 ? prefixHash[l - 1] : 0LL;
+      return ((val1 - val2 + m) * inversePowersOfP[l]) % m;
+    }
+  };
+
+snippet hashing2 ""
+  struct Hashing {
+    string s;
+    int n;
+    int primes;
+    vector<ll> hashPrimes = {1000000009, 100000007};
+    const ll base = 31;
+    vector<vector<ll>> hashValues;
+    vector<vector<ll>> powersOfBase;
+    vector<vector<ll>> inversePowersOfBase;
+    Hashing(string a) {
+      primes = sz(hashPrimes);
+      hashValues.resize(primes);
+      powersOfBase.resize(primes);
+      inversePowersOfBase.resize(primes);
+      s = a;
+      n = s.length();
+      for (int i = 0; i < sz(hashPrimes); i++) {
+        powersOfBase[i].resize(n + 1);
+        inversePowersOfBase[i].resize(n + 1);
+        powersOfBase[i][0] = 1;
+        for (int j = 1; j <= n; j++) {
+          powersOfBase[i][j] = (base * powersOfBase[i][j - 1]) % hashPrimes[i];
+        }
+        inversePowersOfBase[i][n] = mod_inv(powersOfBase[i][n], hashPrimes[i]);
+        for (int j = n - 1; j >= 0; j--) {
+          inversePowersOfBase[i][j] =
+              mod_mul(inversePowersOfBase[i][j + 1], base, hashPrimes[i]);
+        }
+      }
+      for (int i = 0; i < sz(hashPrimes); i++) {
+        hashValues[i].resize(n);
+        for (int j = 0; j < n; j++) {
+          hashValues[i][j] =
+              ((s[j] - 'a' + 1LL) * powersOfBase[i][j]) % hashPrimes[i];
+          hashValues[i][j] =
+              (hashValues[i][j] + (j > 0 ? hashValues[i][j - 1] : 0LL)) %
+              hashPrimes[i];
+        }
+      }
+    }
+    vector<ll> substringHash(int l, int r) {
+      vector<ll> hash(primes);
+      for (int i = 0; i < primes; i++) {
+        ll val1 = hashValues[i][r];
+        ll val2 = l > 0 ? hashValues[i][l - 1] : 0LL;
+        hash[i] = mod_mul(mod_sub(val1, val2, hashPrimes[i]),
+                          inversePowersOfBase[i][l], hashPrimes[i]);
+      }
+      return hash;
+    }
+  };
 
 snippet bt "Binary Tree"
   struct Node {
@@ -142,7 +291,7 @@ snippet bt "Binary Tree"
     return root;
   }
 
-snippet trie "Trie Data Structure"
+snippet trie1 "Trie Data Structure"
 	struct Trie {
 		Trie *children[26];
 		bool end;
@@ -275,3 +424,45 @@ snippet binexp "Binary Exponentiation"
 snippet fileio "File IO"
 	freopen("$1.in", "r", stdin);
 	freopen("$1.out", "w", stdout);
+
+snippet dsu "Union Find AKA DSU"
+  class DSU {
+    int n;
+  
+  public:
+    vi parent;
+    DSU(int sz) : n(sz), parent(vi(sz, -1)) {}
+  
+    int find(int x) {
+      while (parent[x] >= 0)
+        x = parent[x];
+      return x;
+    }
+  
+    void takeUnion(int a, int b) {
+      a = find(a);
+      b = find(b);
+      if (a != b) {
+        if (parent[a] > parent[b])
+          swap(a, b);
+        parent[a] += parent[b];
+        parent[b] = a;
+      }
+    }
+  };
+
+snippet spf "Smallest Prime Factor"
+  const int N = 1e5 + 1;
+  vi spf(N + 1);
+  
+  void init_spf() {
+    for (int i = 0; i <= N; ++i)
+      spf[i] = i;
+  
+    for (int i = 2; i <= N; ++i) {
+      if (spf[i] != i)
+        continue;
+      for (int j = i * i; j <= N; j += i)
+        spf[j] = min(spf[j], i);
+    }
+  }

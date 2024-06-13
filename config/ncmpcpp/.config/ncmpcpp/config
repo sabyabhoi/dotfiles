@@ -1,4 +1,4 @@
-mpd_music_dir = "~/workspace/userfiles/Media/Music"  
+mpd_music_dir = "/home/cognusboi/workspace/Media/Music"  
 ncmpcpp_directory  = ~/.config/ncmpcpp
 mpd_host = "localhost"
 mpd_port = "6600" 

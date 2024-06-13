@@ -52,3 +52,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 vim.opt_local.formatoptions:remove({ 'r', 'o' })
+
+vim.cmd("au BufRead,BufNewFile *.typ set filetype=typst")
+vim.cmd("au BufRead,BufNewFile *.mdx set filetype=astro")
+

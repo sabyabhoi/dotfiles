@@ -40,6 +40,9 @@ require('lazy').setup({
   },
 
   {
+    'onsails/lspkind.nvim',
+  },
+  {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -109,6 +112,13 @@ require('lazy').setup({
     end,
   },
   {
+    'tanvirtin/monokai.nvim',
+    priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme 'monokai'
+    end,
+  },
+  {
     'akinsho/bufferline.nvim',
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
@@ -127,7 +137,7 @@ require('lazy').setup({
         icons_enabled = true,
         theme = 'vscode',
         component_separators = '|',
-        section_separators = '',
+        section_separators = { left = '', right = '' },
       },
     },
   },
@@ -179,7 +189,17 @@ require('lazy').setup({
       vim.o.conceallevel = 1
     end,
   },
-
+  {
+      "nvim-treesitter/nvim-treesitter",
+      config = function()
+        -- setup treesitter with config
+      end,
+      dependencies = {
+        -- NOTE: additional parser
+        { "nushell/tree-sitter-nu" },
+      },
+      build = ":TSUpdate",
+  },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     -- NOTE: If you are having trouble with this installation,
@@ -201,17 +221,17 @@ require('lazy').setup({
 
   -- Debugging
   {
-    'mfussenegger/nvim-dap',
-    -- NOTE: And you can specify dependencies as well
-    dependencies = {
-      -- Creates a beautiful debugger UI
-      'rcarriga/nvim-dap-ui',
-
-      -- Installs the debug adapters for you
-      'williamboman/mason.nvim',
-      'jay-babu/mason-nvim-dap.nvim',
-      'mfussenegger/nvim-dap-python',
-    },
+--    'mfussenegger/nvim-dap',
+--    -- NOTE: And you can specify dependencies as well
+--    dependencies = {
+--      -- Creates a beautiful debugger UI
+--      'rcarriga/nvim-dap-ui',
+--
+--      -- Installs the debug adapters for you
+--      'williamboman/mason.nvim',
+--      'jay-babu/mason-nvim-dap.nvim',
+--      'mfussenegger/nvim-dap-python',
+--    },
   },
   {
     'folke/lua-dev.nvim'
@@ -226,17 +246,28 @@ require('lazy').setup({
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {}
   },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    -- config = function()
-    --   require("copilot").setup({
-    --     suggestion = { enabled = false },
-    --     panel = { enabled = false },
-    --   })
-    -- end,
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup({
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --     })
+  --   end,
+  -- },
+  -- {
+  --   "Exafunction/codeium.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "hrsh7th/nvim-cmp",
+  --   },
+  --   config = function()
+  --     require("codeium").setup({
+  --     })
+  --   end
+  -- },
   {
     "zbirenbaum/copilot-cmp",
     config = function()

@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd ~/workspace/userfiles/Media/Docs/journal/
-nvim "$(date "+%a %d-%m-%Y %r").md" 

@@ -1,4 +1,0 @@
-#!/bin/bash
-
-video=$(rofi -dmenu)
-mpv --ytdl-format="best[height<=720]" "$video"

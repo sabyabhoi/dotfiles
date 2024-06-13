@@ -1,0 +1,22 @@
+keybinds {
+  pane {
+    bind "r" { TogglePaneFrames; }
+  }
+}
+
+theme "vscode";
+themes  {
+  vscode  {
+    fg  "#D4D4D4"
+    bg  "#1E1E1E"
+    black  "#1E1E1E"
+    red  "#F44747"
+    green  "#608B4E"
+    yellow  "#DCDCAA"
+    blue  "#569CD6"
+    magenta  "#C586C0"
+    cyan  "#9CDCFE"
+    white  "#D4D4D4"
+    orange  "#CE9178"
+  }
+}

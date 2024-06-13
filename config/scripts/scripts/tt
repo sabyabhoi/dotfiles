@@ -1,7 +1,0 @@
-#!/bin/sh
-
-d=~/workspace/userfiles/college/general
-
-imv $d/TT.png &
-less $d/classes.txt
-

@@ -1,4 +1,0 @@
-#!/bin/sh 
-
-tbl $1 | groff -ms -Tpdf > ${1%.*}.pdf
-
