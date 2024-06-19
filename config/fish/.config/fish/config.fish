@@ -19,23 +19,9 @@ alias r=ranger
 #alias R='radian'
 alias vim=nvim
 alias lg=lazygit
-#alias vms='cd $userfiles/VMs/'
-#alias dots='cd $userfiles/dotfiles/'
-#alias docs='cd $userfiles/Media/Documents'
-#alias orgs='cd $userfiles/orgfiles/'
-#alias pro='cd $userfiles/programming/'
-#alias misc='cd $userfiles/misc/'
-#alias music='cd ~/Music/'
-#alias tock='$userfiles/Downloads/tock/target/release/tock -c -s'
 
 set college $userfiles/college
-#alias col='cd $college/'
-#alias general='cd $college/general'
 
-#alias daa='cd $college/4-2/DAA'
-#alias compilers='cd $college/4-2/Compilers'
-#alias net='cd $college/4-2/Networks'
-#alias fram='cd $college/4-2/FRAM'
 alias cat='bat'
 
 alias m480='mpv --ytdl-format="best[height<=480]"'
@@ -54,4 +40,14 @@ function vterm_printf;
     else
         printf "\e]%s\e\\" "$argv"
     end
+end
+
+function yy
+	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+	yazi $argv --cwd-file="$tmp"
+	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+    echo $cwd
+		cd "$cwd"
+	end
+	rm -f -- "$tmp"
 end
