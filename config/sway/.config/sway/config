@@ -4,6 +4,16 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+for_window [class="^.*"] border pixel 2
+client.focused          #3d3d3d #3d3d3d #3d3d3d #3d3d3d  #3d3d3d
+
+gaps inner 10
+gaps outer 5
+gaps top   5
+
+smart_borders on
+smart_borders no_gaps
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -18,13 +28,12 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-#set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu wofi --show run -G
+# set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
-output * bg /home/cognusboi/workspace/Media/Pictures/wallpapers/astronaut-blue.png fill
+# output * bg /tmp/output.jpg fill
 #
 # Example configuration:
 #
@@ -59,6 +68,12 @@ output * bg /home/cognusboi/workspace/Media/Pictures/wallpapers/astronaut-blue.p
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+input "type:keyboard" {
+    repeat_delay 200
+    repeat_rate 25
+    xkb_options caps:swapescape
+}
+
 ### Key bindings
 #
 # Basics:
@@ -70,7 +85,7 @@ output * bg /home/cognusboi/workspace/Media/Pictures/wallpapers/astronaut-blue.p
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+d exec --no-startup-id rofi -show drun
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -80,7 +95,7 @@ output * bg /home/cognusboi/workspace/Media/Pictures/wallpapers/astronaut-blue.p
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -160,6 +175,19 @@ output * bg /home/cognusboi/workspace/Media/Pictures/wallpapers/astronaut-blue.p
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+l move workspace to output right
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer --increase 10 --allow-boost
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer --decrease 10 --allow-boost
+bindsym XF86AudioMute exec --no-startup-id pamixer --toggle-mute 
+
+bindsym --release XF86MonBrightnessDown exec --no-startup-id "brightnessctl s 10%-"
+bindsym --release XF86MonBrightnessUp exec --no-startup-id "brightnessctl s +10%"
+
+bindsym --release Print exec --no-startup-id "/home/cognusboi/.nix-profile/bin/flameshot gui"
+bindsym --release Ctrl+space exec --no-startup-id "dunstctl close"
+bindsym Print exec grim -g "$(slurp -d)" - | wl-copy
 #
 # Scratchpad:
 #
@@ -201,20 +229,21 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-  swaybar_command waybar
-}
+# bar {
+#     position top
+#
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+#
+#     colors {
+#         statusline #ffffff
+#         background #323232
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
 
-input "type:keyboard" {
-	xkb_options caps:swapescape
-	repeat_delay 200
-	repeat_rate 25
-}
-for_window [class="^.*"] border pixel 0
-client.focused          #4c7899 #285577 #ffffff #3d3d3d  #3d3d3d
-gaps inner 10
-gaps outer 5
-gaps top   5
+exec_always --no-startup-id swww-daemon --format xrgb
+exec_always --no-startup-id /home/cognusboi/programming/python/wallquote/wallpaper-change.sh
 
 include /etc/sway/config.d/*
-
