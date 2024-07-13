@@ -4,6 +4,13 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+corner_radius 10
+
+shadows on
+shadows_on_csd on
+shadow_blur_radius 20
+shadow_color #0000007F
+
 for_window [class="^.*"] border pixel 2
 client.focused          #3d3d3d #3d3d3d #3d3d3d #3d3d3d  #3d3d3d
 
@@ -68,10 +75,14 @@ set $term kitty
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+input "1739:52934:SYNA801A:00_06CB:CEC6_Touchpad" {
+  tap enabled
+}
+
 input "type:keyboard" {
-    repeat_delay 200
-    repeat_rate 25
-    xkb_options caps:swapescape
+  repeat_delay 200
+  repeat_rate 25
+  xkb_options caps:swapescape
 }
 
 ### Key bindings
@@ -176,6 +187,8 @@ input "type:keyboard" {
     # Move focus to the parent container
     bindsym $mod+a focus parent
 
+bindsym $mod+Control+Left move workspace to output left
+bindsym $mod+Control+Right move workspace to output right
 bindsym $mod+Control+h move workspace to output left
 bindsym $mod+Control+l move workspace to output right
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer --increase 10 --allow-boost
@@ -185,7 +198,7 @@ bindsym XF86AudioMute exec --no-startup-id pamixer --toggle-mute
 bindsym --release XF86MonBrightnessDown exec --no-startup-id "brightnessctl s 10%-"
 bindsym --release XF86MonBrightnessUp exec --no-startup-id "brightnessctl s +10%"
 
-bindsym --release Print exec --no-startup-id "/home/cognusboi/.nix-profile/bin/flameshot gui"
+# bindsym --release Print exec --no-startup-id "/home/cognusboi/.nix-profile/bin/flameshot gui"
 bindsym --release Ctrl+space exec --no-startup-id "dunstctl close"
 bindsym Print exec grim -g "$(slurp -d)" - | wl-copy
 #
@@ -225,6 +238,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+set $lock_bg /tmp/output.jpg
+bindsym $mod+End exec swaylock -i $lock_bg
+
 #
 # Status Bar:
 #
@@ -243,7 +259,11 @@ bindsym $mod+r mode "resize"
 #     }
 # }
 
+exec_always --no-startup-id /home/cognusboi/.config/waybar/waybar.sh
 exec_always --no-startup-id swww-daemon --format xrgb
 exec_always --no-startup-id /home/cognusboi/programming/python/wallquote/wallpaper-change.sh
+
+exec swayidle -w \
+         before-sleep 'swaylock -f -c 000000 -i $lock_bg'
 
 include /etc/sway/config.d/*

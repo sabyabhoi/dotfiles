@@ -80,14 +80,6 @@ require('lazy').setup({
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
-      -- See `:help gitsigns.txt`
-      -- signs = {
-      --   add = { text = '+' },
-      --   change = { text = '~' },
-      --   delete = { text = '_' },
-      --   topdelete = { text = '‾' },
-      --   changedelete = { text = '~' },
-      -- },
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
           { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
@@ -98,9 +90,29 @@ require('lazy').setup({
   },
 
   {
+    'metalelf0/jellybeans-nvim',
+    dependencies = 'rktjmp/lush.nvim',
+    config = function()
+      vim.cmd.colorscheme 'jellybeans-nvim'
+    end,
+  },
+  {
+    'chriskempson/base16-vim',
+    config = function()
+      -- vim.cmd.colorscheme 'base16-gruvbox-dark-hard'
+    end,
+  },
+  {
+    'sainnhe/gruvbox-material',
+    priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme 'gruvbox-material'
+    end,
+  },
+  {
     'Mofiqul/vscode.nvim',
     config = function()
-      vim.cmd.colorscheme 'vscode'
+      -- vim.cmd.colorscheme 'vscode'
     end,
   },
   {
@@ -135,7 +147,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'vscode',
+        -- theme = 'jellybeans',
         component_separators = '|',
         section_separators = { left = '', right = '' },
       },
@@ -178,6 +190,16 @@ require('lazy').setup({
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
   -- requirements installed.
+  {
+    'MeanderingProgrammer/markdown.nvim',
+    name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    config = function()
+      require('render-markdown').setup({})
+    end,
+  },
   {
     'vim-latex/vim-latex',
     config = function()

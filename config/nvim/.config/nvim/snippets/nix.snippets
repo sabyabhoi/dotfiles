@@ -58,3 +58,30 @@ snippet flake "Basic Flake"
           };
      };
   }
+
+snippet rflake "Flake for R programming language"
+  {
+    inputs = { nixpkgs.url = "github:nixos/nixpkgs"; };
+  
+    outputs = { self, nixpkgs }:
+      let 
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      RStudio-with-my-packages = pkgs.rstudioWrapper.override{ packages = with pkgs.rPackages; [
+         ggplot2 
+				 tidyr
+				 janitor
+         dplyr 
+         quantmod 
+         forecast 
+         urca
+      ]; };
+      in {
+        devShell.x86_64-linux =
+          pkgs.mkShell { 
+            buildInputs = with pkgs; [
+              R 
+              RStudio-with-my-packages
+            ]; 
+          };
+     };
+  }
