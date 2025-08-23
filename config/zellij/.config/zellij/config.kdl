@@ -2,13 +2,45 @@ keybinds {
   pane {
     bind "r" { TogglePaneFrames; }
   }
+
+  resize {
+    bind "Ctrl r" { SwitchToMode "Normal"; }
+    bind "h" "Left" { Resize "Increase Left"; }
+    bind "j" "Down" { Resize "Increase Down"; }
+    bind "k" "Up" { Resize "Increase Up"; }
+    bind "l" "Right" { Resize "Increase Right"; }
+    bind "H" { Resize "Decrease Left"; }
+    bind "J" { Resize "Decrease Down"; }
+    bind "K" { Resize "Decrease Up"; }
+    bind "L" { Resize "Decrease Right"; }
+    bind "=" "+" { Resize "Increase"; }
+    bind "-" { Resize "Decrease"; }
+  }
+  shared_except "resize" "locked" {
+    bind "Ctrl r" { SwitchToMode "Resize"; }
+  }
+
+  unbind "Ctrl n"
 }
 
 default_layout "compact"
 pane_frames false
 
-theme "jellybeans";
+theme "catppuccin-mocha";
 themes  {
+  catppuccin-mocha {
+    bg "#585b70" // Surface2
+    fg "#cdd6f4" // Text
+    red "#f38ba8"
+    green "#a6e3a1"
+    blue "#89b4fa"
+    yellow "#f9e2af"
+    magenta "#f5c2e7" // Pink
+    orange "#fab387" // Peach
+    cyan "#89dceb" // Sky
+    black "#181825" // Mantle
+    white "#cdd6f4" // Text
+  }
   vscode  {
     fg  "#D4D4D4"
     bg  "#1E1E1E"
@@ -37,3 +69,88 @@ themes  {
   }
 }
 
+plugins {
+  // Define the "autolock" plugin.
+  autolock location="file:~/.config/zellij/plugins/zellij-autolock.wasm" {
+    // Enabled at start?
+    is_enabled true
+    // Lock when any open these programs open.
+    triggers "nvim|vim|git|fzf|zoxide|atuin"
+    // Reaction to input occurs after this many seconds. (default=0.3)
+    // (An existing scheduled reaction prevents additional reactions.)
+    reaction_seconds "0.3"
+    // Print to Zellij log? (default=false)
+    print_to_log true
+  }
+  //...
+}
+// Load this "headless" plugin on start.
+load_plugins {
+  autolock
+}
+keybinds {
+  // Keybindings specific to 'Normal' mode.
+  normal {
+    // Intercept `Enter`.
+    bind "Enter" {
+      // Passthru `Enter`.
+      WriteChars "\u{000D}";
+      // Invoke autolock to immediately assess proper lock state.
+      // (This provides a snappier experience compared to
+      // solely relying on `reaction_seconds` to elapse.)
+      MessagePlugin "autolock" {};
+    }
+    //...
+  }
+  // Keybindings specific to 'Locked' mode.
+  locked {
+    bind "Alt z" {
+      // Disable the autolock plugin.
+      MessagePlugin "autolock" {payload "disable";};
+      // Unlock Zellij.
+      SwitchToMode "Normal";
+    }
+    //...
+  }
+  // Keybindings shared across all modes.
+  shared {
+    bind "Alt Shift z" {
+      // Enable the autolock plugin.
+      MessagePlugin "autolock" {payload "enable";};
+    }
+    //...
+  }
+  // Keybindings shared across all modes, except 'Locked'.
+  shared_except "locked" {
+    // Put keybindings here if they conflict with Vim or others.
+
+    bind "Alt z" {
+      // Disable the autolock plugin.
+      MessagePlugin "autolock" {payload "disable";};
+      // Lock Zellij.
+      SwitchToMode "Locked";
+    }
+
+    bind "Ctrl h" {
+      MoveFocusOrTab "Left";
+    }
+    bind "Ctrl l" {
+      MoveFocusOrTab "Right";
+    }
+    bind "Ctrl j" {
+      MoveFocus "Down";
+    }
+    bind "Ctrl k" {
+      MoveFocus "Up";
+    }
+
+    // bind "Ctrl d" { HalfPageScrollDown; }
+    // bind "Ctrl u" { HalfPageScrollUp; }
+
+    // bind "Ctrl f" { PageScrollDown; }
+    // bind "Ctrl b" { PageScrollUp; }
+
+    //...
+  }
+  //...
+}

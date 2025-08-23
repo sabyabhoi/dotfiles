@@ -19,6 +19,8 @@ alias r=ranger
 #alias R='radian'
 alias vim=nvim
 alias lg=lazygit
+alias ls=eza
+alias find=fd
 
 set college $userfiles/college
 
@@ -42,12 +44,9 @@ function vterm_printf;
     end
 end
 
-function yy
-	set tmp (mktemp -t "yazi-cwd.XXXXXX")
-	yazi $argv --cwd-file="$tmp"
-	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-    echo $cwd
-		cd "$cwd"
-	end
-	rm -f -- "$tmp"
+# pnpm
+set -gx PNPM_HOME "/home/cognusboi/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
 end
+# pnpm end
