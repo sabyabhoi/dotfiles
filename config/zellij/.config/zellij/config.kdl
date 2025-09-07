@@ -16,9 +16,9 @@ keybinds {
     bind "=" "+" { Resize "Increase"; }
     bind "-" { Resize "Decrease"; }
   }
-  shared_except "resize" "locked" {
-    bind "Ctrl r" { SwitchToMode "Resize"; }
-  }
+  // shared_except "resize" "locked" {
+  //   bind "Ctrl r" { SwitchToMode "Resize"; }
+  // }
 
   unbind "Ctrl n"
 }
