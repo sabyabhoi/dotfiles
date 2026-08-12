@@ -1,0 +1,268 @@
+[
+    {
+        "output": "HDMI-A-1",
+        "layer": "top",
+        "position": "top",
+        "height": 20,
+        "spacing": 4,
+        "reload_style_on_change": true,
+
+        "modules-left": ["clock", "cpu", "custom/memory-gpu"],
+        "modules-center": ["hyprland/workspaces"],
+        "modules-right": ["pulseaudio","network#wifi","custom/power"],
+
+        "custom/launcher": {
+            "format": "",
+            "tooltip-format": "Application launcher",
+            "on-click": "rofi -show drun -modi drun -theme ~/.config/rofi/grid.rasi"
+        },
+        "cpu": {
+            "format": "󰻠 {usage}%",
+            "interval": 2,
+            "on-click": "kitty --class floating --title floating -e sh -c 'while true; do btop; sleep 0.1; done' &"
+        },
+        "custom/memory-gpu": {
+            "exec": "~/.config/waybar/scripts/memory-gpu.sh",
+            "format": "{}",
+            "return-type": "json",
+            "interval": 2,
+            "on-click": "kitty --class floating --title floating -e sh -c 'while true; do btop; sleep 0.1; done' &"
+        },
+        "hyprland/workspaces": {
+            "format": "{id}",
+            "on-click": "activate",
+            "on-scroll-up": "~/.config/waybar/scripts/workspace-scroll.sh up",
+            "on-scroll-down": "~/.config/waybar/scripts/workspace-scroll.sh down",
+            "all-outputs": false,
+            "persistent-workspaces": {}
+        },
+        "clock": {
+            "format": "{:%Y/%m/%d  %H:%M:%S}",
+            "on-click": "kitty --class floating --title 'Calendar' -e calcurse",
+            "tooltip-format": "<b><span color='#ffae12'><big>Click to launch </big></span></b>\n\n<tt>{calendar}</tt>",
+            "calendar": {
+                "mode"          : "year",
+                "mode-mon-col"  : 3,
+                "weeks-pos"     : "right",
+                "on-scroll"     : 1,
+                "on-click-right": "mode",
+                "format": {
+                    "months":     "<span color='#ffead3'><b>{}</b></span>",
+                    "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                    "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                    "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                    "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+            },
+            "interval": 1
+        },
+        "custom/weather": {
+            "exec": "~/.config/waybar/scripts/weather.sh",
+            "return-type": "json",
+            "interval": 10,
+            "format": "{}",
+            "on-click": "~/.config/waybar/scripts/weather.sh toggle",
+            "signal": 8
+        },
+        "custom/power": {
+            "exec": "~/.config/waybar/scripts/battery-status.sh",
+            "return-type": "json",
+            "interval": 10,
+            "on-click": "rofi -show powermenu -modi powermenu:~/.config/waybar/scripts/powermenu.sh"
+        }
+    },
+    {
+        "output": "DP-2",
+        "layer": "top",
+        "position": "top",
+        "height": 20,
+        "spacing": 4,
+        "reload_style_on_change": true,
+
+        "modules-left": [
+            "clock",
+            "temperature"
+        ],
+
+        "modules-center": [
+            "mpris",
+            "hyprland/workspaces",
+            "custom/notification"
+        ],
+
+        "modules-right": [
+            "pulseaudio",
+            "network#wifi",
+            "custom/power"
+        ],
+
+        // Left modules
+        "custom/launcher": {
+            "format": "",
+            "tooltip-format": "Application launcher",
+            "on-click": "rofi -show drun -modi drun -theme ~/.config/rofi/grid.rasi"
+        },
+
+        "custom/wallpaper": {
+            "exec": "ls ~/Pictures/Wallpapers | wc -l",
+            "format": "",
+            "tooltip-format": "Pick from {} wallpapers!",
+            "on-click": "~/.config/waybar/scripts/wallpaper-selector.sh"
+        },
+
+        "cpu": {
+            "format": "󰻠 {usage}%",
+            "interval": 2,
+            "on-click": "kitty --class floating --title floating -e sh -c 'while true; do btop; sleep 0.1; done' &"
+        },
+
+        "custom/memory-gpu": {
+            "exec": "~/.config/waybar/scripts/memory-gpu.sh",
+            "format": "{}",
+            "return-type": "json",
+            "interval": 2,
+            "on-click": "kitty --class floating --title floating -e sh -c 'while true; do btop; sleep 0.1; done' &"
+        },
+
+        "network": {
+            "format": "󰇚 {bandwidthDownBits} 󰕒 {bandwidthUpBits}",
+            "format-disconnected": "󰛳 Disconnected",
+            "tooltip-format": "Down: {bandwidthDownBits} Up: {bandwidthUpBits}",
+            "interval": 2,
+            "on-click": "kitty --class floating --title floating -e sh -c 'while true; do btop; sleep 0.1; done' &"
+        },
+
+        "temperature": {
+            "hwmon-path": "/sys/class/hwmon/hwmon3/temp3_input",
+            "format": "{icon} {temperatureC}°C",
+            "format-icons": ["", "", "", ""],
+            "tooltip-format": "CPU Temp: {temperatureC}°C",
+            "critical-threshold": 85,
+            "interval": 2,
+            "on-click": "kitty --class floating --title floating -e powertop &"
+        },
+
+        "custom/disk": {
+            "exec": "~/.config/waybar/scripts/disk.sh",
+            "format": "󰋊 {}",
+            "return-type": "json",
+            "interval": 2,
+            "on-click": "kitty --class floating --title floating -e watch duf"
+        },
+
+        // Center modules
+        "mpris": {
+            "format": "{player_icon}",
+            "format-paused": "{status_icon}",
+            "player-icons": {
+                "default": "",
+                "mpv": ""
+            },
+            "status-icons": {
+                "paused": ""
+            },
+            "interval":1,
+            "tooltip-format": " {player}\n {artist}\n {album} {title}\n [{position}/{length}]"
+        },
+
+        "hyprland/workspaces": {
+            "format": "{id}",
+            "on-click": "activate",
+            "on-scroll-up": "~/.config/waybar/scripts/workspace-scroll.sh up",
+            "on-scroll-down": "~/.config/waybar/scripts/workspace-scroll.sh down",
+            "all-outputs": false,
+            "persistent-workspaces": {}
+        },
+
+        "custom/notification": {
+            "tooltip-format": "Notifications: {}",
+            "format": "{} {icon}",
+            "format-icons": {
+                "notification": "󰂚",
+                "none": "󰂜",
+                "dnd-notification": "󰂛",
+                "dnd-none": "󰪑",
+                "inhibited-notification": "󰂚",
+                "inhibited-none": "󰂜",
+                "dnd-inhibited-notification": "󰂛",
+                "dnd-inhibited-none": "󰪑"
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "sleep 0.1 && swaync-client -t -sw",
+            "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+            "escape": true
+        },
+
+        // Right modules
+        "custom/ime": {
+            "exec": "~/.config/waybar/scripts/ime-status.sh",
+            "return-type": "json",
+            "interval": 1,
+            "format": "󰇧 {}",
+            "on-click": "~/.config/waybar/scripts/ime-switch.sh",
+            "tooltip": true
+        },
+
+        "clock": {
+            "format": "{:%Y/%m/%d  %H:%M:%S}",
+            "on-click": "kitty --class floating --title 'Calendar' -e calcurse",
+            "tooltip-format": "<b><span color='#ffae12'><big>Click to launch </big></span></b>\n\n<tt>{calendar}</tt>",
+            "calendar": {
+                "mode"          : "year",
+                "mode-mon-col"  : 3,
+                "weeks-pos"     : "right",
+                "on-scroll"     : 1,
+                "on-click-right": "mode",
+                "format": {
+                    "months":     "<span color='#ffead3'><b>{}</b></span>",
+                    "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                    "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                    "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                    "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+            },
+            "interval": 1
+        },
+
+        "custom/weather": {
+            "exec": "~/.config/waybar/scripts/weather.sh",
+            "return-type": "json",
+            "interval": 10,
+            "format": "{}",
+            "on-click": "~/.config/waybar/scripts/weather.sh toggle",
+            "signal": 8
+        },
+
+        "network#wifi": {
+            "format-wifi": "󰤨 {signalStrength}%",
+            "format-disconnected": "󰤭 Disconnected",
+            "tooltip-format": "Wifi: {essid} ({signalStrength}%)",
+            "on-click": "~/.config/waybar/scripts/wifi-menu.sh"
+        },
+
+        "pulseaudio": {
+            "format": "{icon} {volume}%",
+            "format-muted": "󰝟 Muted",
+            "format-icons": {
+                "default": ["󰕿", "󰖀", "󰕾"]
+            },
+            "on-click": "hyprctl dispatch exec pwvucontrol",
+            "tooltip-format": "Current volume: {volume}%"
+        },
+
+        "custom/quick-actions": {
+            "format": "",
+            "tooltip-format": "Quick Actions",
+            "on-click": "~/.config/waybar/scripts/quick-actions.sh"
+        },
+
+        "custom/power": {
+            "exec": "~/.config/waybar/scripts/battery-status.sh",
+            "return-type": "json",
+            "interval": 10,
+            "on-click": "rofi -show powermenu -modi powermenu:~/.config/waybar/scripts/powermenu.sh"
+        }
+    }
+]
