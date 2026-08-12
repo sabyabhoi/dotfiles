@@ -146,7 +146,7 @@ hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER + SHIFT + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + f", hl.dsp.window.fullscreen())
 hl.bind("SUPER + SHIFT + E", hl.dsp.exit())
-hl.bind("SUPER + SHIFT + R", function() hl.dispatch("reload") end)
+hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + z", hl.dsp.exec_cmd("handy --toggle-transcription"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("emacsclient -c"))
 hl.bind(mainMod .. " + t", hl.dsp.window.float({ action = "toggle" }))
@@ -181,8 +181,8 @@ hl.bind(mainMod .. " + SHIFT + x", hl.dsp.exec_cmd("systemctl suspend"))
 hl.bind("CTRL + space", hl.dsp.exec_cmd("dunstctl close"))
 
 -- Move current workspace to monitor
-hl.bind(mainMod .. " + CTRL + l", function() hl.dispatch("movecurrentworkspacetomonitor", "r") end)
-hl.bind(mainMod .. " + CTRL + h", function() hl.dispatch("movecurrentworkspacetomonitor", "l") end)
+hl.bind(mainMod .. " + CTRL + l", hl.dsp.workspace.move_to_monitor({ direction = "right" }))
+hl.bind(mainMod .. " + CTRL + h", hl.dsp.workspace.move_to_monitor({ direction = "left" }))
 
 -- Workspaces
 for i = 1, 10 do
