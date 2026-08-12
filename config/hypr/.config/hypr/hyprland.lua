@@ -180,8 +180,8 @@ hl.bind(mainMod .. " + SHIFT + x", hl.dsp.exec_cmd("systemctl suspend"))
 hl.bind("CTRL + space", hl.dsp.exec_cmd("dunstctl close"))
 
 -- Move current workspace to monitor
-hl.bind(mainMod .. " + CTRL + l", hl.dsp.exec_cmd("hyprctl dispatch movecurrentworkspacetomonitor r"))
-hl.bind(mainMod .. " + CTRL + h", hl.dsp.exec_cmd("hyprctl dispatch movecurrentworkspacetomonitor l"))
+hl.bind(mainMod .. " + CTRL + l", function() hl.dispatch("movecurrentworkspacetomonitor", "r") end)
+hl.bind(mainMod .. " + CTRL + h", function() hl.dispatch("movecurrentworkspacetomonitor", "l") end)
 
 -- Workspaces
 for i = 1, 10 do
