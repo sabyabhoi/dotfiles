@@ -181,8 +181,8 @@ hl.bind(mainMod .. " + SHIFT + x", hl.dsp.exec_cmd("systemctl suspend"))
 hl.bind("CTRL + space", hl.dsp.exec_cmd("dunstctl close"))
 
 -- Move current workspace to monitor
-hl.bind(mainMod .. " + CTRL + l", hl.dsp.workspace.move_to_monitor({ direction = "right" }))
-hl.bind(mainMod .. " + CTRL + h", hl.dsp.workspace.move_to_monitor({ direction = "left" }))
+hl.bind(mainMod .. " + CTRL + l", hl.dsp.workspace.move({ monitor = "right" }))
+hl.bind(mainMod .. " + CTRL + h", hl.dsp.workspace.move({ monitor = "left" }))
 
 -- Workspaces
 for i = 1, 10 do
