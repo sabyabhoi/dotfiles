@@ -20,4 +20,4 @@ else
     fi
 fi
 
-hyprctl dispatch workspace $next
+hyprctl dispatch "hl.dsp.focus({ workspace = $next })"
